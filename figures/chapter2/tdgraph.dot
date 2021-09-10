@@ -1,36 +1,79 @@
 digraph tdgraph {
-        node [color=lightgray, style=filled];
-        graph [ordering="out"];
-        edge[penwidth=1.25]
+        nodesep=1.0
+        ranksep=1.0
+        rankdir=TB
+        newrank=true
+        node [style=filled,fontsize=32,fontname="arial bold",colorscheme=set19];
+        edge[penwidth=4]
         {
                 rank=0;
-                "0" [label="0"];
+                "0" [label="0",color=1];
         }
         {
                 rank=1;
-                "1" [label="1"];
-                "2" [label="2"];
+                "1" [label="1",color=2];
+                "2" [label="2",color=2];
         }
         {
                 rank=2
-                "3" [label="3"];
-                "4" [label="4"];
-                "5" [label="5"];
-                "6" [label="6"];
+                "3" [label="3",color=3];
+                "4" [label="4",color=3];
+                "5" [label="5",color=3];
+                "6" [label="6",color=3];
         }
         {
                 rank=3;
 
-                "7" [label="..."];
-                "8" [label="..."];
-                "9" [label="..."];
-                "10" [label="..."];
-                "11" [label="..."];
-                "12" [label="..."];
-                "13" [label="..."];
-                "14" [label="..."];
+                "7" [label="...",color=9];
+                "8" [label="...",color=9];
+                "9" [label="...",color=9];
+                "10" [label="...",color=9];
+                "11" [label="...",color=9];
+                "12" [label="...",color=9];
+                "13" [label="...",color=9];
+                "14" [label="...",color=9];
         }
+        {
+                rank=4
+                subgraph cluster1 {
+
+                        label = "Legend";
+                        fontsize=32;
+                        nodesep=1.0
+                        d0 [label=<No<br></br>Decomposition (&phi;<SUB>i</SUB>=0)>,
+                            color=1,
+                            shape=record];
+                        d1 [label=<Single<br></br>Decomposition (&phi;<SUB>i</SUB>=1)>,
+                            color=2,
+                            shape=record];
+                        d2 [label=<Multiple<br></br>Decomposition (&phi;<SUB>i</SUB>=2)>,
+                            color=3,
+                            shape=record];
+                        t15, t16, t17, t18, t19,t20 [style=invis]
+                        {rank=same d0, d1, d2}
+
+
+                        node[shape=point,fontsize=32]
+                        {
+
+                                t16 -> t17 [label="Task Decomposition",
+                                          fontsize=24,
+                                          constraint=false];
+
+                                t18 -> t19 [label="Task Dependency",
+                                            style=dashed,
+                                            color=black,
+                                            fontsize=24,
+                                            constraint=false];
+
+                        }
+
+                  }
+
+        }
+
         // Decomposition edges
+        edge[color=black];
 
         "0" -> "1"
         "0" -> "2";
@@ -50,10 +93,27 @@ digraph tdgraph {
         "6" -> "13";
         "6" -> "14";
 
+        // Force legend underneath graph
+        "8" -> d0[style=invis] 
+        "9" -> d0[style=invis]
+        "10" -> d1[style=invis]
+        "11" -> d1[style=invis]
+        "12" -> d2[style=invis]
+        "13" -> d2[style=invis]
+
+        d0 -> t15[style=invis]
+        d0 -> t16[style=invis]
+        d1 -> t17[style=invis]
+        d1 -> t18[style=invis]
+        d2 -> t19[style=invis]
+        d2 -> t20[style=invis]
+
+
         // Sequence edges
-        "0" -> "0" [color=blue,constraint=false,style=dashed];
-        "1" -> "2" [color=blue,constraint=false,style=dashed];
-        "3" -> "4" -> "5" -> "6" [color=blue,constraint=false,style=dashed];
-        "7" -> "8" -> "9" -> "10" -> "11" -> "12" -> "13" -> "14" [color=blue,constraint=false,style=dashed];
+        edge[constraint=false, style=dashed,color=black];
+        "0" -> "0";
+        "1" -> "2";
+        "3" -> "4" -> "5" -> "6";
+        "7" -> "8" -> "9" -> "10" -> "11" -> "12" -> "13" -> "14";
 
         }

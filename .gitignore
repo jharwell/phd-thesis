@@ -7,7 +7,6 @@ thesis.pdf
 *.jpg
 *.gif
 *.bmp
-*.jpeg
 
 #Network File System
 .nfs*

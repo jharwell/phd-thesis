@@ -1,38 +1,92 @@
 digraph tdgraph {
-        nodesep=0.5
-        node [style=filled,fontsize=32];
-        edge[penwidth=3]
+        nodesep=1.0
+        ranksep=1.0
+        rankdir=TB
+        newrank=true
+        node [style=filled,fontsize=32,fontname="arial bold",colorscheme=pastel13];
+
         graph [ordering="out"];
         {
                 rank=0;
-                "0" [label="Generalist",color="gold"];
+                generalist [label="Forager",color=1];
         }
         {
                 rank=1;
-                "1" [label="Harvester",color="gold"];
-                "2" [label="Collector",color="gold"];
+                harvester [label="Harvester",color=2];
+                collector [label="Collector",color=2];
         }
         {
                 rank=2
-                "3" [label="Cache Starter",color="firebrick1"];
-                "4" [label="Cache Finisher",color="firebrick1"];
-                "5" [label="Cache Transferer",color="firebrick1"];
-                "6" [label="Cache Collector",color="firebrick1"];
+                cache_starter [label="Cache Starter",color=3];
+                cache_finisher [label="Cache Finisher",color=3];
+                cache_transferer [label="Cache Transferer",color=3];
+                cache_collector [label="Cache Collector",color=3];
         }
+        {
+                rank=3
+                subgraph cluster1 {
 
+                        label = "Legend";
+                        fontsize=32;
+                        nodesep=1.0
+                        d0 [label="No\nDecomposition",color=1,shape=record];
+                        d1 [label="Single\nDecomposition", color=2,shape=record];
+                        d2 [label="Multiple\nDecomposition",color=3,shape=record];
+                        t0, t1, t2, t3, t4, t5 [style=invis]
+                        {rank=same d0, d1, d2}
+
+
+                        node[shape=point,fontsize=32]
+                        edge[penwidth=8]
+                        {
+
+                                t1 -> t2 [label="Task Decomposition",
+                                          fontsize=24,
+                                          constraint=false];
+
+                                t3 -> t4 [label="Task Dependency",
+                                          style=dashed,
+                                          fontsize=24,
+                                          constraint=false]; 
+                               // {rank=same; t2 t3 d1}
+
+
+                        }
+
+                  }
+
+        }
         // Decomposition edges
+        edge[penwidth=8, color=black];
 
-        "0" -> "1"
-        "0" -> "2";
+        generalist -> harvester;
+        generalist -> collector;
 
 
-        "1" -> "3";
-        "1" -> "4";
-        "2" -> "5";
-        "2" -> "6";
+        harvester -> cache_starter;
+        harvester -> cache_finisher;
+
+        collector -> cache_transferer;
+        collector -> cache_collector;
+
+        cache_starter -> d0 [style=invis]
+        cache_finisher -> d0 [style=invis]
+        cache_finisher -> d1 [style=invis]
+        cache_transferer -> d1 [style=invis]
+        cache_transferer -> d2 [style=invis]
+        cache_collector -> d2 [style=invis]
+
+        d0 -> t0 [style=invis] 
+        d0 -> t1 [style=invis]
+        d1 -> t2 [style=invis]
+        d1 -> t3 [style=invis]
+        d2 -> t4 [style=invis]
+        d2 -> t5 [style=invis]
         // Sequence edges
-        "0" -> "0" [color=blue,constraint=false, style=dashed];
-        "1" -> "2" [color=blue,constraint=false, style=dashed];
-        "3" -> "4" -> "5" -> "6" [color=blue, constraint=false, style=dashed];
+        edge[penwidth=8, constraint=false, style=dashed];
+        generalist -> generalist;
+        harvester -> collector;
+        cache_starter -> cache_finisher -> cache_transferer ->cache_collector;
+
 
         }
