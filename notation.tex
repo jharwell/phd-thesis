@@ -1,0 +1,84 @@
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Notation Definitions
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+% Common
+\newcommand{\TheSwarm}{\mathcal{S}}
+\newcommand{\TheSwarmSize}{\mathcal{N}}
+\newcommand{\IGNORE}[1]{}
+
+% AAMAS
+\newcommand{\TAGraphRoot}{\mathcal{T}}
+\newcommand{\TDGraph}{\mathcal{G}_d(\mathcal{V}_a,\mathcal{E}_d)}
+
+\newcommand{\TAGraph}[1]{\mathcal{G}_{#1}(\mathcal{V}_{#1}, \mathcal{E}_{#1})}
+\newcommand{\TAGraphNBHD}{\TAGraph{nbhd}}
+\newcommand{\TAGraphE}[1]{\mathcal{E}_{#1}}
+\newcommand{\TAGraphV}[1]{\mathcal{V}_{#1}}
+
+\newcommand{\ArbRobot}{\mathbf{r}_s}
+\newcommand{\ArbRobotTwo}{\mathbf{r}_{s'}}
+\newcommand{\SwarmObjective}{\mathcal{O}}
+
+\newcommand{\IndSets}{\mathcal{I}}
+\newcommand{\ArbRobotMatroid}{\mathcal{M}_{\ArbRobot}}
+\newcommand{\CostFunc}{C(v,t)}
+
+\DeclareMathOperator*{\argmax}{argmax}
+
+% TRO
+\newcommand{\PerfMeasureHecker}[1]{P(#1)}
+\newcommand{\PerfCurve}[1]{P(#1,\kappa,t)}
+\newcommand{\PerfCurveSub}[2]{P_{#2}(#1,\kappa,t)}
+\newcommand{\ScalabilityMetric}[1]{\mathcal{C}(#1,\kappa)}
+
+\newcommand{\PerfLost}[1]{P_{lost}(#1,\kappa,t)}
+\newcommand{\TLost}[1]{t_{lost}(#1,\kappa)}
+\newcommand{\SpatialEmergenceMetric}[2]{E_{S}(#1,#2,\kappa)}
+\newcommand{\TaskEmergenceMetric}[2]{E_{T}(#1,#2,\kappa)}
+\newcommand{\EmergenceMetric}[2]{E(#1,#2,\kappa)}
+
+\newcommand{\ReactivityMetric}{R(\TheSwarmSize,\kappa)}
+\newcommand{\OptimalReactivity}{R^{*}(\TheSwarmSize,\kappa)}
+\newcommand{\OptimalReactivityCurve}{\PerfCurveSub{\TheSwarmSize}{R^{*}}}
+
+\newcommand{\AdaptabilityMetric}{A(\TheSwarmSize,\kappa)}
+\newcommand{\OptimalAdaptability}{A^{*}(\TheSwarmSize,\kappa)}
+\newcommand{\OptimalAdaptabilityCurve}{\PerfCurveSub{\TheSwarmSize}{A^{*}}}
+
+\newcommand{\FlexibilityMetric}{F(\TheSwarmSize,\kappa)}
+
+\newcommand{\IdealEnvConditions}{I_{ec}(t)}
+\newcommand{\NonIdealEnvDeviation}{V_{dev}(t)}
+\newcommand{\SARobustnessMetric}{B_{sa}(\TheSwarmSize,\kappa)}
+\newcommand{\OptimalSARobustness}{B_{sa}^{*}(\TheSwarmSize,\kappa)}
+\newcommand{\OptimalSARobustnessCurve}{\PerfCurveSub{\TheSwarmSize}{{B_{sa}}^{*}}}
+
+\newcommand{\PDRobustnessMetric}{B_{pd}(\kappa)}
+\newcommand{\OptimalPDRobustness}{B_{pd}^{*}(\kappa)}
+
+\newcommand{\SwarmAvailability}[1]{\mathcal{V}(#1)}
+
+\newcommand{\TaskedSwarm}{{S}}
+\newcommand{\UntaskedSwarm}{\bar{S}}
+\newcommand{\AssignedTask}{\mathcal{T}}
+\newcommand{\TimeInTaskedSwarm}{T_{\TaskedSwarm}}
+\newcommand{\TimeInTaskedSwarmIdeal}{T_{\TaskedSwarm_{ideal}}}
+\newcommand{\TimeInUntaskedSwarm}{T_{\UntaskedSwarm}}
+
+\newcommand{\TimeInUntaskedSwarmQueue}{T_{\UntaskedSwarm}}
+\newcommand{\TimeInTaskedSwarmQueue}{T_{\TaskedSwarm}}
+
+\newcommand{\TotalTime}{T}
+\newcommand{\ActiveSwarmSize}{N(t)}
+\newcommand{\TaskedSwarmSize}[1]{N(#1)}
+\newcommand{\TaskedSwarmSizeMin}{N_{min}}
+\newcommand{\BirthQueue}{Q_{b}}
+\newcommand{\DeathQueue}{Q_{d}}
+\newcommand{\RepairQueue}{Q_{r}}
+\newcommand{\TaskedSwarmQueue}{Q_{\TaskedSwarm}}
+\newcommand{\TaskedSwarmQueueMu}{\lambda_{d} + \lambda_{bd}}
+\newcommand{\TaskedSwarmQueueLambda}{\mu_{b} + \mu_{bd}}
+\newcommand{\UntaskedSwarmQueue}{Q_{\UntaskedSwarm}}
+\newcommand{\UntaskedSwarmQueueLambda}{\lambda_{d} + \lambda_{bd}}
+\newcommand{\UntaskedSwarmQueueMu}{\mu_{b} + \mu_{bd}}

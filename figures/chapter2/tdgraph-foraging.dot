@@ -1,0 +1,38 @@
+digraph tdgraph {
+        nodesep=0.5
+        node [style=filled,fontsize=32];
+        edge[penwidth=3]
+        graph [ordering="out"];
+        {
+                rank=0;
+                "0" [label="Generalist",color="gold"];
+        }
+        {
+                rank=1;
+                "1" [label="Harvester",color="gold"];
+                "2" [label="Collector",color="gold"];
+        }
+        {
+                rank=2
+                "3" [label="Cache Starter",color="firebrick1"];
+                "4" [label="Cache Finisher",color="firebrick1"];
+                "5" [label="Cache Transferer",color="firebrick1"];
+                "6" [label="Cache Collector",color="firebrick1"];
+        }
+
+        // Decomposition edges
+
+        "0" -> "1"
+        "0" -> "2";
+
+
+        "1" -> "3";
+        "1" -> "4";
+        "2" -> "5";
+        "2" -> "6";
+        // Sequence edges
+        "0" -> "0" [color=blue,constraint=false, style=dashed];
+        "1" -> "2" [color=blue,constraint=false, style=dashed];
+        "3" -> "4" -> "5" -> "6" [color=blue, constraint=false, style=dashed];
+
+        }

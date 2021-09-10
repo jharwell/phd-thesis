@@ -2,4 +2,46 @@
 % abstract.tex: Abstract
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% AAMAS
+
+We investigate the emergence of swarm intelligence using task allocation in
+large robot swarms. First, we compare task decomposition graphs of different
+levels of richness and measure the emergent intelligence arising from
+self-organized task allocation by deriving \gls{stoch-n1}, a stochastic allocation
+algorithm which contextualizes per-robot task allocation decisions based on a
+previous task's neighborhood within the graph. The results are compared to other
+state of the art algorithms. Second, we derive \gls{mat-opt}: a greedy algorithm that
+optimally solves the swarm task allocation problem by representing the swarm's
+task allocation space as a matroid under some restrictive assumptions. We
+compare the \gls{mat-opt} allocation method, which disregards task dependencies, with
+\gls{stoch-n1}, which emphasizes collective learning of graph structure (including
+dependencies). Results from an object gathering task show that swarm emergent
+intelligence (1) is sensitive to the richness of task decomposition graphs (2)
+is positively correlated with performance, (3) arises out of learning and
+exploitation of graph connectivity and structure, rather than graph content.
+
+
+% TRO
+
+We present a set of metrics intended to supplement designer intuitions when
+designing swarm-robotic systems, increase accuracy in extrapolating swarm
+behavior from algorithmic descriptions and small test experiments, and lead to
+faster and less costly design cycles. We build on previous works studying
+self-organizing behaviors in autonomous systems to derive a metric for swarm
+emergent self-organization.  We utilize techniques from high performance
+computing, time series analysis, and queueing theory to derive metrics for swarm
+scalability, flexibility to changing external environments, and robustness to
+internal system stimuli such as sensor and actuator noise and robot failures.
+
+We demonstrate the utility of our metrics by analyzing four different control
+algorithms in an indoor warehouse object transport scenario with static objects
+and a spatially unconstrained outdoor search and rescue scenario with moving
+objects. In the spatially constrained warehouse scenario, efficient use of space
+is key to success so algorithms that use mechanisms for traffic regulation and
+congestion reduction are the most appropriate.  In the search and rescue
+scenario, the same will happen with algorithms which can cope well with object
+motion through dynamic task allocation and randomized search trajectories. We
+show that our intuitions about comparative algorithm performance are well
+supported by the quantitative results obtained using our metrics, and that our
+metrics can be synergistically used together to predict collective behaviors
+based on previous results in some cases.

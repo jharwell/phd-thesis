@@ -1,34 +1,231 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % intro.tex: Introduction to the thesis
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\chapter{Introduction}
-\label{intro_chapter}
+\chapter{Introduction}\label{chap:intro}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-\begin{itemize}
+% TRO
 
-%\item Chapter 1 introduces the analytic goals pursued in this thesis.
+\glspl{sr} is the study of the coordination of large numbers of simple
+robots~\cite{Sahin2005}. \gls{sr} systems can be homogeneous (single robot type
+and identical control software) or heterogeneous (multiple robot types and/or
+control software)~\cite{Dorigo2013,Rizk2019,Ramachandran2020}. The main
+differentiating factors between \gls{sr} systems and multi-agent robotics
+systems stem from the mechanisms on which \gls{sr} systems are based.
+Historically, these were principles of biological mimicry or problem solving
+techniques inspired by natural systems of agents such as bees, ants, and
+termites~\cite{Labella}.
 
-\item Chapter 2 briefly presents the history of, and science behind, the
-subjects presented in this thesis.
+Moving beyond strictly biomimetic design, many modern \gls{sr} systems have
+retained the desirable properties of natural systems while employing elements of
+more conventional multi-robot system
+design~\cite{Castello2016,Arvin2015,Steyven2018}. Those properties are:
 
-\item In Chapter 3 the experiment is outlined.
+\textbf{Emergent Self-Organization}. \emph{Self-organization} is the appearance
+of structure within the swarm, which can be spatial, temporal, or functional. It
+arises at the \emph{collective} level due to inter-robot interactions and robot
+decisions at the \emph{individual} level~\cite{Winfield2005a,Galstyan2005}. Once
+established, self-organization is generally resistant to external stimuli, and
+this resistance is crucial to solving complex problems with only simple
+agents~\cite{Hunt2020,DeWolf2005}.  Self-organization is related to, but
+distinct, from the concept of \emph{emergence}, which is the set difference
+between individual and collective swarm behavior, which arises from inter-robot
+interactions and individual robot decisions~\cite{Szabo2014,DeWolf2005}.
+Emergent and self-organizing behaviors are often both present in \gls{sr} systems as
+robots collectively find solutions to a problem that they cannot solve
+alone~\cite{Cotsaftis2009,Hunt2020}. We term this dichotomy \emph{emergent
+  self-organization}, i.e, a two-way link between collective and individual level
+behaviors.
 
-\item Chapter 4 describes the simulation process used in the analysis.
+\textbf{Scalability}. Scalable systems are able to maintain efficiency and
+effectiveness as system size grows. \gls{sr} systems, like natural systems, can
+achieve scalability to hundreds or thousands of agents through decentralized
+control~\cite{Matthey2009}; other methods of maintaining effectiveness at larger
+scales include local agent communication~\cite{Agassounon2001,Lerman2006}, and
+heterogeneous robots or robot roles~\cite{Lu2020,Harwell2019a}.  Scalability
+can arise directly from the design of the swarm control algorithm, but more
+often as a cumulative result of emergent self-organizing behaviors, which
+are themselves decentralized and local~\cite{DeWolf2005}.
 
-\item Chapter 5 follows the chain of reconstruction software used to obtain
-meaningful results from data.
+\textbf{Flexibility}. Flexible systems are able to modify their collective
+behavior in response to unknown stimuli in the external environment, e.g.,
+changing weather conditions~\cite{Harwell2019a,Just2017,Hunt2020}. Individual
+agents make decisions based on locally available information from neighbors and
+their own limited sensor data. This produces a spatially distributed response
+which arises from robot decisions as the swarm reacts and adapts to the
+environment. \gls{sr} systems, like natural systems, can achieve flexibility in a
+variety of ways: pheromone trails, site fidelity, localized communication, and
+task allocation strategies~\cite{Just2017,Harwell2019a}. Some analytical methods,
+such as task allocation strategies, explicitly encode mechanisms for the swarm
+to collectively attempt to mitigate adversity and exploit beneficial changes in
+dynamic environmental conditions~\cite{Just2017,Winfield2008}. Other methods,
+such as pheromone trails, rely on the plasticity of self-organizing behaviors
+and the development of emergent behaviors to achieve flexibility. The
+flexibility of such methods can therefore be coupled to, but is still distinct
+from, emergent and self-organizing behaviors~\cite{DeWolf2005}.
 
-\item Chapter 6 hashes out the strategy for analysis and presents the data and
-simulated sets that will be used in the analysis.
+\textbf{Robustness}. Robust systems are able to modify their collective behavior
+in response to internal, as opposed to environmental, stimuli.  Such
+stimuli can include sensor and actuator noise, changes in system size due to the
+introduction of new robots and robot failures.
+% As the swarm size fluctuates, robots may permanently or temporarily leave the
+% swarm, as they experience hardware errors or task reallocations.
+Robustness is therefore an emergent property of systems which demonstrate
+resilience to the effects of internal stimuli on individual
+robots~\cite{DeWolf2005} (e.g., losing a single robot or set of robots minimally
+perturbs the collective behavior of the swarm).  Robustness is crucial for
+crossing the simulation-reality gap~\cite{Hecker2015,Francesca2014}.  Some \gls{sr}
+systems handle sensor and actuator noise
+% [JRH] Thesis: ~\cite{Dallalibera2011,Claudi2014,Zong2006,Nurzaman2009,Turgut2008},
+analytically~\cite{Dallalibera2011,Claudi2014,Turgut2008}, and can provide
+theoretical guarantees of robustness.  Other systems rely on emergent
+behaviors~\cite{Harwell2020a}, and do not provide theoretical guarantees; in
+such cases robustness is coupled to, but again distinct from, emergent
+self-organization. %~\cite{Hunt2020,DeWolf2005}.
 
-\item Chapter 7 demonstrates the implementation of the event selection
-processes.
+The duality between designing swarm control algorithms directly to be scalable
+and self-organizing, while incorporating emergent behaviors for flexibility and
+robustness, can be leveraged in the design of practical \gls{sr}
+systems.
 
-\item In Chapter 8 those events selected in Chapter 7 are analyzed.
+% \emph{Swarm engineering} is a sub-field in swarm robotics for the systematic
+% application of scientific and technical knowledge to model, design, validate,
+% and operate a \gls{sr} system~\cite{Brambilla2013a}.
+First formally discussed by~\cite{Winfield2005}, \emph{swarm engineering} seeks
+to design systems which are based on rigorous mathematical methods but which
+also possess the desirable system properties discussed
+above~\cite{Brambilla2013a}.  Each of these desirable properties can be designed
+for by answering the following design questions:
+%
+\begin{enumerate}
+\item {Does the solution show emergent self-organization, indicating collective
+    intelligence and its potential to be used in variants of the given problem?
+  }
+\item{Does the solution scale to the current and future needs of the modeled
+    scenario?}
+\item {Can the solution flexibly handle unknown environments or those with
+    fluctuating conditions?}
 
-\item Chapter 9 presents a final discussion of the analyses presented in the
-thesis.
+\item {Is the solution robust to sensor/actuator noise and population size
+    fluctuations? % as robots enter and leave the swarm over time?
+  }
+\end{enumerate}
+%
+In order to answer these questions we first need a method for quantifying each
+of the desirable system properties with numerical calculations; such a
+methodology does not exist, to the best of our knowledge. This leads to the
+first contribution of this thesis: the establishment of such a methodology by
+answering the following research question:
 
-\end{itemize}
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\noindent
+\gls{RQ1}: \glsdesc{RQ1}
+
+% [JRH] Transition to wanting to know the origin of emergent intelligence
+% through self-organization. Don't mention foraging yet.
+
+% [JRH] Introduce task allocation perspective
+We study emergent intelligence from a task allocation perspective...
+
+% [JRH] Introduce foraging testbed
+
+The duality between \gls{sr} and natural systems enables effective parallels to
+be drawn with many naturally occurring problems, such as foraging, collective
+transport of heavy objects, environmental monitoring, object sorting, hazardous
+material cleanup, self-assembly, exploration, and collective decision
+making~\cite{Hecker2015,Kumar2003,CarrilloZapata2020}.  As a result, \gls{sr}
+systems are especially suited for complex tasks in dynamic environments where
+robustness and flexibility are key to success, such as space, fire and
+rescue~\cite{Rouff2004,CarrilloZapata2020}.
+
+%
+Our definitions of \emph{compound} and \emph{complex} task decomposition graphs
+are drawn from the extended~\gls{mrta} taxonomy terminology proposed
+by~\cite{Korsah2013}. They separate the concept of \emph{atomic} tasks, which
+are not decomposable, from that of \emph{decomposable} tasks, which are. They
+define \emph{compound} tasks as tasks having exactly one possible decomposition
+(which is multi-agent allocatable), and \emph{complex} tasks, as tasks which
+have multiple decompositions (each of which is multi-agent allocatable).
+
+
+We study foraging from a task allocation perspective. In a foraging task, robots
+gather objects from across a finite operating arena and bring them to a central
+location (often called the \emph{nest}) for further processing. Foraging is one
+of the most extensively studied applications of \gls{sr} due to its
+straightforward mapping to important real-world applications~\cite{Hecker2015}
+such as tracking lake health, clearing a corridor on a mining operation,
+hazardous material cleanup, or search and
+rescue~\cite{Sahin2005,Hecker2015,Labella}. In this work, we seek to quantify
+the relationship between swarm emergent intelligence and the richness of the
+task decomposition graph used for allocation, and to understand the origin of
+the emergent intelligence that arises from various task allocation
+methods. Specifically, we seek
+answers to the following questions:\\[-3ex]
+%
+\noindent
+\gls{RQ2.1}: \glsdesc{RQ2.1}
+
+\noindent
+\gls{RQ2.2}: \glsdesc{RQ2.2}
+
+
+
+% [JRH] Conclusion-y stuff at the end of intro
+
+\begin{enumerate}
+\item \textbf{Metrics for \gls{sr} systems properties}.  We present metrics for swarm
+  emergent self-organization, scalability, flexibility, and robustness
+  (\cref{sec:meas-emergence,sec:meas-scalability,sec:meas-flexibility,sec:meas-robustness})
+  as analysis tools to assist with answering our design questions. Our approach
+  is domain agnostic, and serves as a starting point to develop
+  application-specific variants. Furthermore, we establish the groundwork for
+  more comprehensive theories of swarm behavior, because precisely measuring
+  system properties is a necessary precursor to developing theories about what
+  elements of a swarm control algorithm give rise to observed behaviors.
+\item \textbf{Realistic scenario modeling.}  We apply our metrics to two
+  real-world problems: indoor warehouse object transport (\cref{sec:sc1}) and
+  outdoor search and rescue (\cref{sec:sc2}).  Through application to these
+  complex real-world scenarios we expand the range of characteristics affecting
+  swarm behavior which can be meaningfully studied in simulation. For example,
+  the ability to precisely measure how different levels of sensor and actuator
+  noise affect swarm behavior allows us to incorporate noise-generating elements
+  of real-world problems into our scenario model and better study their
+  effects. Without such methodology, those effects can only be studied
+  qualitatively, which is not as useful.
+\end{enumerate}
+%
+% [JRH] Required by TRO: If a preliminary version of the paper has been (or is going
+% to be) presented at conference(s), specify in a compact way which one(s); these
+% conference papers should be explicitly cited in the present journal submission,
+% with a clear statement describing the differences/changes/additions.  Papers
+% failing to comply with this will be returned by the EiC.
+%
+A preliminary version of this paper was published in the IJCAI
+conference~\cite{Harwell2019a}. It provided metrics for scabalility,
+emergent self-organization, and flexibility, and evaluated them in an indoor
+warehouse setting. This paper extends previous work in the following ways:
+%
+\begin{enumerate}
+\item {Refined metrics for emergent self-organization, scalability,  and
+    flexibility, and added metrics for robustness.}
+\item {Applying our metrics to a search and rescue scenario, in addition to an
+    indoor warehouse scenario.}
+\item {Adding to the set of swarm control algorithms, which are used for
+    comparison in each scenario, of two methods that use a different way of
+    doing task allocation.}
+\item {More thorough discussion of recent related work in swarm engineering and
+    our metrics.  }
+\end{enumerate}
+%
+The rest of the paper is organized as follows.~\cref{sec:related-work} discusses
+related works in swarm engineering. We discuss swarm emergent self-organization,
+scalability, flexibility, and robustness, and derive metrics for each
+in~\cref{sec:meas-emergence,sec:meas-scalability,sec:meas-flexibility,sec:meas-robustness}.
+\cref{sec:sc-overview} describes our two real-world problems along with design
+constraints and candidate solutions. In \cref{sec:sc1,sec:sc2} we apply our
+metrics to those two problems. We conclude with a discussion
+in~\cref{sec:discussion} of common themes between the two scenarios.
+
+% AAMAS
+
+
+

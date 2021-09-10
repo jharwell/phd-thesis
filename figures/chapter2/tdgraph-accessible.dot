@@ -1,0 +1,105 @@
+digraph tdgraph {
+        node [color=lightgray, style=filled, preferred=0.50];
+        graph [ordering="out", nodesep=0.5, ranksep=1.0];
+        edge[penwidth=1.25]
+        {
+                rank = same;
+                rankdir=LR;
+
+                "0" [label="0",fillcolor=deepskyblue];
+        }
+        {
+                rank=same;
+                rankdir=LR;
+
+                "1" [label="1"];
+                "2" [label="2"];
+        }
+        {
+                rank=same;
+                rankdir=LR;
+
+                "3" [label="3"];
+                "4" [label="4"];
+                "5" [label="5"];
+                "6" [label="6", fillcolor=crimson];
+        }
+        {
+                rank=same;
+                rankdir=LR;
+
+                "7" [label="7",fillcolor=darkorchid];
+                "8" [label="8"];
+                "9" [label="..."];
+                "10" [label="..."];
+                "11" [label="..."];
+                "12" [label="..."];
+                "13" [label="13"];
+                "14" [label="14"];
+        }
+
+        // Decomposition edges
+        "0" -> "1";
+        "0" -> "2";
+
+        "1" -> "3";
+        "1" -> "4";
+        "2" -> "5";
+        "2" -> "6";
+
+        "3" -> "7";
+        "3" -> "8";
+        "4" -> "9";
+        "4" -> "10";
+        "5" -> "11";
+        "5" -> "12";
+        "6" -> "13";
+        "6" -> "14";
+
+        // reachability edges
+        "1" -> "0" [style=dashed,constraint=false]
+        "2" -> "0" [style=dashed,constraint=false]
+
+        "3" -> "1" [style=dashed,constraint=false]
+        "4" -> "1" [style=dashed,constraint=false]
+        "5" -> "2" [style=dashed,constraint=false]
+        "6" -> "2" [style=dashed,constraint=false]
+
+        "7" -> "3" [style=dashed,constraint=false]
+        "8" -> "3" [style=dashed,constraint=false]
+        "9" -> "4" [style=dashed,constraint=false]
+        "10" -> "4" [style=dashed,constraint=false]
+        "11" -> "5" [style=dashed,constraint=false]
+        "12" -> "5" [style=dashed,constraint=false]
+        "13" -> "6" [style=dashed,constraint=false]
+        "14" -> "6" [style=dashed,constraint=false]
+
+        "1" -> "2" [style=dashed,constraint=false]
+        "2" -> "1" [style=dashed,constraint=false]
+        "3" -> "4" [style=dashed,constraint=false]
+        "4" -> "3" [style=dashed,constraint=false]
+        "5" -> "6" [style=dashed,constraint=false]
+        "6" -> "5" [style=dashed,constraint=false]
+        "7" -> "8" [style=dashed,constraint=false]
+        "8" -> "7" [style=dashed,constraint=false]
+        "9" -> "10" [style=dashed,constraint=false]
+        "10" -> "9" [style=dashed,constraint=false]
+        "11" -> "12" [style=dashed,constraint=false]
+        "12" -> "11" [style=dashed,constraint=false]
+        "13" -> "14" [style=dashed,constraint=false]
+        "14" -> "13" [style=dashed,constraint=false]
+
+        // Accessibility edges: root node
+        "0" -> "1" [color=deepskyblue,constraint=false,style=dotted,penwidth=4.0]
+        "0" -> "2" [color=deepskyblue,constraint=false,style=dotted,penwidth=4.0]
+
+        // Accessibility edges: leaf nodes
+        "7" -> "3" [color=darkorchid,constraint=false,style=dotted, penwidth=4.0]
+        "7" -> "8" [color=darkorchid,constraint=false,style=dotted,penwidth=4.0]
+
+        // Accessibility edges: interior nodes
+        "6" -> "2" [color=crimson, constraint=false,style=dotted,penwidth=4.0]
+        "6" -> "5" [color=crimson, constraint=false,style=dotted,penwidth=4.0]
+        "6" -> "13" [color=crimson, constraint=false,style=dotted,penwidth=4.0]
+        "6" -> "14" [color=crimson, constraint=false,style=dotted,penwidth=4.0]
+        }
