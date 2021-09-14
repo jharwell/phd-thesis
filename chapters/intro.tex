@@ -5,21 +5,23 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 % TRO
-
-\glspl{sr} is the study of the coordination of large numbers of simple
-robots~\cite{Sahin2005}. \gls{sr} systems can be homogeneous (single robot type
+\gls{srs} is the study of the coordination of large numbers of simple
+robots~\cite{Sahin2005}. \gls{srs} systems can be homogeneous (single robot type
 and identical control software) or heterogeneous (multiple robot types and/or
 control software)~\cite{Dorigo2013,Rizk2019,Ramachandran2020}. The main
-differentiating factors between \gls{sr} systems and multi-agent robotics
-systems stem from the mechanisms on which \gls{sr} systems are based.
+differentiating factors between \gls{srs} systems and multi-agent robotics
+systems stem from the mechanisms on which \gls{srs} systems are based.
 Historically, these were principles of biological mimicry or problem solving
 techniques inspired by natural systems of agents such as bees, ants, and
-termites~\cite{Labella}.
-
-Moving beyond strictly biomimetic design, many modern \gls{sr} systems have
-retained the desirable properties of natural systems while employing elements of
-more conventional multi-robot system
-design~\cite{Castello2016,Arvin2015,Steyven2018}. Those properties are:
+termites~\cite{Labella2006}. Moving beyond strictly biomimetic design, many
+modern \gls{srs} systems have retained the desirable properties of natural
+systems while employing elements of more conventional multi-robot system
+design~\cite{Castello2016,Arvin2015,Steyven2018}.  First formally discussed
+by~\cite{Winfield2005}, this discipline of \gls{swarm-engineering} seeks to
+design systems which are based on rigorous mathematical methods but which also
+possess the desirable system properties of emergent self-organization,
+scalability, flexibility, and robustness, discussed
+below~\cite{Brambilla2013a}.
 
 \textbf{Emergent Self-Organization}. \emph{Self-organization} is the appearance
 of structure within the swarm, which can be spatial, temporal, or functional. It
@@ -29,16 +31,16 @@ established, self-organization is generally resistant to external stimuli, and
 this resistance is crucial to solving complex problems with only simple
 agents~\cite{Hunt2020,DeWolf2005}.  Self-organization is related to, but
 distinct, from the concept of \emph{emergence}, which is the set difference
-between individual and collective swarm behavior, which arises from inter-robot
-interactions and individual robot decisions~\cite{Szabo2014,DeWolf2005}.
-Emergent and self-organizing behaviors are often both present in \gls{sr} systems as
-robots collectively find solutions to a problem that they cannot solve
-alone~\cite{Cotsaftis2009,Hunt2020}. We term this dichotomy \emph{emergent
-  self-organization}, i.e, a two-way link between collective and individual level
-behaviors.
+between individual and collective swarm behavior, where the swarm behavior
+arises both from inter-robot interactions and individual robot
+decisions~\cite{Szabo2014,DeWolf2005}.  Emergent and self-organizing behaviors
+are often both present in \gls{srs} systems as robots collectively find solutions
+to a problem that they cannot solve alone~\cite{Cotsaftis2009,Hunt2020}. We term
+this dichotomy \emph{emergent self-organization}, i.e, a two-way link between
+collective and individual level behaviors.
 
 \textbf{Scalability}. Scalable systems are able to maintain efficiency and
-effectiveness as system size grows. \gls{sr} systems, like natural systems, can
+effectiveness as system size grows. \gls{srs} systems, like natural systems, can
 achieve scalability to hundreds or thousands of agents through decentralized
 control~\cite{Matthey2009}; other methods of maintaining effectiveness at larger
 scales include local agent communication~\cite{Agassounon2001,Lerman2006}, and
@@ -53,7 +55,7 @@ changing weather conditions~\cite{Harwell2019a,Just2017,Hunt2020}. Individual
 agents make decisions based on locally available information from neighbors and
 their own limited sensor data. This produces a spatially distributed response
 which arises from robot decisions as the swarm reacts and adapts to the
-environment. \gls{sr} systems, like natural systems, can achieve flexibility in a
+environment. \gls{srs} systems, like natural systems, can achieve flexibility in a
 variety of ways: pheromone trails, site fidelity, localized communication, and
 task allocation strategies~\cite{Just2017,Harwell2019a}. Some analytical methods,
 such as task allocation strategies, explicitly encode mechanisms for the swarm
@@ -65,37 +67,39 @@ flexibility of such methods can therefore be coupled to, but is still distinct
 from, emergent and self-organizing behaviors~\cite{DeWolf2005}.
 
 \textbf{Robustness}. Robust systems are able to modify their collective behavior
-in response to internal, as opposed to environmental, stimuli.  Such
-stimuli can include sensor and actuator noise, changes in system size due to the
-introduction of new robots and robot failures.
-% As the swarm size fluctuates, robots may permanently or temporarily leave the
-% swarm, as they experience hardware errors or task reallocations.
-Robustness is therefore an emergent property of systems which demonstrate
-resilience to the effects of internal stimuli on individual
-robots~\cite{DeWolf2005} (e.g., losing a single robot or set of robots minimally
-perturbs the collective behavior of the swarm).  Robustness is crucial for
-crossing the simulation-reality gap~\cite{Hecker2015,Francesca2014}.  Some \gls{sr}
-systems handle sensor and actuator noise
-% [JRH] Thesis: ~\cite{Dallalibera2011,Claudi2014,Zong2006,Nurzaman2009,Turgut2008},
-analytically~\cite{Dallalibera2011,Claudi2014,Turgut2008}, and can provide
-theoretical guarantees of robustness.  Other systems rely on emergent
-behaviors~\cite{Harwell2020a}, and do not provide theoretical guarantees; in
-such cases robustness is coupled to, but again distinct from, emergent
-self-organization. %~\cite{Hunt2020,DeWolf2005}.
+in response to internal, as opposed to environmental, stimuli.  Such stimuli can
+include sensor and actuator noise, changes in system size due to the
+introduction of new robots and robot failures.  Robustness is therefore an
+emergent property of systems which demonstrate resilience to the effects of
+internal stimuli on individual robots~\cite{DeWolf2005} (e.g., losing a single
+robot or set of robots minimally perturbs the collective behavior of the swarm).
+Robustness is crucial for crossing the simulation-reality
+gap~\cite{Hecker2015,Francesca2014}.  Some \gls{srs} systems handle sensor and
+actuator noise
+analytically~\cite{Dallalibera2011,Claudi2014,Zong2006,Nurzaman2009,Turgut2008},
+and can provide theoretical guarantees of robustness.  Other systems rely on
+emergent behaviors~\cite{Harwell2020a}, and do not provide theoretical
+guarantees; in such cases robustness is coupled to, but again distinct from,
+emergent self-organization~\cite{Hunt2020,DeWolf2005}.
 
-The duality between designing swarm control algorithms directly to be scalable
-and self-organizing, while incorporating emergent behaviors for flexibility and
-robustness, can be leveraged in the design of practical \gls{sr}
-systems.
+In this thesis, we are interested in studying~\gls{srs} systems from two
+perspectives. First, to understand from a mathematical perspective how and why
+these properties arise in \gls{srs} systems. Second, to develop theoretical tools
+to assist with designing \gls{srs} systems that provably embody these properties.
+In the remainder of this chapter, we outline our contributions to each of these
+perspectives of \gls{srs} system research, framing each contributions as
+answering an important open research question in the field.
 
-% \emph{Swarm engineering} is a sub-field in swarm robotics for the systematic
-% application of scientific and technical knowledge to model, design, validate,
-% and operate a \gls{sr} system~\cite{Brambilla2013a}.
-First formally discussed by~\cite{Winfield2005}, \emph{swarm engineering} seeks
-to design systems which are based on rigorous mathematical methods but which
-also possess the desirable system properties discussed
-above~\cite{Brambilla2013a}.  Each of these desirable properties can be designed
-for by answering the following design questions:
+
+% The duality between designing swarm control algorithms directly to be scalable
+% and self-organizing, while incorporating emergent behaviors for flexibility and
+% robustness, can be leveraged in the design of practical \gls{srs} systems.
+
+
+\section{Measurement of \gls{srs} System Properties }
+% 
+When engineering practical~\gls{srs} systems, each of the following design
+questions must be considered:
 %
 \begin{enumerate}
 \item {Does the solution show emergent self-organization, indicating collective
@@ -107,116 +111,157 @@ for by answering the following design questions:
     fluctuating conditions?}
 
 \item {Is the solution robust to sensor/actuator noise and population size
-    fluctuations? % as robots enter and leave the swarm over time?
+    fluctuations?
   }
 \end{enumerate}
 %
-In order to answer these questions we first need a method for quantifying each
-of the desirable system properties with numerical calculations; such a
-methodology does not exist, to the best of our knowledge. This leads to the
-first contribution of this thesis: the establishment of such a methodology by
-answering the following research question:
+In order to answer these questions we need a method for quantifying
+each of the desirable system properties with numerical calculations; to the best
+of our knowledge, such a methodology does not exist. This leads to the first
+contribution of this thesis: the establishment of such a methodology by
+answering the following fundamental research question:
 
-\noindent
+\medskip\noindent
 \gls{RQ1}: \glsdesc{RQ1}
+\medskip
 
-Of the for swarm properties described above, emergent self-organization is the
-least understood <REFS>. In the second contribution of this thesis, we attempt
-to understand its origin in the context of robot swarms which perform task
-allocation. 
-In this work, we seek to quantify
-the relationship between swarm emergent intelligence and the richness of the
-task decomposition graph used for allocation, and to understand the origin of
-the emergent intelligence that arises from various task allocation
-methods. Specifically, we seek
-answers to the following questions:\\[-3ex]
+\noindent
+In~\cref{chap:measurement} we present metrics for swarm emergent
+self-organization, scalability, flexibility, and robustness (as analysis tools
+to assist with answering our design questions. Our approach is domain agnostic,
+and serves as a starting point to develop application-specific
+variants. Furthermore, we establish the groundwork for more comprehensive
+theories of swarm behavior, because measuring system properties precisely is a
+necessary precursor to developing theories about what elements of a swarm
+control algorithm give rise to observed behaviors. We apply our metrics to two
+real-world problems: indoor warehouse object transport
+(\cref{measurement:sec:sc1}) and outdoor search and rescue
+(\cref{measurement:sec:sc2}).  Through application to these complex real-world
+scenarios we expand the range of characteristics affecting swarm behavior which
+can be meaningfully studied in simulation. For example, the ability to precisely
+measure how different levels of sensor and actuator noise affect swarm behavior
+allows us to incorporate noise-generating elements of real-world problems into
+our scenario model and better study their effects. Without such methodology,
+those effects can only be studied qualitatively, which is not as useful.
+
+\section{Origin of Emergent Intelligence in \gls{srs} Systems}
 %
+% [JRH] Need to check that the MRTA paper DOES use interdependent task sequences...
+Of the four swarm properties described above, emergent self-organization is the
+least understood and most difficult to quantify <REFS>, and we therefore are
+interested in answering the following research question:
+
+\medskip\noindent
+\gls{RQ2}: \glsdesc{RQ2}
+\medskip
+
 \noindent
+Since answering this question in general for \gls{srs} systems is infeasible, if
+not impossible, we consider it in the more limited, but still broadly applicable
+context of~\gls{task-allocation}, by attempting to understand the origin of
+emergent intelligence in robot swarms which perform task allocation. We use
+definitions from the extended~\gls{mrta} taxonomy terminology proposed
+by~\cite{Korsah2013}.  They separate the concept of an~\gls{atomic-task}, which
+cannot be decomposed into smaller, simpler tasks, from that of
+a~\gls{decomposable-task}, which can. They further define a~\gls{compound-task}
+as a task which can be decomposed exactly one way, and a~\gls{complex-task},
+which can be decomposed multiple ways.
+
+Using these definitions, we can ask the following specific research questions to
+answer~\gls{RQ2} in the context of task allocating swarms, the answers to which
+form the second contribution of this thesis. First,
+
+\medskip\noindent
 \gls{RQ2.1}: \glsdesc{RQ2.1}
+\medskip
 
 \noindent
-\gls{RQ2.2}: \glsdesc{RQ2.2}
+That is, do relational graphs with more vertices (tasks) and task dependencies
+(edges) result in better collective task allocation decisions, and higher
+measured levels of emergent intelligence?
 
-% [JRH] Introduce task allocation perspective
-We study emergent intelligence from a task allocation perspective...
+To answer~\gls{RQ2.1}, we derive the algorithm~\gls{stochn1}, which uses the
+neighborhood of a finished task within a task decomposition graph to
+stochastically allocate a new task. We evaluate its emergent intelligence and
+performance across \emph{compound} and \emph{complex} task decomposition graphs
+for a foraging task, and show that swarm emergent intelligence is strongly
+correlated with performance, and greater for complex than for compound task
+decomposition graphs.
+
+Second,
+
+\medskip\noindent
+\gls{RQ2.2}: \glsdesc{RQ2.2}
+\medskip
+
+\noindent
+That is, what is it that the swarm collectively learns from each relational
+graph?  To answer~\gls{RQ2.2}, we derive~\gls{matopt}, a
+matroid~\cite{Tutte1959,Whitney1935,Oxley2006} theoretic method in which we are
+able to prove that if we disregard task dependencies from our task decomposition
+graph, an extension of our task decomposition graph is optimally solvable with a
+greedy algorithm for a single robot under some restrictions. It then follows
+that an optimal allocation policy for the swarm is the disjoint union of
+individual robot policies (intersection of matroids~\cite{Williams2017}). By
+comparing the performance of~\gls{matopt} under constraints with that
+of~\gls{stochn1}, we can determine whether emergent intelligence is more tied
+to graph \emph{content} (tasks within the graph, treated as independent
+by~\gls{matopt}), or to graph \emph{connectivity};~\gls{stochn1} should be the
+highest performing allocation method if it is the former.
+
+We compare the emergent intelligence and performance of~\gls{matopt}
+against~\gls{stochn1} (which is specifically designed to enable collective
+learning of graph connectivity, including task dependencies), and other state of
+the art approaches at real-world scales (swarms of > 1,000 robots). We show that
+swarm emergent intelligence is strongly tied to collective learning of graph
+connectivity and structure (as opposed to graph content) by injecting accurate
+knowledge about graph content (task costs), and comparing resulting
+performance.~\gls{stochn1} is the most highly performing method in all tested
+cases, providing strong quantitative evidence supporting the suitability of SR
+systems for dangerous/unstable environments in which only partial or incomplete
+information is available.~\gls{matopt} is shown to be suboptimal in many cases,
+due to its disregard for graph structure and dependencies; however, results
+suggest future synergies between theoretical methods leveraging emergent
+intelligence is possible.
+
+\section{Prediction and Control of \gls{srs} Systems}
+
+% [JRH] Talk more specifically about results/contributions here.
+
+
+\section{Foraging Testbed}
 
 % [JRH] Introduce foraging testbed
 
-The duality between \gls{sr} and natural systems enables effective parallels to
+The duality between \gls{srs} and natural systems enables effective parallels to
 be drawn with many naturally occurring problems, such as foraging, collective
 transport of heavy objects, environmental monitoring, object sorting, hazardous
 material cleanup, self-assembly, exploration, and collective decision
-making~\cite{Hecker2015,Kumar2003,CarrilloZapata2020}.  As a result, \gls{sr}
+making~\cite{Hecker2015,Kumar2003,CarrilloZapata2020}.  As a result, \gls{srs}
 systems are especially suited for complex tasks in dynamic environments where
-robustness and flexibility are key to success, such as space, fire and
-rescue~\cite{Rouff2004,CarrilloZapata2020}.
+robustness and flexibility are key to success, such as space, hazardous material
+cleanup, fire and
+rescue~\cite{Rouff2004,CarrilloZapata2020,Sahin2005,Flushing2014}, and
+construction~\cite{Petersen2011}.
 
 %
-Our definitions of \emph{compound} and \emph{complex} task decomposition graphs
-are drawn from the extended~\gls{mrta} taxonomy terminology proposed
-by~\cite{Korsah2013}. They separate the concept of \emph{atomic} tasks, which
-are not decomposable, from that of \emph{decomposable} tasks, which are. They
-define \emph{compound} tasks as tasks having exactly one possible decomposition
-(which is multi-agent allocatable), and \emph{complex} tasks, as tasks which
-have multiple decompositions (each of which is multi-agent allocatable).
-
 
 We study foraging from a task allocation perspective. In a foraging task, robots
 gather objects from across a finite operating arena and bring them to a central
 location (often called the \emph{nest}) for further processing. Foraging is one
-of the most extensively studied applications of \gls{sr} due to its
+of the most extensively studied applications of \gls{srs} due to its
 straightforward mapping to important real-world applications~\cite{Hecker2015}
 such as tracking lake health, clearing a corridor on a mining operation,
 hazardous material cleanup, or search and
-rescue~\cite{Sahin2005,Hecker2015,Labella}. 
+rescue~\cite{Sahin2005,Hecker2015,Labella}.
 
 
-% [JRH] Conclusion-y stuff at the end of intro
-
-\begin{enumerate}
-\item \textbf{Metrics for \gls{sr} systems properties}.  We present metrics for swarm
-  emergent self-organization, scalability, flexibility, and robustness
-  (\cref{sec:meas-emergence,sec:meas-scalability,sec:meas-flexibility,sec:meas-robustness})
-  as analysis tools to assist with answering our design questions. Our approach
-  is domain agnostic, and serves as a starting point to develop
-  application-specific variants. Furthermore, we establish the groundwork for
-  more comprehensive theories of swarm behavior, because precisely measuring
-  system properties is a necessary precursor to developing theories about what
-  elements of a swarm control algorithm give rise to observed behaviors.
-\item \textbf{Realistic scenario modeling.}  We apply our metrics to two
-  real-world problems: indoor warehouse object transport (\cref{sec:sc1}) and
-  outdoor search and rescue (\cref{sec:sc2}).  Through application to these
-  complex real-world scenarios we expand the range of characteristics affecting
-  swarm behavior which can be meaningfully studied in simulation. For example,
-  the ability to precisely measure how different levels of sensor and actuator
-  noise affect swarm behavior allows us to incorporate noise-generating elements
-  of real-world problems into our scenario model and better study their
-  effects. Without such methodology, those effects can only be studied
-  qualitatively, which is not as useful.
-\end{enumerate}
 %
 % [JRH] Required by TRO: If a preliminary version of the paper has been (or is going
 % to be) presented at conference(s), specify in a compact way which one(s); these
 % conference papers should be explicitly cited in the present journal submission,
 % with a clear statement describing the differences/changes/additions.  Papers
 % failing to comply with this will be returned by the EiC.
-%
-A preliminary version of this paper was published in the IJCAI
-conference~\cite{Harwell2019a}. It provided metrics for scabalility,
-emergent self-organization, and flexibility, and evaluated them in an indoor
-warehouse setting. This paper extends previous work in the following ways:
-%
-\begin{enumerate}
-\item {Refined metrics for emergent self-organization, scalability,  and
-    flexibility, and added metrics for robustness.}
-\item {Applying our metrics to a search and rescue scenario, in addition to an
-    indoor warehouse scenario.}
-\item {Adding to the set of swarm control algorithms, which are used for
-    comparison in each scenario, of two methods that use a different way of
-    doing task allocation.}
-\item {More thorough discussion of recent related work in swarm engineering and
-    our metrics.  }
-\end{enumerate}
 %
 The rest of the paper is organized as follows.~\cref{sec:related-work} discusses
 related works in swarm engineering. We discuss swarm emergent self-organization,
@@ -228,3 +273,119 @@ metrics to those two problems. We conclude with a discussion
 in~\cref{sec:discussion} of common themes between the two scenarios.
 
 % AAMAS
+
+% ODE/AR
+
+% Development of effective strategies for SR systems to solve problems such as
+% foraging, collective transport of heavy objects, environmental
+% monitoring/cleanup~\cite{Schill2016a}, collective decision making,
+% surveillance~\cite{Borko2016a}, and construction~\cite{Petersen2011} can be
+% accelerated by drawing inspiration from natural systems, due to their shared
+% properties (e.g., scalability, emergent self-organization, flexibility,
+% robustness)~\cite{Sahin2005,Hecker2015,Harwell2020a}. Furthermore, SR systems
+% with these properties are well suited to tackle tasks in dangerous environments
+% when robustness and flexibility are key to success, such as space, tracking lake
+% health, clearing space in mining, hazardous material cleanup, search and
+% rescue~\cite{Rouff2004,Sahin2005,Hecker2015,Labella,Kumar2003,Flushing2014}.
+
+% [JRH] Address ijcai#7 comment about not talking about the task before
+% presenting the equations.
+
+In this work, we study the \emph{central place foraging problem} in which robots
+gather objects (blocks) across a finite operating arena and bring them to a
+central location (nest) under various conditions and constraints.
+% their papers "A bio-inspired transportation network for scalable swarm
+% foraging", ICRA 2020 and "Ignorance is Not Bliss: An Analysis of Central-Place
+% Foraging Algorithms" IROS 2019 have some interesting formal results on scaling
+% for a centrally placed nest.
+Foraging is one of the most studied applications of SR, due to its
+straightforward mapping to real-world applications~\cite{Hecker2015}; for an
+extensive discussion of the state of the art, see~\cite{Lu2020crr}.  The
+complexity of the foraging task frequently gives rise to non-linear behavioral
+dynamics due to inter-robot interactions. It has been established that beyond a
+certain \emph{swarm density} $\SwarmDensity$ (ratio of swarm size to arena
+size)~\cite{Sugawara1997,Hamann2013}, interactions between components can
+overtake outside interactions. The resulting non-linear behaviors which can
+emerge are not generally predictable from component study; that is, directly
+from the swarm control
+algorithm~\cite{Cotsaftis2009,George2005,Hunt2020,DeWolf2005}. Hence, the
+collective performance of a swarm $\TheSwarm$ of $\TheSwarmSize$ cooperating
+robots each running an identical control algorithm $\kappa$ can be a non-linear
+function of the behavior of a system of $\TheSwarmSize$ independent
+robots~\cite{Harwell2020a}. Below this threshold, swarm behavior can be well
+approximated using linear models.
+
+% [JRH] Address ijcai#10,63 comment low density swarms not being swarms.
+
+Many real problems across scales can be tackled using swarms in low density
+environments (independent of swarm size) in which each robot is responsible for
+a large area on the order of $100m^2$; these include indoor warehouses/object
+transport ($\approx{64}m^2$), outdoor search and rescue, precision agriculture,
+and field monitoring ($600,000m^2\approx{150}$ acres). While recent results
+summarizing the challenges of moving swarms into the real world argue that
+directing research towards low density swarm applications is
+critical~\cite{Tarapore2020}, some researchers hold that swarms with low
+$\SwarmDensity$ are not properly characterized as swarms, and are instead
+systems of independent robots because they lack the high level of inter-agent
+interaction which characterizes natural swarms. However, we argue that a high
+level of inter-agent interaction (and therefore potentially emergent
+self-organization) is only one of the defining properties of swarms. Low density
+swarms exhibiting the properties of scalability, flexibility, and robustness can
+properly still be considered swarms~\cite{Harwell2020a}.
+
+% These behaviors can be caused by: (1) excessive inter-robot interference,
+% which results in superlinear performance losses~\cite{Harwell2020a}, and (2)
+% \emph{emergent self-organization}, which occurs as agents in SR systems work
+% collectively to find solutions to problems unsolvable by individual robots,
+% and generally results in superlinear performance
+% gains~\cite{Winfield2005a,Galstyan2005}.
+
+The exact value of $\SwarmDensity$ at which a given linear model of swarm
+behavior breaks down is influenced by many factors, including the control
+algorithm $\kappa$, the number of robots $\TheSwarmSize$, and characteristics of
+the problem being solved, so in general it cannot be determined \emph{a
+  priori}. In this work we investigate the following research questions in order
+to discover the \emph{practical} limits of linear modeling of swarm behaviors in
+a foraging task, as a function of $\SwarmDensity$:
+
+\noindent
+\gls{RQ3.1}: \glsdesc{RQ3.1}
+
+\noindent
+\gls{RQ3.2}: \glsdesc{RQ3.2}
+
+We seek answers to these questions for general foraging tasks, i.e., across
+scenarios, scales, and swarm densities, and therefore require a model with wide
+applicability to help answer them. Specifically, to answer \textbf{Q1}, we must
+evaluate the predictive power of a suitable model across scales and with
+variable $\SwarmDensity$ in which we can reliably expect non-linear behaviors to
+arise.
+
+To the best of our knowledge a suitable model does not currently exist, and we
+must develop one. The developed model improves on previous modeling
+work~\cite{Lerman2002,Lerman2001,Lerman2003a} in two ways. First, while previous
+work captured underlying swarm behaviors well, it relied on many free parameters
+and extensive post-hoc model fitting to provide accurate predictions. We
+eliminate most free parameters by deriving analytical expressions for them by
+considering scenario characteristics, robotic control algorithm characteristics,
+etc. The resulting model, while still requiring some minor post-hoc fitting, is
+a step towards a true fundamental model of swarm behavior and an affirmative
+answer to \textbf{Q2}. Second, previous work only considered a single scenario
+with small swarms; we consider multiple scenarios and both small and large
+swarms.
+
+The rest of this paper is organized as
+follows. In~\cref{sec:motivation,sec:background}, we motivate this work by
+discussing trends and related work in SR system design, and the differential
+equation paradigm on which our model is based. In~\cref{sec:method} we develop
+our model. In~\cref{sec:exp-defs} we define the experiments to evaluate our
+model and test its limits across multiple spatial object distributions, scales,
+and densities. Our results in~\cref{sec:results} show that our model provides
+accurate predictions across block distributions, scales, and densities,
+including some in which the swarm itself is exhibiting non-linear behaviors,
+showing its broad utility in future SR system design.
+
+%%% Local Variables:
+%%% mode: latex
+%%% TeX-master: "../thesis"
+%%% End:

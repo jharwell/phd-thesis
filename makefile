@@ -29,3 +29,4 @@ tidy: $(MAIN_PDF)
 # Clean up all the regeneratable files, including the final document
 clean:
 	$(LATEXMK) -C $(MAIN_TEX)
+	@rm -rf *.glo

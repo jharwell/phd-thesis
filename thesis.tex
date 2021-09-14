@@ -26,14 +26,13 @@
 \usepackage[capitalise,noabbrev]{cleveref} % Automatically determine \cref type
 
 \usepackage{enumitem}   % For referencing items in an enum
-% For automatically defining terms on first use, then using the acronym
-% afterwards.
-\usepackage[acronym,section,numberedsection=autolabel]{glossaries-extra}
 \usepackage{algorithm}
 \usepackage{algorithmic}
 \usepackage{amsthm}
 \usepackage{commath}
-
+% For automatically defining terms on first use, then using the acronym
+% afterwards.
+\usepackage{glossaries-extra}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % Document Configuration
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -56,7 +55,6 @@
     chapters/RQ2,
     chapters/RQ3,
     chapters/RQ4,
-    chapters/exp-foraging,
     chapters/conclusion,
     chapters/app-exp-setup,
     chapters/app-glossary
@@ -73,10 +71,23 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % Glossary Terms and Acronyms
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\defglsentryfmt{%
+  \ifglsused{\glslabel}{%
+    \glsgenentryfmt%
+  }{%
+    % Typeset first use
+    \textit{\glsgenentryfmt}%
+  }%
+}
+
 \makeglossaries
 
-\input{chapters/acronyms}
-\input{chapters/research-questions}
+\setabbreviationstyle[abbreviation]{long-short}
+\setabbreviationstyle[acronym]{long-short}
+
+\input{glossary/acronyms}
+\input{glossary/research-questions}
+\input{glossary/terms}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % Document Metadata
@@ -106,9 +117,6 @@
 % way
 \include{chapters/RQ4}
 
-% Foraging experiments
-\include{chapters/exp-foraging}
-
 % Conclusion
 \include{chapters/conclusion}
 
@@ -129,3 +137,9 @@
 % THE THESIS ENDS
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \end{document}
+
+
+%%% Local Variables:
+%%% mode: latex
+%%% TeX-master: t
+%%% End:

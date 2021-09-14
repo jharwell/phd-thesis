@@ -2,7 +2,7 @@
 % RQ2.tex: Chapter describing the investigation into the origin of emergent
 % behavior 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\chapter{RQ2: One Perspective on the Origin of Emergent Intelligence}%
+\chapter{RQ2: Origin of Emergent Intelligence in \gls{srs} Systems}%
 \label{chap:emergence-origin}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% 
 %
@@ -97,7 +97,7 @@ as cache creation, transfer, and depletion. This generalizes the task partitioni
 approach in~\cite{Harwell2018} by eliminating the requirement for the cache in the
 arena to be maintained by an outside process.
 
-To answer~\gls{RQ2.1}, we derive the algorithm \gls{stoch-n1}, which uses the
+To answer~\gls{RQ2.1}, we derive the algorithm \gls{stochn1}, which uses the
 neighborhood of a finished task within a task decomposition graph to
 stochastically allocate a new task. We evaluate its emergent intelligence and
 performance across \emph{compound} and \emph{complex} task decomposition graphs
@@ -105,29 +105,29 @@ for a foraging task, and show that swarm emergent intelligence is strongly
 correlated with performance, and greater for complex than for compound task
 decomposition graphs.
 
-To answer~\gls{RQ2.2}, we derive \gls{mat-opt}, a
+To answer~\gls{RQ2.2}, we derive \gls{matopt}, a
 matroid~\cite{Tutte1959,Whitney1935,Oxley2006} theoretic method in which we are
 able to prove that if we disregard task dependencies from our task decomposition
 graph, an extension of our task decomposition graph is optimally solvable with a
 greedy algorithm for a single robot under some restrictions. It then follows
 that an optimal allocation policy for the swarm is the disjoint union of
 individual robot policies (intersection of matroids~\cite{Williams2017}). By
-comparing the performance of \gls{mat-opt} under constraints with that of
-\gls{stoch-n1}, we can determine whether emergent intelligence is more tied to
+comparing the performance of \gls{matopt} under constraints with that of
+\gls{stochn1}, we can determine whether emergent intelligence is more tied to
 graph \emph{content} (tasks within the graph, treated as independent by
-\gls{mat-opt}), or to graph \emph{structure}; \gls{mat-opt} should be the
+\gls{matopt}), or to graph \emph{structure}; \gls{matopt} should be the
 highest performing allocation method if it is the former.
 
-We compare the emergent intelligence and performance of \gls{mat-opt} against \gls{stoch-n1}
+We compare the emergent intelligence and performance of \gls{matopt} against \gls{stochn1}
 (which is specifically designed to enable collective learning of graph connectivity,
 including task dependencies), and other state of the art approaches at real-world
 scales (swarms of > 1,000 robots). We show that swarm emergent intelligence is
 strongly tied to collective learning of graph connectivity and structure (as opposed
 to graph content) by injecting accurate knowledge about graph content (task costs),
-and comparing resulting performance. \gls{stoch-n1} is the most highly performing method in
+and comparing resulting performance. \gls{stochn1} is the most highly performing method in
 all tested cases, providing strong quantitative evidence supporting the suitability
 of SR systems for dangerous/unstable environments in which only partial or incomplete
-information is available. \gls{mat-opt} is shown to be suboptimal in many cases, due to its
+information is available. \gls{matopt} is shown to be suboptimal in many cases, due to its
 disregard for graph structure and dependencies; however, results suggest future
 synergies between theoretical methods leveraging emergent intelligence is possible.
 
@@ -199,7 +199,7 @@ with $f(x_{ij},u_{ij})$ a monotonically decreasing function. Each possible task 
 assigned at most once, and robots can change their allocated task at most once per
 timestep.
 % -------------------------------------
-\subsection{\glsfmtshort{stoch-n1} Task Allocation Space}\label{ssec:stoch-nbhd1-ta-space}
+\subsection{\glsfmtshort{stochn1} Task Allocation Space}\label{ssec:stoch-nbhd1-ta-space}
 % -------------------------------------
 To answer~\gls{RQ2.1}, we derive a task allocation space sensitive to task
 decomposition graph richness. We induce a subgraph $\TAGraph{a}$ on $\TDGraph$
@@ -239,7 +239,7 @@ shown in Fig.~\ref{fig:tdgraph-reachable}.
     colored edges.}
 \end{figure}
 % -----------------------------------
-\subsection{\glsfmtshort{mat-opt} Task Allocation Space}\label{ssec:matopt-ta-space}
+\subsection{\glsfmtshort{matopt} Task Allocation Space}\label{ssec:matopt-ta-space}
 % -----------------------------------
 We create a set of task allocation graphs $\TAGraph{|A|}$ (one for each task
 allocation $\ArbRobot$ performs) connected through time via sets of directed edges
@@ -379,10 +379,10 @@ $\ArbRobotMatroid=(\TAGraphV{|A|},\IndSets_{\ArbRobot})$ for all
 $\ArbRobotMatroid\in{\mathbb{M}}$ are matroids.
 
 \section{Task Allocation Methods}
-\subsection{\glsfmtshort{stoch-n1} Task Allocation Method}\label{ssec:stoch-nbhd1-method}
+\subsection{\glsfmtshort{stochn1} Task Allocation Method}\label{ssec:stoch-nbhd1-method}
 %
 \begin{algorithm}[htb]
-  \caption{\gls{stoch-n1}()}
+  \caption{\gls{stochn1}()}
   \textbf{INPUT:}$\beta$,$v_f$ \;
   \textbf{OUTPUT:}$\beta',v_{a}$ \;
   \begin{algorithmic}[1]\label{alg:ta-stoch-nbhd}
@@ -471,7 +471,7 @@ constrained in its choices to update $\beta_i$ by the structure of $\TAGraph{a}$
 $\{\{\beta_i\}\cup{\{\beta_j : v_f = \beta_{j1,j2}\}}\}$ if $v_f=\beta_{i0}$, and
 $\{\{\beta_i\}\cup{\{\beta_j : v_f = \beta_{j0}}\}\}$ otherwise.
 
-The \gls{stoch-n1} algorithm (Algorithm~\ref{alg:ta-stoch-nbhd}) extends the task
+The \gls{stochn1} algorithm (Algorithm~\ref{alg:ta-stoch-nbhd}) extends the task
 allocation algorithms from previous
 work~\cite{Pini2011b,Brutschy2014,Ferrante2015,Frison2010,Harwell2018}
 (lines~\ref{alg:ta-stoch-nbhd-context-start}-\ref{alg:ta-stoch-nbhd-context-end})
@@ -484,7 +484,7 @@ approximately solves Eqn.~\eqref{eqn:ta-linprog} via stochastic greedy allocatio
 a single $a\in{A}$ at a time, not considering future allocations, and does not have
 any guarantees of optimality.
 %
-\subsection{\glsfmtshort{mat-opt} Task Allocation Method}\label{ssec:matopt-method}
+\subsection{\glsfmtshort{matopt} Task Allocation Method}\label{ssec:matopt-method}
 %
 $\ArbRobot$ seeks an optimal path (measured by $\CostFunc$) between $v_{a1}$ and
 $v_{aA}$, which belong to $\TAGraph{1}$ and $\TAGraph{A}$, respectively. We define a
@@ -533,6 +533,133 @@ worse than $GG$, it must also be optimal.~\qed
 
 \subsection{Experimental Setup}\label{sec:exp-and-results}
 
+For all experiments we average the results of 20 experimental runs of
+$T = 10,000$ seconds. We define our cost measure $\CostFunc$ as the execution
+time for a given task. We use a constant swarm density~\cite{Hamann2013} (ratio
+of swarm size to arena area) of 10\%, which helps to minimize the effects of
+increasing inter-robot interactions, allowing us to obtain more reliable
+measures of our quantities of interest. That is, by using a constant swarm
+density we maintain the same level of inter-robot interaction with increasing
+swarm sizes, removing artifacts from increasing robot interaction levels from
+the results, which would otherwise arise from variable density scenarios as
+swarm size is increased.
+
+We evaluate our derived methods against the following controllers from other
+state-of-the-art literature~\cite{Harwell2018,Pini2011b,Pini2012}, summarized briefly
+here:
+%
+\begin{itemize}
+\item {\textit{Epsilon Greedy}, in which robots choose the task of least cost with
+    probably $\epsilon$, and a random task otherwise; has a linear regret
+    bound~\cite{Auer2002,Pini2013a,Pini2012}.}
+\item {\textit{UCB1}, in which robots treat task allocation as a multi-armed bandit
+    problem; has a logarithmic regret bound~\cite{Auer2002,Pini2013a,Pini2012}. }
+\end{itemize}
+%
+\subsection{Effect on Performance of Task Decomposition Graph Richness }\label{sec:exp-tdgraph-richness}
+%
+To gain insight into the effect of task decomposition graph richness on
+performance (and answer~\gls{RQ2.1}), we compare all methods on \emph{compound}
+and \emph{complex} task decomposition graphs~\cite{Korsah2013}. We define a
+\emph{swarm configuration} as an (X,Y) point corresponding to a specific
+combination of swarm size and task allocation method. We compare and correlate
+the levels of emergent intelligence and performance on both types of graphs
+using the metric defined by~\cite{Harwell2019a}, which is a function of swarm
+size and robot control algorithm. It computes the sub-linearity of increases in
+inter-robot interference across either (1) linearly increasing swarm sizes, or
+(2) task allocation methods. Linear or superlinear increases in interference
+levels indicates more random and/or disorganized motion and therefore less
+emergent intelligence.
+%
+\begin{figure}[!htbp]
+ \centering
+  \includegraphics[width=.8\linewidth]{figures/chapter2/ds-foraging.png}
+  \caption[Example dual source (DS) foraging scenario.]{\label{fig:ds-foraging}
+    Multiple robots (blue blobs), objects to be collected (black squares), and
+    the nest in the center (gray). }
+\end{figure}
+%
+Previous work on task partitioning exclusively used single source foraging scenarios,
+in which all objects are distributed in a single cluster within a rectangular
+arena~\cite{Harwell2018,Harwell2019a,Ferrante2015,Pini2011b}. In this work we utilize
+a \emph{dual source} foraging scenario, shown in Fig.~\ref{fig:ds-foraging}, in order
+to provide swarms a richer environment to learn and exploit, as opposed to the
+simpler single source environment.
+
+\begin{figure}[!htbp]
+  \centering
+  \includegraphics[width=8cm]{{figures/chapter2/cc-pm-self-org-fl-DS.36x18}.jpeg}
+  \caption[Emergent intelligence via self-organization in DS scenario
+  (\cref{fig:ds-foraging})]{\label{fig:DS-self-org} Using a 10\% swarm density
+    under imperfect information. }
+\end{figure}
+
+\begin{figure}[!htbp]
+  \centering
+  \includegraphics[width=8cm]{{figures/chapter2/cc-pm-blocks-transported-cum-DS.36x18}.jpeg}
+  \caption[Performance in DS scenario
+  (\cref{fig:ds-foraging})]{\label{fig:DS-perf} Using a 10\% swarm density under
+    imperfect information.}
+\end{figure}
+
+From Fig.~\ref{fig:DS-self-org}, we see that the observed levels of self-organization
+are uniformly higher for complex task decomposition graphs than for compound graphs
+across all tested methods, even those not specifically designed to be sensitive to
+task decomposition graph richness. The \gls{stochn1} method, which was specifically
+designed to be sensitive to graph richness, has the highest emergent intelligence and
+performance across all scales. Comparing Fig.~\ref{fig:DS-self-org} and
+Fig.~\ref{fig:DS-perf} we observe that, generally speaking, higher levels of swarm
+intelligence are positively correlated with higher performance.
+%
+\subsection{Emergence of Swarm Intelligence from Task Decomposition Graph Richness}
+%
+To investigate the origin of swarm emergent intelligence (\ref{research-Q2}), we ran
+two additional sets of experiments. First, we enforce our matroid optimality
+constraints by artificially injecting the swarm with perfect knowledge about evolving
+task costs ($\CostFunc$) at every timestep. From our measurements (not shown), in
+a~\textasciitilde{}1,000 robot swarm with a density of 10\%, no more than 3\% of
+robots are engaged in collision avoidance at any given time, on average (for the
+smaller swarms, it is much less), and $\CostFunc$ monotonicity is maintained. We
+cannot guarantee multiple robots will not interact within a finite operating arena
+(as strictly required to realize the \gls{matopt} task allocation space without task
+dependencies), but our use of a low swarm density reduces the probability that
+interactions will violate cost function monotonicity (e.g.,~obviating the occurrence
+of excessive inter-robot interference at high densities).
+
+\begin{figure}[!htbp]
+  \centering
+  \includegraphics[height=4cm]{figures/chapter2/{depth1-cc-pm-blocks-collected-cum-DS.36x18_01}.png}
+  \caption[Performance difference comparison on a \emph{compound} task
+  decomposition graph between swarms operating under matroid optimality
+  constraints vs. relaxation.]{\label{fig:DS-relaxation-depth1} Negative values
+    indicate that a performance drop was observed when constraints were relaxed,
+    when compared with Fig.~\ref{fig:DS-perf}.\rule[-2ex]{0pt}{1ex}}
+\end{figure}
+
+We frame these results in terms of performance drops, comparing the drop in
+performance when matroid optimality constraints are relaxed between two otherwise
+identical swarms. In Fig.~\ref{fig:DS-relaxation-depth1}, \emph{negative} values
+indicate a drop in performance, and \emph{positive} values indicate that swarms
+operating under imperfect information performed better.  We see performance drops
+consistently for both the \gls{matopt} and the $\epsilon$-greedy methods on the compound
+task decomposition graph, in the neighborhood of \textasciitilde{}5\% as expected, as
+they are the methods most sensitive task cost accuracy. The increased performance of
+UCB1 under relaxation is somewhat anomalous, though we speculate that it could be due
+to many robots allocating themselves the same sequence of tasks, which at larger
+swarm sizes resulted in increased congestion at the shared caches. In
+Fig.~\ref{fig:DS-relaxation-depth2}, we see much smaller scales of performance drops
+in general, and more cases in which the swarm operating under perfect information
+does \emph{better} than the one without it.
+
+\begin{figure}[htb!]
+  \centering
+  \includegraphics[height=4cm]{figures/chapter2/{depth2-cc-pm-blocks-collected-cum-DS.36x18_01}.png}
+  \caption[Performance difference comparison on a \emph{complex} task
+  decomposition graph between swarms operating under matroid optimality
+  constraints vs. relaxation.]{\label{fig:DS-relaxation-depth2} Negative values
+    indicate that a performance drop was observed when constraints were relaxed,
+    when compared with Fig.~\ref{fig:DS-perf}.}
+\end{figure}
 
 \section{Discussion}
 
@@ -542,7 +669,7 @@ considerable self-organization emerges, in comparison to the baseline random
 allocation method. However, in this work we have only established a rough correlation
 between emergent intelligence and performance, as we see that even though swarms
 using random task allocation still outperform more ``intelligent'' methods such as
-UCB1 in many cases. One would expect that the \gls{mat-opt} and $\epsilon$-greedy methods,
+UCB1 in many cases. One would expect that the \gls{matopt} and $\epsilon$-greedy methods,
 even without optimality constraints in place (as in this case), would do better than
 randomized allocations.
 
@@ -558,7 +685,7 @@ intelligence is positively correlated with performance.
 Within Fig.~\ref{fig:DS-relaxation-depth1} (compound task decomposition graph), we
 see empirical evidence that our matroid optimality constraints and method of
 enforcement were valid through the consistent performance drops observed across
-scales for \gls{mat-opt} and $\epsilon$-greedy. Examining
+scales for \gls{matopt} and $\epsilon$-greedy. Examining
 Fig.~\ref{fig:DS-relaxation-depth2}, we see a general lack of trends between
 performance under relaxation vs.~under constraints, for all tested methods, which we
 attribute to pthe higher levels of swarm intelligence present via the complex task
@@ -567,14 +694,14 @@ graph \emph{structure}, rather than graph \emph{content}, which gives rise to hi
 levels of swarm intelligence, and the richer structure of the complex decomposition
 graph overwhelms the effect of the optimality constraints.
 
-For both types of decomposition graphs, the \gls{mat-opt} method was \emph{not}
+For both types of decomposition graphs, the \gls{matopt} method was \emph{not}
 the optimal method, even under constraints, though we do observe the largest
 performance boost of all the tested methods under perfect
-information. \gls{mat-opt} ignores task decomposition graph structure, and
+information. \gls{matopt} ignores task decomposition graph structure, and
 assumes independent tasks, which is shown to be an invalid assumption. In
 addition, from Fig.~\ref{fig:DS-perf} and the performance drops in
 Fig.~\ref{fig:DS-relaxation-depth1}, Fig.~\ref{fig:DS-relaxation-depth2},
-\gls{stoch-n1} performs the best under both imperfect and perfect information,
+\gls{stochn1} performs the best under both imperfect and perfect information,
 though it experiences performance drops, rather than increases, under perfect
 information. Random performed the second best in many cases, though it was
 outperformed by UCB1 in some cases. From these observations we can
@@ -590,7 +717,7 @@ maximally performing solutions (possibly without optimality guarantees) need to
 incorporate stochasticity in order to mitigate (or exploit) their inherent
 randomness. We have also shown that there are formal task allocation methods (UCB1)
 well suited to traditional typical environments when perfect information is not
-available. Finally, our \gls{mat-opt} results suggest that emergent intelligence has the
+available. Finally, our \gls{matopt} results suggest that emergent intelligence has the
 potential, under the right conditions, to work synergistically with theoretical
 models, if task independence is guaranteed.
 %
@@ -610,3 +737,8 @@ theoretical models. More work is also needed to refine the relationship between
 emergent intelligence and performance. In order to facilitate future research and
 collaboration, the code used for this research is open source, and can be found at
 https://github.com/swarm-robotics.
+
+%%% Local Variables:
+%%% mode: latex
+%%% TeX-master: "../thesis"
+%%% End:
