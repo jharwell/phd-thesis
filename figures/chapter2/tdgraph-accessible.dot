@@ -89,35 +89,47 @@ digraph tdgraph {
         // reachability edges
         edge[penwidth=2]
         "1" -> "0" [style=dashed,constraint=false]
+        "1" -> "2" [style=dashed,constraint=false]
+        "1" -> "3" [style=dashed,constraint=false]
+        "1" -> "4" [style=dashed,constraint=false]
+
         "2" -> "0" [style=dashed,constraint=false]
+        "2" -> "1" [style=dashed,constraint=false]
+        "2" -> "5" [style=dashed,constraint=false]
 
         "3" -> "1" [style=dashed,constraint=false]
-        "4" -> "1" [style=dashed,constraint=false]
-        "5" -> "2" [style=dashed,constraint=false]
-        "6" -> "2" [style=dashed,constraint=false]
-
-        "7" -> "3" [style=dashed,constraint=false]
-        "8" -> "3" [style=dashed,constraint=false]
-        "9" -> "4" [style=dashed,constraint=false]
-        "10" -> "4" [style=dashed,constraint=false]
-        "11" -> "5" [style=dashed,constraint=false]
-        "12" -> "5" [style=dashed,constraint=false]
-        "13" -> "6" [style=dashed,constraint=false]
-        "14" -> "6" [style=dashed,constraint=false]
-
-        "1" -> "2" [style=dashed,constraint=false]
-        "2" -> "1" [style=dashed,constraint=false]
         "3" -> "4" [style=dashed,constraint=false]
+        "3" -> "7" [style=dashed,constraint=false]
+        "3" -> "8" [style=dashed,constraint=false]
+
+        "4" -> "1" [style=dashed,constraint=false]
         "4" -> "3" [style=dashed,constraint=false]
+        "4" -> "9" [style=dashed,constraint=false]
+
+        "5" -> "2" [style=dashed,constraint=false]
         "5" -> "6" [style=dashed,constraint=false]
-        "6" -> "5" [style=dashed,constraint=false]
-        "7" -> "8" [style=dashed,constraint=false]
+        "5" -> "11" [style=dashed,constraint=false]
+        "5" -> "12" [style=dashed,constraint=false]
+
+        "8" -> "3" [style=dashed,constraint=false]
         "8" -> "7" [style=dashed,constraint=false]
+
+        "9" -> "4" [style=dashed,constraint=false]
         "9" -> "10" [style=dashed,constraint=false]
+
+        "10" -> "4" [style=dashed,constraint=false]
         "10" -> "9" [style=dashed,constraint=false]
+
+        "11" -> "5" [style=dashed,constraint=false]
         "11" -> "12" [style=dashed,constraint=false]
+
+        "12" -> "5" [style=dashed,constraint=false]
         "12" -> "11" [style=dashed,constraint=false]
+
+        "13" -> "6" [style=dashed,constraint=false]
         "13" -> "14" [style=dashed,constraint=false]
+
+        "14" -> "6" [style=dashed,constraint=false]
         "14" -> "13" [style=dashed,constraint=false]
 
         edge[penwidth=4]

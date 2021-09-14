@@ -1,62 +1,128 @@
 digraph tdgraph {
-        node [color=lightgray, style=filled, preferred=0.50];
-        graph [ordering="out", nodesep=0.5, ranksep=1.0];
-        edge[penwidth=1.25]
+        compound=true;
+        splines=false;
+        node [style=filled,fontsize=32,fontname="arial bold",colorscheme=set19];
+        graph [ordering="out", nodesep=1.5, ranksep=1.0,rankdir=TB,newrank=true];
+        edge[penwidth=4,colorscheme=set19]
 
         // nodes
-        "0" [label="0", fillcolor=crimson];
-        "1" [label="1",fillcolor=gold];
+        "0" [label="0"];
+        "1" [label="1"];
+        "2" [label="2"];
 
-        "2" [label="..."];
-        "3" [label="3",fillcolor=gold];
-        "4" [label="4",fillcolor=gold];
-        "5" [label="..."];
-        "6" [label="..."];
-        "7" [label="7",fillcolor=crimson];
-        "8" [label="8",fillcolor=crimson];
-        "9" [label="..."];
-        "10" [label="..."];
-        "11" [label="..."];
-        "12" [label="..."];
-        "13" [label="..."];
-        "14" [label="..."];
+        "3" [label="1"];
+        "4" [label="3"];
+        "5" [label="4"];
+
+        "6" [label="2"];
+        "7" [label="5"];
+        "8" [label="6"];
+
+        "9" [label="3"];
+        "10" [label="7"];
+        "11" [label="8"];
+
+        "12" [label="4"];
+        "13" [label="9"];
+        "14" [label="10"];
+
+        "15" [label="5"];
+        "16" [label="6"];
+        "17" [label="11"];
+
+        "18" [label="12"];
+        "19" [label="13"];
+        "20" [label="14"];
 
         // Decomposition edges
         "0" -> {"1", "2"}
-        "1" -> "3";
-        "1" -> "4";
-        "2" -> "5";
-        "2" -> "6";
 
-        "3" -> "7";
-        "3" -> "8";
-        "4" -> "9";
-        "4" -> "10";
-        "5" -> "11";
-        "5" -> "12";
-        "6" -> "13";
-        "6" -> "14";
+        "3" -> {"4","5"};
+        "6" -> {"7", "8"};
+        "9" -> {"10", "11"};
+        "12" -> {"13", "14"};
+        "15" -> {"16", "17"};
+        "18" -> {"19", "20"};
+
+        // TAB connectivity edges
+        "1" -> "3"[lhead=cluster_tab1,ltail=cluster_tab0,minlen=2];
+        "2" -> "6"[lhead=cluster_tab2,ltail=cluster_tab0,minlen=2];
+        "4" -> "9"[lhead=cluster_tab3,ltail=cluster_tab1,minlen=2];
+        "5" -> "12"[lhead=cluster_tab4,ltail=cluster_tab1,minlen=2];
+        "7" -> "15"[lhead=cluster_tab5,ltail=cluster_tab2,minlen=2];
+        "8" -> "18"[lhead=cluster_tab6,ltail=cluster_tab2,minlen=2];
 
         // TABs
-        // subgraph cluster_root_tab {
-        //         "0";
-        //         "1";
-        //         "2";
-        //         graph[style=dashed];
-        //         label="Root TAB0"
-        // }
-        subgraph cluster_tab1 {
+        subgraph cluster_tab0 {
+                colorscheme=set19
+                fontsize=32;
+                fontname="arial bold";
+
+                "0";
                 "1";
+                "2";
+                graph[style=rounded,bgcolor=2];
+                label="TAB0"
+        }
+        subgraph cluster_tab1 {
+                colorscheme=set19
+                fontsize=32;
+                fontname="arial bold";
                 "3";
                 "4";
-                graph[style=dashed];
+                "5";
+                graph[style=rounded,bgcolor=2];
                 label="TAB1"
         }
         subgraph cluster_tab2 {
-                "2";
-                "5";
+                colorscheme=set19
+                fontsize=32;
+                fontname="arial bold";
                 "6";
-                graph[style=dashed];
+                "7";
+                "8";
+                graph[style=rounded,bgcolor=2];
                 label="TAB2"
         }
+        subgraph cluster_tab3 {
+                colorscheme=set19
+                fontsize=32;
+                fontname="arial bold";
+                "9";
+                "10";
+                "11";
+                graph[style=rounded,bgcolor=2];
+                label="TAB3"
+        }
+        subgraph cluster_tab4 {
+                colorscheme=set19
+                fontsize=32;
+                fontname="arial bold";
+                "12";
+                "13";
+                "14";
+                graph[style=rounded,bgcolor=2];
+                label="TAB4"
+        }
+        subgraph cluster_tab5 {
+                colorscheme=set19
+                fontsize=32;
+                fontname="arial bold";
+                "15";
+                "16";
+                "17";
+                graph[style=rounded,bgcolor=2];
+                label="TAB5"
+        }
+        subgraph cluster_tab6 {
+                colorscheme=set19
+                fontsize=32;
+                fontname="arial bold";
+                "18";
+                "19";
+                "20";
+                graph[style=rounded,bgcolor=2];
+                label="TAB6"
+        }
+
         }

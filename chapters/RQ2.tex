@@ -430,7 +430,16 @@ function).
 %
 \begin{figure}[!htbp]
   \centering
-  \includegraphics[width=7cm]{figures/chapter2/tdgraph-tabs.png}
+  \includegraphics[width=\textwidth]{figures/chapter2/tdgraph-partitioning.png}
+  \caption[Task Partitioning Ambiguities within
+  $\TAGraph{a}$.]{\label{fig:tdgraph-TABs} $v_f$ with unambiguous partition
+    points in red (root and leaf nodes), and ambiguous partition points in
+    gold.}
+\end{figure}
+%
+\begin{figure}[!htbp]
+  \centering
+  \includegraphics[width=\textwidth]{figures/chapter2/tdgraph-tabs.png}
   \caption[Task Allocation Contexts (TABs) within
   $\TAGraph{a}$.]{\label{fig:tdgraph-TABs} $v_f$ with unambiguous partition
     points in red (root and leaf nodes), and ambiguous partition points in
@@ -613,7 +622,7 @@ intelligence are positively correlated with higher performance.
 %
 \subsection{Emergence of Swarm Intelligence from Task Decomposition Graph Richness}
 %
-To investigate the origin of swarm emergent intelligence (\ref{research-Q2}), we ran
+To investigate the origin of swarm emergent intelligence (\gls{RQ2.1}), we ran
 two additional sets of experiments. First, we enforce our matroid optimality
 constraints by artificially injecting the swarm with perfect knowledge about evolving
 task costs ($\CostFunc$) at every timestep. From our measurements (not shown), in
@@ -705,11 +714,11 @@ Fig.~\ref{fig:DS-relaxation-depth1}, Fig.~\ref{fig:DS-relaxation-depth2},
 though it experiences performance drops, rather than increases, under perfect
 information. Random performed the second best in many cases, though it was
 outperformed by UCB1 in some cases. From these observations we can
-answer~\ref{research-Q2}, concluding that from a task allocation perspective,
-swarm intelligence arises out collective learning of the structure and
-connectivity of the graph, rather than collective learning of the graph content
-(tasks and task costs), and that task dependencies cannot be ignored even in
-independent task allocation decisions made by individual robots.
+answer~\gls{RQ2.2}, concluding that from a task allocation perspective, swarm
+intelligence arises out collective learning of the structure and connectivity of
+the graph, rather than collective learning of the graph content (tasks and task
+costs), and that task dependencies cannot be ignored even in independent task
+allocation decisions made by individual robots.
 
 From this discussion, it is clear that leveraging emergent intelligence is crucial in
 establishing (practically) optimal task allocation policies in robot swarms, and that

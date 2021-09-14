@@ -1,0 +1,8 @@
+* Thesis TODO [0%]
+- [ ] Switch "graph richness" -> some sort of graph theory measure in AAMAS paper. Eigen centrality or closeness
+centrality, cross-clique centrality look like they might be good, as long as the complex task decomposition graph has a higher value of whatever
+measure is chosen.
+- [ ] Switch from TAB -> something else in AAMAS paper content. I think TABs can be view as induced subgraphs/cliques of
+some kind. I think you can compute TABs by merging all nodes in the 3-node cliques and then using THAT as the
+graph/tree to switch between
+- [ ] Switch from neighborhood -> clique in AAMAS paper content. Much stronger graph theory basis.

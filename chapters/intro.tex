@@ -82,21 +82,49 @@ emergent behaviors~\cite{Harwell2020a}, and do not provide theoretical
 guarantees; in such cases robustness is coupled to, but again distinct from,
 emergent self-organization~\cite{Hunt2020,DeWolf2005}.
 
-In this thesis, we are interested in studying~\gls{srs} systems from two
-perspectives. First, to understand from a mathematical perspective how and why
-these properties arise in \gls{srs} systems. Second, to develop theoretical tools
-to assist with designing \gls{srs} systems that provably embody these properties.
-In the remainder of this chapter, we outline our contributions to each of these
-perspectives of \gls{srs} system research, framing each contributions as
-answering an important open research question in the field.
+\section{Motivation and Investigative Contexts}
 
+The duality between \gls{srs} and natural systems enables effective parallels to
+be drawn with many naturally occurring problems, such as foraging, collective
+transport of heavy objects, environmental monitoring, object sorting, hazardous
+material cleanup, self-assembly, exploration, and collective decision
+making~\cite{Hecker2015,Kumar2003,CarrilloZapata2020}.  As a result, \gls{srs}
+systems are especially suited for complex tasks in dynamic environments where
+robustness and flexibility are key to success, such as space, hazardous material
+cleanup, fire and
+rescue~\cite{Rouff2004,CarrilloZapata2020,Sahin2005,Flushing2014}, and
+construction~\cite{Petersen2011}.
 
-% The duality between designing swarm control algorithms directly to be scalable
-% and self-organizing, while incorporating emergent behaviors for flexibility and
-% robustness, can be leveraged in the design of practical \gls{srs} systems.
+In this thesis, we contribute to the state of the art in~\gls{swarm-engineering}
+by studying two important abstract scenarios which can be mapped to any of the
+real-world use problems above: foraging and embodied graph manipulation.
 
+\subsection{Foraging}
+%
+In a foraging task, robots gather objects (blocks) from across a finite
+operating arena and bring them to a central location (often called the
+\emph{nest}) for further processing (the \emph{central place foraging
+  problem}). Foraging is one of the most studied applications of SR, due to its
+straightforward mapping to real-world applications~\cite{Hecker2015}; for an
+extensive discussion of the state of the art, see~\cite{Lu2020}.  The
+complexity of the foraging task frequently gives rise to non-linear behavioral
+dynamics due to inter-robot interactions, which in turn make designing~\gls{srs}
+systems with provable bounds of behavior and practical utility difficult.
 
-\section{Measurement of \gls{srs} System Properties }
+\subsection{Embodied Graph Manipulation}
+
+\section{Summary of Contributions}
+%
+In the context of foraging and embodied graph manipulation, we study~\gls{srs}
+systems from two perspectives. First, to understand from a mathematical point of
+view how and why these properties arise in \gls{srs} systems. Second, to develop
+theoretical tools to assist with designing \gls{srs} systems that provably
+embody these properties.  In the remainder of this chapter, we outline our
+contributions to each of these perspectives of \gls{srs} system research,
+framing each contributions as answering an important open research question in
+the field.
+
+\subsection{Measurement of \glsfmtshort{srs} System Properties }
 % 
 When engineering practical~\gls{srs} systems, each of the following design
 questions must be considered:
@@ -144,12 +172,17 @@ allows us to incorporate noise-generating elements of real-world problems into
 our scenario model and better study their effects. Without such methodology,
 those effects can only be studied qualitatively, which is not as useful.
 
-\section{Origin of Emergent Intelligence in \gls{srs} Systems}
+\subsection{Origin of Emergent Intelligence in \glsfmtshort{srs} Systems}
 %
 % [JRH] Need to check that the MRTA paper DOES use interdependent task sequences...
 Of the four swarm properties described above, emergent self-organization is the
-least understood and most difficult to quantify <REFS>, and we therefore are
-interested in answering the following research question:
+least understood and most difficult to quantify <REFS>. This lack of
+understanding has hindered the development of~\gls{srs} systems because
+designers are not able to guarantee that no negative behaviors (those that
+oppose the system's goal) will emerge during system operation. Demystifying the
+origin of emergent intelligence to help with the design of future~\gls{srs}
+systems is therefore essential, and we consider the following important research
+question:
 
 \medskip\noindent
 \gls{RQ2}: \glsdesc{RQ2}
@@ -188,7 +221,7 @@ for a foraging task, and show that swarm emergent intelligence is strongly
 correlated with performance, and greater for complex than for compound task
 decomposition graphs.
 
-Second,
+Second, 
 
 \medskip\noindent
 \gls{RQ2.2}: \glsdesc{RQ2.2}
@@ -224,139 +257,50 @@ due to its disregard for graph structure and dependencies; however, results
 suggest future synergies between theoretical methods leveraging emergent
 intelligence is possible.
 
-\section{Prediction and Control of \gls{srs} Systems}
+\subsection{Prediction and Control of \glsfmtshort{srs} Systems}
 
-% [JRH] Talk more specifically about results/contributions here.
+% [JRH] Talk about how putting bounds on swarm behavior is hard, but is
+% necessary to do for practical systems. Existing work really on does this on
+% trivial problems/single scenarios--can we do better?
 
-
-\section{Foraging Testbed}
-
-% [JRH] Introduce foraging testbed
-
-The duality between \gls{srs} and natural systems enables effective parallels to
-be drawn with many naturally occurring problems, such as foraging, collective
-transport of heavy objects, environmental monitoring, object sorting, hazardous
-material cleanup, self-assembly, exploration, and collective decision
-making~\cite{Hecker2015,Kumar2003,CarrilloZapata2020}.  As a result, \gls{srs}
-systems are especially suited for complex tasks in dynamic environments where
-robustness and flexibility are key to success, such as space, hazardous material
-cleanup, fire and
-rescue~\cite{Rouff2004,CarrilloZapata2020,Sahin2005,Flushing2014}, and
-construction~\cite{Petersen2011}.
-
-%
-
-We study foraging from a task allocation perspective. In a foraging task, robots
-gather objects from across a finite operating arena and bring them to a central
-location (often called the \emph{nest}) for further processing. Foraging is one
-of the most extensively studied applications of \gls{srs} due to its
-straightforward mapping to important real-world applications~\cite{Hecker2015}
-such as tracking lake health, clearing a corridor on a mining operation,
-hazardous material cleanup, or search and
-rescue~\cite{Sahin2005,Hecker2015,Labella}.
-
-
-%
-% [JRH] Required by TRO: If a preliminary version of the paper has been (or is going
-% to be) presented at conference(s), specify in a compact way which one(s); these
-% conference papers should be explicitly cited in the present journal submission,
-% with a clear statement describing the differences/changes/additions.  Papers
-% failing to comply with this will be returned by the EiC.
-%
-The rest of the paper is organized as follows.~\cref{sec:related-work} discusses
-related works in swarm engineering. We discuss swarm emergent self-organization,
-scalability, flexibility, and robustness, and derive metrics for each
-in~\cref{sec:meas-emergence,sec:meas-scalability,sec:meas-flexibility,sec:meas-robustness}.
-\cref{sec:sc-overview} describes our two real-world problems along with design
-constraints and candidate solutions. In \cref{sec:sc1,sec:sc2} we apply our
-metrics to those two problems. We conclude with a discussion
-in~\cref{sec:discussion} of common themes between the two scenarios.
-
-% AAMAS
-
-% ODE/AR
-
-% Development of effective strategies for SR systems to solve problems such as
-% foraging, collective transport of heavy objects, environmental
-% monitoring/cleanup~\cite{Schill2016a}, collective decision making,
-% surveillance~\cite{Borko2016a}, and construction~\cite{Petersen2011} can be
-% accelerated by drawing inspiration from natural systems, due to their shared
-% properties (e.g., scalability, emergent self-organization, flexibility,
-% robustness)~\cite{Sahin2005,Hecker2015,Harwell2020a}. Furthermore, SR systems
-% with these properties are well suited to tackle tasks in dangerous environments
-% when robustness and flexibility are key to success, such as space, tracking lake
-% health, clearing space in mining, hazardous material cleanup, search and
-% rescue~\cite{Rouff2004,Sahin2005,Hecker2015,Labella,Kumar2003,Flushing2014}.
-
-% [JRH] Address ijcai#7 comment about not talking about the task before
-% presenting the equations.
-
-In this work, we study the \emph{central place foraging problem} in which robots
-gather objects (blocks) across a finite operating arena and bring them to a
-central location (nest) under various conditions and constraints.
-% their papers "A bio-inspired transportation network for scalable swarm
-% foraging", ICRA 2020 and "Ignorance is Not Bliss: An Analysis of Central-Place
-% Foraging Algorithms" IROS 2019 have some interesting formal results on scaling
-% for a centrally placed nest.
-Foraging is one of the most studied applications of SR, due to its
-straightforward mapping to real-world applications~\cite{Hecker2015}; for an
-extensive discussion of the state of the art, see~\cite{Lu2020crr}.  The
-complexity of the foraging task frequently gives rise to non-linear behavioral
-dynamics due to inter-robot interactions. It has been established that beyond a
-certain \emph{swarm density} $\SwarmDensity$ (ratio of swarm size to arena
+It has been established that beyond a certain \emph{swarm density}
+$\SwarmDensity$ (ratio of swarm size to arena
 size)~\cite{Sugawara1997,Hamann2013}, interactions between components can
 overtake outside interactions. The resulting non-linear behaviors which can
 emerge are not generally predictable from component study; that is, directly
 from the swarm control
-algorithm~\cite{Cotsaftis2009,George2005,Hunt2020,DeWolf2005}. Hence, the
-collective performance of a swarm $\TheSwarm$ of $\TheSwarmSize$ cooperating
-robots each running an identical control algorithm $\kappa$ can be a non-linear
-function of the behavior of a system of $\TheSwarmSize$ independent
+algorithm~\cite{Cotsaftis2009,George2005,Hunt2020,DeWolf2005},
+complicating~\gls{srs} system design. Hence, the collective performance of a
+swarm $\TheSwarm$ of $\TheSwarmSize$ cooperating robots each running an
+identical control algorithm $\kappa$ can be a non-linear function of the
+behavior of a system of $\TheSwarmSize$ independent
 robots~\cite{Harwell2020a}. Below this threshold, swarm behavior can be well
-approximated using linear models.
+approximated using linear models. This leads to the third contribution of this
+thesis: characterizing the \emph{practical} limits of linear modeling of the
+non-linear behaviors of swarm, as a function of $\SwarmDensity$ by answering the
+following research questions. First,
 
-% [JRH] Address ijcai#10,63 comment low density swarms not being swarms.
+\medskip\noindent
+\gls{RQ3.1}: \glsdesc{RQ3.1}
+\medskip
 
-Many real problems across scales can be tackled using swarms in low density
-environments (independent of swarm size) in which each robot is responsible for
-a large area on the order of $100m^2$; these include indoor warehouses/object
-transport ($\approx{64}m^2$), outdoor search and rescue, precision agriculture,
-and field monitoring ($600,000m^2\approx{150}$ acres). While recent results
-summarizing the challenges of moving swarms into the real world argue that
-directing research towards low density swarm applications is
-critical~\cite{Tarapore2020}, some researchers hold that swarms with low
-$\SwarmDensity$ are not properly characterized as swarms, and are instead
-systems of independent robots because they lack the high level of inter-agent
-interaction which characterizes natural swarms. However, we argue that a high
-level of inter-agent interaction (and therefore potentially emergent
-self-organization) is only one of the defining properties of swarms. Low density
-swarms exhibiting the properties of scalability, flexibility, and robustness can
-properly still be considered swarms~\cite{Harwell2020a}.
-
-% These behaviors can be caused by: (1) excessive inter-robot interference,
-% which results in superlinear performance losses~\cite{Harwell2020a}, and (2)
-% \emph{emergent self-organization}, which occurs as agents in SR systems work
-% collectively to find solutions to problems unsolvable by individual robots,
-% and generally results in superlinear performance
-% gains~\cite{Winfield2005a,Galstyan2005}.
-
+\noindent
 The exact value of $\SwarmDensity$ at which a given linear model of swarm
 behavior breaks down is influenced by many factors, including the control
 algorithm $\kappa$, the number of robots $\TheSwarmSize$, and characteristics of
-the problem being solved, so in general it cannot be determined \emph{a
-  priori}. In this work we investigate the following research questions in order
-to discover the \emph{practical} limits of linear modeling of swarm behaviors in
-a foraging task, as a function of $\SwarmDensity$:
+the problem being solved, so in general it cannot be determined \emph{a priori}.
 
-\noindent
-\gls{RQ3.1}: \glsdesc{RQ3.1}
+Second,
 
-\noindent
+\medskip\noindent
 \gls{RQ3.2}: \glsdesc{RQ3.2}
+\medskip
+
+\noindent
 
 We seek answers to these questions for general foraging tasks, i.e., across
 scenarios, scales, and swarm densities, and therefore require a model with wide
-applicability to help answer them. Specifically, to answer \textbf{Q1}, we must
+applicability to help answer them. Specifically, to answer~\gls{RQ3.1}, we must
 evaluate the predictive power of a suitable model across scales and with
 variable $\SwarmDensity$ in which we can reliably expect non-linear behaviors to
 arise.
@@ -370,20 +314,13 @@ eliminate most free parameters by deriving analytical expressions for them by
 considering scenario characteristics, robotic control algorithm characteristics,
 etc. The resulting model, while still requiring some minor post-hoc fitting, is
 a step towards a true fundamental model of swarm behavior and an affirmative
-answer to \textbf{Q2}. Second, previous work only considered a single scenario
+answer to~\gls{RQ3.2}. Second, previous work only considered a single scenario
 with small swarms; we consider multiple scenarios and both small and large
-swarms.
-
-The rest of this paper is organized as
-follows. In~\cref{sec:motivation,sec:background}, we motivate this work by
-discussing trends and related work in SR system design, and the differential
-equation paradigm on which our model is based. In~\cref{sec:method} we develop
-our model. In~\cref{sec:exp-defs} we define the experiments to evaluate our
-model and test its limits across multiple spatial object distributions, scales,
-and densities. Our results in~\cref{sec:results} show that our model provides
-accurate predictions across block distributions, scales, and densities,
+swarms. Our results in~\cref{ode-modeling:sec:results} show that our model
+provides accurate predictions across block distributions, scales, and densities,
 including some in which the swarm itself is exhibiting non-linear behaviors,
 showing its broad utility in future SR system design.
+
 
 %%% Local Variables:
 %%% mode: latex
