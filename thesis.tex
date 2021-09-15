@@ -33,6 +33,8 @@
 % For automatically defining terms on first use, then using the acronym
 % afterwards.
 \usepackage{glossaries-extra}
+\usepackage{subcaption} % For referencable subfigures
+
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % Document Configuration
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -63,6 +65,10 @@
 % Add space between rows of tables
 \newcommand{\spacerows}[1]{\renewcommand{\arraystretch}{#1}}
 
+% Reduce duplicated text in captions between short and long forms where the
+% caption appears under the figure.
+\newcommand{\phdcaption}[2]{\caption[#1]{\textbar\, \textbf{#1.} #2}}
+
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % Document Notation
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -75,7 +81,7 @@
   \ifglsused{\glslabel}{%
     \glsgenentryfmt%
   }{%
-    % Typeset first use
+    % Typeset first use of glossary terms
     \textit{\glsgenentryfmt}%
   }%
 }

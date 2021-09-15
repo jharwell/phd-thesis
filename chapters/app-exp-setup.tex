@@ -8,7 +8,7 @@ We use the ARGoS simulator~\cite{Pinciroli2012} with a dynamical physics model o
 the marXbot (\cite{Dorigo2005c}) in a 3D space for maximum fidelity (robots are
 still restricted to motion in the XY plane).
 
-\section{Foraging Task Decomposition Graph}\label{sec:exp-foraging-tdgraph}
+\section{Foraging Task Decomposition Graph}\label{exp-setup:sec:foraging-tdgraph}
 
 We instantiate the task decomposition graph shown in Fig.~\ref{fig:tdgraph-foraging},
 extending previous work~\cite{Harwell2018,Pini2011b,Ferrante2015} which explicitly or
@@ -18,18 +18,15 @@ $\TAGraphV{a}$ (gold vertices in Fig.~\ref{fig:tdgraph-foraging}):
 \begin{figure}[!htbp]
   \centering
   \includegraphics[width=\textwidth]{figures/chapter2/tdgraph-foraging.png}
-  \caption[Task decomposition graph, $\TDGraph$, for a foraging
-  task, in which robots have to
-   find spatially distributed objects in the environment and then bring them to
-   a central location.]{\label{fig:tdgraph-foraging}
-   Red+blue tasks correspond to a scheme in which robots do
-   a whole task or 1/2 task (single decomposition option).  Red+blue+green tasks
-   correspond to a scheme in which robots do a whole task, 1/2 task, or 1/4 task
-   (multi-decomposition option).  However, by choosing to decompose the task
-   into multiple parts, there now exist task dependencies between the parts,
-   which the swarm has to collectively learn to be successful.
-   Blue tasks ($\phi_i=1$) were defined in~\cite{Harwell2018}, green tasks
-   ($\phi_i=2$) were defined~\cite{Harwell2019a}.}
+  \phdcaption{Task decomposition graph for the foraging task}{The set of red and
+    blue tasks correspond to a scheme in which robots do the whole task or 1/2
+    task (single decomposition option).  The set of red and blue and green tasks
+    correspond to a scheme in which robots do the whole task, 1/2 task, or 1/4
+    task (multi-decomposition option).  By decomposing the task into multiple
+    parts, there are now task dependencies between the parts, which the swarm
+    has to collectively learn.  Blue tasks ($\phi_i=1$) were defined
+    in~\cite{Harwell2018}, green tasks ($\phi_i=2$) were
+    defined~\cite{Harwell2019a}.\label{fig:tdgraph-foraging}}
 \end{figure}
 
 \begin{itemize}
@@ -109,7 +106,37 @@ task sequence $\phi_2$ (red vertices in Fig.~\ref{fig:tdgraph-foraging}):
 
 By defining $\phi_2$, we have also implicitly defined $\beta_1,\beta_2$.
 
-\section{Foraging Scenarios}\label{sec:exp-foraging-scenarios}
+\section{Foraging Scenarios}\label{exp-setup:sec:foraging-scenarios}
+
+\begin{figure}[!htbp]
+  %
+  \begin{subfigure}{0.49\linewidth}
+    {\includegraphics[]{figures/ss-foraging.png}}
+    \phdcaption{\emph{Single source} (SS) object distribution, with objects on the right and the nest
+      on the left}{\label{fig:fbd-ss}}
+  \end{subfigure}
+  %
+  \begin{subfigure}{0.49\linewidth}
+    \includegraphics[]{figures/ds-foraging.png}
+    \phdcaption{\emph{Dual source} (DS) object distribution, with
+      objects on the right and left and the nest in the center}{\label{fig:fbd-ds}}
+  \end{subfigure}
+  %
+  \begin{subfigure}{0.24\linewidth}
+    {\includegraphics[width=.99\linewidth]{figures/pl-foraging.png}}
+    \phdcaption{\emph{Power law } (PL) object distribution, with the nest in the center}{\label{fig:fbd-pl}}
+  \end{subfigure}
+  %
+  \begin{subfigure}{0.24\linewidth}
+    {\includegraphics[width=.99\linewidth]{figures/rn-foraging.png}}
+    \phdcaption{\emph{Random} (RN) object distribution, with the nest in the center}{\label{fig:fbd-rn}}
+  \end{subfigure}
+  %
+  \phdcaption{Example simulated foraging scenarios in ARGoS}{Multiple robots
+    (blue blobs), objects to be collected (black squares), the nest in the
+    center (gray), and the lights robots use for phototaxis and localization
+    (yellow).\label{fig:fbd}}
+\end{figure}
 
 % [JRH] Show pictures of all the scenarios here, talk a little about each (e.g.,
 % why PL is the most challenging scenario type).

@@ -5,16 +5,16 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 % TRO
-\gls{srs} is the study of the coordination of large numbers of simple
-robots~\cite{Sahin2005}. \gls{srs} systems can be homogeneous (single robot type
+Swarm Robotics (SR) is the study of the coordination of large numbers of simple
+robots~\cite{Sahin2005}. SR systems can be homogeneous (single robot type
 and identical control software) or heterogeneous (multiple robot types and/or
 control software)~\cite{Dorigo2013,Rizk2019,Ramachandran2020}. The main
-differentiating factors between \gls{srs} systems and multi-agent robotics
-systems stem from the mechanisms on which \gls{srs} systems are based.
+differentiating factors between SR systems and multi-agent robotics
+systems stem from the mechanisms on which SR systems are based.
 Historically, these were principles of biological mimicry or problem solving
 techniques inspired by natural systems of agents such as bees, ants, and
 termites~\cite{Labella2006}. Moving beyond strictly biomimetic design, many
-modern \gls{srs} systems have retained the desirable properties of natural
+modern SR systems have retained the desirable properties of natural
 systems while employing elements of more conventional multi-robot system
 design~\cite{Castello2016,Arvin2015,Steyven2018}.  First formally discussed
 by~\cite{Winfield2005}, this discipline of \gls{swarm-engineering} seeks to
@@ -34,13 +34,13 @@ distinct, from the concept of \emph{emergence}, which is the set difference
 between individual and collective swarm behavior, where the swarm behavior
 arises both from inter-robot interactions and individual robot
 decisions~\cite{Szabo2014,DeWolf2005}.  Emergent and self-organizing behaviors
-are often both present in \gls{srs} systems as robots collectively find solutions
+are often both present in SR systems as robots collectively find solutions
 to a problem that they cannot solve alone~\cite{Cotsaftis2009,Hunt2020}. We term
 this dichotomy \emph{emergent self-organization}, i.e, a two-way link between
 collective and individual level behaviors.
 
 \textbf{Scalability}. Scalable systems are able to maintain efficiency and
-effectiveness as system size grows. \gls{srs} systems, like natural systems, can
+effectiveness as system size grows. SR systems, like natural systems, can
 achieve scalability to hundreds or thousands of agents through decentralized
 control~\cite{Matthey2009}; other methods of maintaining effectiveness at larger
 scales include local agent communication~\cite{Agassounon2001,Lerman2006}, and
@@ -55,7 +55,7 @@ changing weather conditions~\cite{Harwell2019a,Just2017,Hunt2020}. Individual
 agents make decisions based on locally available information from neighbors and
 their own limited sensor data. This produces a spatially distributed response
 which arises from robot decisions as the swarm reacts and adapts to the
-environment. \gls{srs} systems, like natural systems, can achieve flexibility in a
+environment. SR systems, like natural systems, can achieve flexibility in a
 variety of ways: pheromone trails, site fidelity, localized communication, and
 task allocation strategies~\cite{Just2017,Harwell2019a}. Some analytical methods,
 such as task allocation strategies, explicitly encode mechanisms for the swarm
@@ -74,7 +74,7 @@ emergent property of systems which demonstrate resilience to the effects of
 internal stimuli on individual robots~\cite{DeWolf2005} (e.g., losing a single
 robot or set of robots minimally perturbs the collective behavior of the swarm).
 Robustness is crucial for crossing the simulation-reality
-gap~\cite{Hecker2015,Francesca2014}.  Some \gls{srs} systems handle sensor and
+gap~\cite{Hecker2015,Francesca2014}.  Some SR systems handle sensor and
 actuator noise
 analytically~\cite{Dallalibera2011,Claudi2014,Zong2006,Nurzaman2009,Turgut2008},
 and can provide theoretical guarantees of robustness.  Other systems rely on
@@ -84,11 +84,11 @@ emergent self-organization~\cite{Hunt2020,DeWolf2005}.
 
 \section{Motivation and Investigative Contexts}
 
-The duality between \gls{srs} and natural systems enables effective parallels to
+The duality between SR and natural systems enables effective parallels to
 be drawn with many naturally occurring problems, such as foraging, collective
 transport of heavy objects, environmental monitoring, object sorting, hazardous
 material cleanup, self-assembly, exploration, and collective decision
-making~\cite{Hecker2015,Kumar2003,CarrilloZapata2020}.  As a result, \gls{srs}
+making~\cite{Hecker2015,Kumar2003,CarrilloZapata2020}.  As a result, SR
 systems are especially suited for complex tasks in dynamic environments where
 robustness and flexibility are key to success, such as space, hazardous material
 cleanup, fire and
@@ -108,25 +108,34 @@ operating arena and bring them to a central location (often called the
 straightforward mapping to real-world applications~\cite{Hecker2015}; for an
 extensive discussion of the state of the art, see~\cite{Lu2020}.  The
 complexity of the foraging task frequently gives rise to non-linear behavioral
-dynamics due to inter-robot interactions, which in turn make designing~\gls{srs}
+dynamics due to inter-robot interactions, which in turn make designing SR
 systems with provable bounds of behavior and practical utility difficult.
 
 \subsection{Embodied Graph Manipulation}
+%
+In an embodied graph manipulation task, robots interact with an environment
+which contains one or more physically embodied structures, abstracted as
+heterogeneous grid graphs (i.e., grid graphs in Euclidean space with potentially
+non-uniform distance between nodes). Each node in the graph is an object (block)
+which a robot can carry, and each undirected edge between two nodes $(u,v)$
+corresponds to the extent of a block anchored at $u$ along the X,Y, or Z axes to
+$v$.
+% [JRH] Continue on with motivation and stuff
 
 \section{Summary of Contributions}
 %
-In the context of foraging and embodied graph manipulation, we study~\gls{srs}
+In the context of foraging and embodied graph manipulation, we study SR
 systems from two perspectives. First, to understand from a mathematical point of
-view how and why these properties arise in \gls{srs} systems. Second, to develop
-theoretical tools to assist with designing \gls{srs} systems that provably
+view how and why these properties arise in SR systems. Second, to develop
+theoretical tools to assist with designing SR systems that provably
 embody these properties.  In the remainder of this chapter, we outline our
-contributions to each of these perspectives of \gls{srs} system research,
+contributions to each of these perspectives of SR system research,
 framing each contributions as answering an important open research question in
 the field.
 
-\subsection{Measurement of \glsfmtshort{srs} System Properties }
-% 
-When engineering practical~\gls{srs} systems, each of the following design
+\subsection{Measurement of SR System Properties }
+%
+When engineering practical SR systems, each of the following design
 questions must be considered:
 %
 \begin{enumerate}
@@ -172,15 +181,15 @@ allows us to incorporate noise-generating elements of real-world problems into
 our scenario model and better study their effects. Without such methodology,
 those effects can only be studied qualitatively, which is not as useful.
 
-\subsection{Origin of Emergent Intelligence in \glsfmtshort{srs} Systems}
+\subsection{Origin of Emergent Intelligence in SR Systems}
 %
 % [JRH] Need to check that the MRTA paper DOES use interdependent task sequences...
 Of the four swarm properties described above, emergent self-organization is the
 least understood and most difficult to quantify <REFS>. This lack of
-understanding has hindered the development of~\gls{srs} systems because
+understanding has hindered the development of SR systems because
 designers are not able to guarantee that no negative behaviors (those that
 oppose the system's goal) will emerge during system operation. Demystifying the
-origin of emergent intelligence to help with the design of future~\gls{srs}
+origin of emergent intelligence to help with the design of future SR
 systems is therefore essential, and we consider the following important research
 question:
 
@@ -189,7 +198,7 @@ question:
 \medskip
 
 \noindent
-Since answering this question in general for \gls{srs} systems is infeasible, if
+Since answering this question in general for SR systems is infeasible, if
 not impossible, we consider it in the more limited, but still broadly applicable
 context of~\gls{task-allocation}, by attempting to understand the origin of
 emergent intelligence in robot swarms which perform task allocation. We use
@@ -221,7 +230,7 @@ for a foraging task, and show that swarm emergent intelligence is strongly
 correlated with performance, and greater for complex than for compound task
 decomposition graphs.
 
-Second, 
+Second,
 
 \medskip\noindent
 \gls{RQ2.2}: \glsdesc{RQ2.2}
@@ -257,38 +266,82 @@ due to its disregard for graph structure and dependencies; however, results
 suggest future synergies between theoretical methods leveraging emergent
 intelligence is possible.
 
-\subsection{Prediction and Control of \glsfmtshort{srs} Systems}
+\subsection{Prediction and Control of the Average Behavior of SR Systems}
+%
+Many SR systems have been designed around imitating natural systems exactly, and
+use heuristic decision making~\cite{Castello2016} rather than combining natural
+principles with a strong mathematical
+grounding~\cite{Talamali2020}. Nevertheless, heuristic approaches to swarm
+control have been effective for robots that operate with incomplete information
+and limited computing power. As a result, SR researchers average large numbers
+of simulation runs to obtain empirical insights into real-world
+problems~\cite{Harwell2019a} to develop accurate models of swarm behavior. The
+emphasis on empirical rather than rigorous mathematical models has been the
+chief impediment to a wider use of SR systems.  Systematically varying
+individual agent parameters to study their effect on collective swarm behavior
+is impractical, even in simulation. Mathematical characterization of collective
+swarm behavior is more difficult, but provides the means to precisely predict it
+\emph{a priori}---\emph{without} the need of repetitive experiments. Tools and
+methods for such characterization are key to engineering better SR
+systems, and motivates our investigation into the following research question,
+and the third contribution of this thesis:
 
-% [JRH] Talk about how putting bounds on swarm behavior is hard, but is
-% necessary to do for practical systems. Existing work really on does this on
-% trivial problems/single scenarios--can we do better?
+\medskip\noindent
+\gls{RQ3}: \glsdesc{RQ3}
+\medskip
 
-It has been established that beyond a certain \emph{swarm density}
-$\SwarmDensity$ (ratio of swarm size to arena
-size)~\cite{Sugawara1997,Hamann2013}, interactions between components can
-overtake outside interactions. The resulting non-linear behaviors which can
-emerge are not generally predictable from component study; that is, directly
-from the swarm control
-algorithm~\cite{Cotsaftis2009,George2005,Hunt2020,DeWolf2005},
-complicating~\gls{srs} system design. Hence, the collective performance of a
-swarm $\TheSwarm$ of $\TheSwarmSize$ cooperating robots each running an
-identical control algorithm $\kappa$ can be a non-linear function of the
-behavior of a system of $\TheSwarmSize$ independent
-robots~\cite{Harwell2020a}. Below this threshold, swarm behavior can be well
-approximated using linear models. This leads to the third contribution of this
-thesis: characterizing the \emph{practical} limits of linear modeling of the
-non-linear behaviors of swarm, as a function of $\SwarmDensity$ by answering the
-following research questions. First,
+\noindent
+
+Given the complexity of SR systems, and the frequently non-linear ways in
+which behaviors can arise, it is difficult to obtain precise bounds on the
+collective behavior of a swarm $\TheSwarm$ of $\TheSwarmSize$ robots each
+running a control algorithm $\kappa$. Robots might need to respond to
+environmental signals that arrive at unpredictable times; such systems are
+well-modeled as asynchronous, and therefore difficult to predict precisely.
+However, if we conceptualize $\TheSwarm$ as a differentiable, continuous
+quantity, its dynamics can be modeled with~\glspl{ode} whose variables are the
+population counts associated with different roles. We can apply a
+macroscopic-continuous~\gls{ode} modeling approach for the \emph{average}
+behavior of $\TheSwarm$ in the steady state~\cite{Berman2007}, with the caveat
+that when using such a model to determine behavior of $\TheSwarm$, it is
+possible that actual system behaviors are far from the
+average~\cite{Lerman2004a}. Usually, the larger the system, the smaller the
+fluctuations; in small systems the fluctuations resulting from \emph{finite size
+  effects} can be of order $\TheSwarmSize$, resulting in models which are
+accurate at asymptotically large scales but not small scales. The master
+equation~\cite{VanKampen2007}, which is typically used to model expected average
+behavior of systems, can be used to calculate the deviation from the average,
+but such calculations are often intractable or algebraically difficult.
+
+Having established the feasibility of the~\gls{ode} modeling paradigm as a
+suitable testbed to answer~\gls{RQ3}, we consider the following specific
+sub-questions. First,
+
 
 \medskip\noindent
 \gls{RQ3.1}: \glsdesc{RQ3.1}
 \medskip
 
 \noindent
-The exact value of $\SwarmDensity$ at which a given linear model of swarm
-behavior breaks down is influenced by many factors, including the control
-algorithm $\kappa$, the number of robots $\TheSwarmSize$, and characteristics of
-the problem being solved, so in general it cannot be determined \emph{a priori}.
+
+It has been established that beyond a certain \emph{swarm density}
+$\SwarmDensity$ (ratio of swarm size to arena
+size)~\cite{Sugawara1997,Hamann2013}, interactions between components can
+overtake outside interactions.  The exact value of $\SwarmDensity$ at which a
+given linear model of swarm behavior breaks down is influenced by many factors,
+including the control algorithm $\kappa$, the number of robots $\TheSwarmSize$,
+and characteristics of the problem being solved, etc., In general it cannot be
+determined \emph{a priori}, because of emergent non-linear behaviors not
+generally predictable from component study; that is, directly from the swarm
+control algorithm~\cite{Cotsaftis2009,George2005,Hunt2020,DeWolf2005},
+complicating SR system design. Hence, the collective performance of a swarm
+$\TheSwarm$ of $\TheSwarmSize$ cooperating robots each running an identical
+control algorithm $\kappa$ can be a non-linear function of the behavior of a
+system of $\TheSwarmSize$ independent robots~\cite{Harwell2020a}. Below this
+threshold, swarm behavior can be well approximated using linear models. We seek
+to characterize, as a function of $\SwarmDensity$, the \emph{practical} limits
+of using such models to model non-linear behaviors of a swarm engaged in solving
+real-world foraging problems using~\glspl{ode}.
 
 Second,
 
@@ -297,29 +350,46 @@ Second,
 \medskip
 
 \noindent
+To answer~\gls{RQ3.1} and~\gls{RQ3.2} for general foraging tasks,
+i.e., across scenarios, scales, and swarm densities, we require a model with
+wide applicability, and must evaluate the predictive power of a suitable model
+across scales and with variable $\SwarmDensity$ in which we can reliably expect
+non-linear behaviors to arise.  To the best of our knowledge a suitable model
+does not currently exist, and we must develop one. The developed model improves
+on previous modeling work~\cite{Lerman2002,Lerman2001,Lerman2003a} in two
+ways. First, while previous work captured underlying swarm behaviors well, it
+relied on many free parameters and extensive post-hoc model fitting to provide
+accurate predictions. We eliminate most free parameters by deriving analytical
+expressions for them by considering scenario characteristics, robotic control
+algorithm characteristics, etc. The resulting model, while still requiring some
+minor post-hoc fitting, is a step towards a true fundamental model of swarm
+behavior and an affirmative answer to~\gls{RQ3.2}. Second, previous work only
+considered a single scenario with small swarms; we consider multiple scenarios
+and both small and large swarms. Our results in~\cref{ode-modeling:sec:results}
+show that our model provides accurate predictions across block distributions,
+scales, and densities, including some in which the swarm itself is exhibiting
+non-linear behaviors, showing its broad utility in future SR system design.
 
-We seek answers to these questions for general foraging tasks, i.e., across
-scenarios, scales, and swarm densities, and therefore require a model with wide
-applicability to help answer them. Specifically, to answer~\gls{RQ3.1}, we must
-evaluate the predictive power of a suitable model across scales and with
-variable $\SwarmDensity$ in which we can reliably expect non-linear behaviors to
-arise.
+\subsection{Provably Correct Graph Manipulation Algorithms for SR Systems}
 
-To the best of our knowledge a suitable model does not currently exist, and we
-must develop one. The developed model improves on previous modeling
-work~\cite{Lerman2002,Lerman2001,Lerman2003a} in two ways. First, while previous
-work captured underlying swarm behaviors well, it relied on many free parameters
-and extensive post-hoc model fitting to provide accurate predictions. We
-eliminate most free parameters by deriving analytical expressions for them by
-considering scenario characteristics, robotic control algorithm characteristics,
-etc. The resulting model, while still requiring some minor post-hoc fitting, is
-a step towards a true fundamental model of swarm behavior and an affirmative
-answer to~\gls{RQ3.2}. Second, previous work only considered a single scenario
-with small swarms; we consider multiple scenarios and both small and large
-swarms. Our results in~\cref{ode-modeling:sec:results} show that our model
-provides accurate predictions across block distributions, scales, and densities,
-including some in which the swarm itself is exhibiting non-linear behaviors,
-showing its broad utility in future SR system design.
+While the contributions from answering~\gls{RQ3.1} and~\gls{RQ3.2} advance the
+state of the art in modeling of \emph{average} collective swarm behavior, no
+guarantees are provided by the model that the behavior of individual robots will
+not be far from the collective average at any given point. That is, no strict
+guarantees of behavior are provided. We begin to address this gap with the
+fourth and final contribution of this thesis, by examining the following
+research question:
+
+\medskip\noindent
+\gls{RQ4}: \glsdesc{RQ4}
+\medskip
+
+\noindent
+Similar to~\gls{RQ2}, answering~\gls{RQ4} in general for SR systems is
+infeasible, if not impossible, so we again restrict our scope and consider the
+more limited, but still broadly applicable context of~\gls{egm}.
+
+% [JRH] Continue with more egm stuff...
 
 
 %%% Local Variables:

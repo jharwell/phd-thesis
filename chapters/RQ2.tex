@@ -2,7 +2,7 @@
 % RQ2.tex: Chapter describing the investigation into the origin of emergent
 % behavior 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\chapter{RQ2: Origin of Emergent Intelligence in \gls{srs} Systems}%
+\chapter{RQ2: Origin of Emergent Intelligence in SR Systems}%
 \label{chap:emergence-origin}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% 
 %
@@ -138,13 +138,12 @@ through as robots choose tasks, as separate from the task allocation \emph{ meth
 which defines \emph{how} a robot will move through the allocation space.
 %
 \begin{figure}[!htbp]
-  \centering
-  \includegraphics[width=\textwidth]{figures/chapter2/tdgraph.png}
-  \caption[Complex decomposition of $\TAGraphRoot$ via task partitioning for a
-  single robot.]{\label{fig:tdgraph} $\TDGraph$ is a complete binary tree
-    formed by the black edges connecting the task nodes. Each $\phi_i$ is formed
-    by connecting the nodes at height $i$ within $\TDGraph$ together with the
-    blue edges. }
+  \centering \includegraphics[width=\textwidth]{figures/chapter2/tdgraph.png}
+  \phdcaption{Complex decomposition of a foraging task $\TAGraphRoot$ via task
+    partitioning for a single robot}{\label{fig:tdgraph} $\TDGraph$ is a
+    complete binary tree formed by the black edges connecting the task
+    nodes. Each $\phi_i$ is formed by connecting the nodes at height $i$ within
+    $\TDGraph$ together with the blue edges. }
 \end{figure}
 %
 Previous work~\cite{Harwell2018,Pini2011b,Frison2010,Ferrante2015} on task
@@ -231,12 +230,12 @@ shown in Fig.~\ref{fig:tdgraph-reachable}.
 \begin{figure}[!htbp]
   \centering
   \includegraphics[width=\textwidth]{figures/chapter2/tdgraph-accessible.png}
-  \caption[Task allocation neighborhoods $\TAGraph{nbhd}$ within
-  $\TAGraph{a}$]{\label{fig:tdgraph-reachable}. Induced by $\TAGraphE{nbhd}$ for
-    each $v_f\in\TAGraphV{a}$. A task is either the root (node 0, blue), a leaf
-    node (node 7, purple), or neither (node 6, red). The three possible cases of
-    allocation neighborhoods reachable from $v_f$ are shown via different
-    colored edges.}
+  \phdcaption{Task allocation neighborhoods $\TAGraph{nbhd}$ within an arbitrary
+    task allocation graph $\TAGraph{a}$}{\label{fig:tdgraph-reachable}. Induced
+    by $\TAGraphE{nbhd}$ for each $v_f\in\TAGraphV{a}$. A task is either the
+    root (node 0, blue), a leaf node (node 7, purple), or neither (node 6,
+    red). The three possible cases of allocation neighborhoods reachable from
+    $v_f$ are shown via different colored edges/nodes.}
 \end{figure}
 % -----------------------------------
 \subsection{\glsfmtshort{matopt} Task Allocation Space}\label{ssec:matopt-ta-space}
@@ -330,10 +329,10 @@ is a matroid. We define $\IndSets_{\ArbRobot}$ as:
 %
 \begin{figure}[!htbp]
   \centering
-\includegraphics[width=5cm]{figures/chapter2/temporal-ta-graph.png}
-\caption[Unrolled task allocation graph
-$\TAGraph{|A|}$]{\label{fig:temporal-ta-graph} Shown for arbitrary task
-  allocation times $a-1,a,a+1$.}
+  \includegraphics[width=\textwidth]{figures/chapter2/temporal-ta-graph.png}
+  \phdcaption{Unrolled task allocation graph $\TAGraph{|A|}=TAGraph{a}$ for all
+    task allocation times}{\label{fig:temporal-ta-graph} Shown for task
+    allocation times $a-1,a,a+1$.}
 \end{figure}
 %
 $\IndSets_{\ArbRobot}$ consists of every set of task allocation decisions that
@@ -431,19 +430,20 @@ function).
 \begin{figure}[!htbp]
   \centering
   \includegraphics[width=\textwidth]{figures/chapter2/tdgraph-partitioning.png}
-  \caption[Task Partitioning Ambiguities within
-  $\TAGraph{a}$.]{\label{fig:tdgraph-TABs} $v_f$ with unambiguous partition
-    points in red (root and leaf nodes), and ambiguous partition points in
-    gold.}
+  \phdcaption{Task partitioning ambiguities within a task allocation graph
+    $\TAGraph{a}$ of depth 5.}{\label{fig:tdgraph-TABs} $v_f$ with unambiguous
+    partition points in red and blue (root and leaf nodes), and ambiguous
+    partition points in gray. Task partitioning performed according
+    to~\cref{eqn:task-partitioning}.}
 \end{figure}
 %
 \begin{figure}[!htbp]
   \centering
   \includegraphics[width=\textwidth]{figures/chapter2/tdgraph-tabs.png}
-  \caption[Task Allocation Contexts (TABs) within
-  $\TAGraph{a}$.]{\label{fig:tdgraph-TABs} $v_f$ with unambiguous partition
-    points in red (root and leaf nodes), and ambiguous partition points in
-    gold.}
+  \phdcaption{Task Allocation Contexts (TABs) within a task allocation graph
+    $\TAGraph{a}$.}{\label{fig:tdgraph-TABs}. Formed by coalescing taking each
+    node with children and coalescing the clique it belongs to into a single
+    node.~\cref{eqn:TAB-sw} is used to move between coalesced nodes.}
 \end{figure}
 %
 \smallskip\smallskip\smallskip
@@ -580,35 +580,26 @@ inter-robot interference across either (1) linearly increasing swarm sizes, or
 levels indicates more random and/or disorganized motion and therefore less
 emergent intelligence.
 %
-\begin{figure}[!htbp]
- \centering
-  \includegraphics[width=.8\linewidth]{figures/chapter2/ds-foraging.png}
-  \caption[Example dual source (DS) foraging scenario.]{\label{fig:ds-foraging}
-    Multiple robots (blue blobs), objects to be collected (black squares), and
-    the nest in the center (gray). }
-\end{figure}
-%
-Previous work on task partitioning exclusively used single source foraging scenarios,
-in which all objects are distributed in a single cluster within a rectangular
-arena~\cite{Harwell2018,Harwell2019a,Ferrante2015,Pini2011b}. In this work we utilize
-a \emph{dual source} foraging scenario, shown in Fig.~\ref{fig:ds-foraging}, in order
-to provide swarms a richer environment to learn and exploit, as opposed to the
-simpler single source environment.
+Previous work on task partitioning exclusively used single source foraging
+scenarios, in which all objects are distributed in a single cluster within a
+rectangular arena~\cite{Harwell2018,Harwell2019a,Ferrante2015,Pini2011b}. In
+this work we utilize a \emph{dual source} foraging scenario, shown in
+Fig.~\ref{fig:fbd-ds}, in order to provide swarms a richer environment to learn
+and exploit, as opposed to the simpler single source environment.
 
 \begin{figure}[!htbp]
   \centering
   \includegraphics[width=8cm]{{figures/chapter2/cc-pm-self-org-fl-DS.36x18}.jpeg}
   \caption[Emergent intelligence via self-organization in DS scenario
-  (\cref{fig:ds-foraging})]{\label{fig:DS-self-org} Using a 10\% swarm density
+  (\cref{fig:fbd-ds})]{\label{fig:DS-self-org} Using a 10\% swarm density
     under imperfect information. }
 \end{figure}
 
 \begin{figure}[!htbp]
   \centering
   \includegraphics[width=8cm]{{figures/chapter2/cc-pm-blocks-transported-cum-DS.36x18}.jpeg}
-  \caption[Performance in DS scenario
-  (\cref{fig:ds-foraging})]{\label{fig:DS-perf} Using a 10\% swarm density under
-    imperfect information.}
+  \caption[Performance in DS scenario (\cref{fig:fbd-ds})]{\label{fig:DS-perf}
+    Using a 10\% swarm density under imperfect information.}
 \end{figure}
 
 From Fig.~\ref{fig:DS-self-org}, we see that the observed levels of self-organization
