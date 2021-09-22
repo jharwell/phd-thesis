@@ -5,6 +5,43 @@
 \label{chap:measurement}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
+\section{Related Work}\label{measurement:sec:rw}
+%
+Previous work in swarm engineering can be broadly classified into two
+overlapping categories: automatic robot controller
+synthesis~\cite{Francesca2014} which may guarantee collective behaviors and
+% [JRH]: Full list for thesis:
+% \cite{Winfield2005,Ames2019,Campo2007,Turgut2008,Correll2008,Moarref2018,Feddema2002,Hamann2008,Seda2017,Berman2007,Galstyan2005,Lerman2006,Quijano2007,Lerman2004a,Dixon2011,Pini2012,Campo2007,Turgut2008,Gazi2003,Correll2008}
+system
+properties~\cite{Winfield2005,Campo2007,Turgut2008,Correll2008,Moarref2018},
+and the use of mathematical techniques to analyze and predict the collective
+behavior of swarms from characteristics of individual robot
+controllers~\cite{Talamali2020,Lerman2006,Berman2007}.
+
+A method for optimal foraging, as defined from a biological perspective, was
+presented in~\cite{Talamali2020} based on pheromone trails. Differential
+equations were used to model the collective behavior of reactive
+robots~\cite{Lerman2001} and robots with memory which perform task
+allocation~\cite{Lerman2006}. Evolutionary techniques have also been used, and
+the resulting controllers shown to be capable of successfully crossing the
+simulation-reality gap~\cite{Francesca2014,Ligot2020}; other
+works~\cite{Hogg2020} have evolved swarm supervisors (e.g., replacements for
+human supervisors).
+
+Controller synthesis via combined Lyapunov functions and control theoretic
+techniques can provide guarantees that the resulting swarm is ``safe'' (i.e.,
+stay in a desired set of states) in problems such as area patrol, autonomous
+driving, and robot
+walking~\cite{Panagou2020,Glotfelter2019,Ames2021}. Similarly, ensemble dynamics
+filtering has been used to provably shape swarm dynamics during search and
+rescue~\cite{Hsieh2013}. Temporal logic has been used as an alternative basis
+for controller synthesis in scenarios where the results of robot actions are not
+immediately observable~\cite{Winfield2005,Moarref2018} (e.g., robot motion
+between spatial locations), for identifying unrealizable controllers and
+analyzing synthesizer output~\cite{Baumeister2020}, and automated suggestion to
+make unrealizable controllers realizable~\cite{Pacheck2020}. For a review of
+recent works and issues in controller synthesis, see~\cite{Birattari2019}.
+
 %%% Local Variables:
 %%% mode: latex
 %%% TeX-master: "../thesis"

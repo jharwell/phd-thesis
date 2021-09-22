@@ -6,7 +6,7 @@
 \label{chap:emergence-origin}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% 
 %
-\subsection{Background and Related Work}\label{sec:bg-and-related-work}
+\subsection{Background}\label{emergence-origin:sec:bg}
 %
 Matroids generalize notions of independence in linear algebra and graphs, and are
 attractive because matroidal problem formulations are optimally solvable with simple
@@ -35,7 +35,10 @@ sets have the same cardinality.
 % ${S}\cup \{e^{}\} \notin{I}\text{ for any } e^{*} \notin{S}$. That is, a set is
 % maximally independent if there is no element that can be added to the set to create a
 % new independent set.
+%
 
+\subsection{Related Work}\label{emergence-origin:sec:rw}
+%
 Correll et al.~have shown that SR systems are competitive with deterministic
 approaches when communication is tightly constrained and/or when only partial
 information about the environment is available~\cite{Correll2008}. Auction-based
@@ -97,6 +100,8 @@ as cache creation, transfer, and depletion. This generalizes the task partitioni
 approach in~\cite{Harwell2018} by eliminating the requirement for the cache in the
 arena to be maintained by an outside process.
 
+\section{Methods}\label{emergence-origin:sec:methods}
+%
 To answer~\gls{RQ2.1}, we derive the algorithm \gls{stochn1}, which uses the
 neighborhood of a finished task within a task decomposition graph to
 stochastically allocate a new task. We evaluate its emergent intelligence and
