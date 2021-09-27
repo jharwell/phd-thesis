@@ -3,10 +3,10 @@
 % of swarm behavior.
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \chapter{RQ3: Prediction and Control of SR Systems}%
-\label{chap:ode-modeling}
+\label{chap:RQ3}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %
-\section{Background}\label{ode-modeling:sec:background}
+\section{Background}\label{RQ3:sec:background}
 %
 To model swarm collective behavior using Ordinary Differential Equations (ODEs),
 we consider the individual robot Finite State Machine (FSM) (\cref{fig:fsm});
@@ -22,25 +22,24 @@ can be added (see~\cite{Lerman2002} for examples of model refinement by adding
 states).
 %
 \begin{figure}[ht]
-  \centering
-  \includegraphics[width=\linewidth]{figures/chapter3/crw-fsm.png}
-  \caption{\label{fig:fsm} \footnotesize{State diagram for a single robot. The
-      \emph{Avoiding} state is duplicated to uniquely identify the collision
-      avoidance context: avoidance while \emph{Homing} or avoidance while
-      \emph{Searching}. Transition rates are described
-      in~\cref{tab:ode-terms}. Note that the inverse of the amount of time a
-      robot spends in a given state (e.g., $\tau_{h}$ for \emph{Homing}) is the
-      rate of robots leaving the state. Low level details such as sensing and
-      actuation omitted.}}
+  \centering \includegraphics[width=\linewidth]{\figroot{RQ3}/crw-fsm.png}
+  \phdcaption{State diagram for a foraging robot performing a~\gls{crw}}{The
+    \emph{Avoiding} state is duplicated to uniquely identify the collision
+    avoidance context: avoidance while \emph{Homing} or avoidance while
+    \emph{Searching}. Transition rates are described
+    in~\cref{tab:ode-terms}. Note that the inverse of the amount of time a robot
+    spends in a given state (e.g., $\tau_{h}$ for \emph{Homing}) is the rate of
+    robots leaving the state. Low level details such as sensing and actuation
+    omitted.\label{RQ3:fig:crw-fsm}}
 \end{figure}
 
 % [JRH] Address ijcai#63 comment about the method to go from FSM->ODE
 % being case-specific.
 
 Another benefit of the ODE modeling approach is that each of the states
-in~\cref{fig:fsm} maps directly to an ODE describing this change, with the
-transition rates for states become the ODE terms, and all ODEs can therefore be
-directly written down from robot control algorithm characteristics.  We refer
+in~\cref{RQ3:fig:crw-fsm} maps directly to an ODE describing this change, with
+the transition rates for states become the ODE terms, and all ODEs can therefore
+be directly written down from robot control algorithm characteristics.  We refer
 the reader to~\cite{Lerman2001,VanKampen2007} for the theoretical underpinnings
 of the validity of this translation, which can be applied to any SR system, not
 just those engaged in a foraging task. The quantities modeled in~\cref{fig:fsm}
@@ -133,7 +132,7 @@ describes the change in the number of free blocks available for robots to find;
 it decreases whenever a searching robot acquires a block (i.e., once deposited
 in the nest, blocks are not re-distributed in the arena).
 
-\section{Related Work}\label{ode-modeling:sec:rw}
+\section{Related Work}\label{RQ3:sec:rw}
 %
 A promising mathematically rigorous methodology utilizing macro- and microscopic
 models for group dynamics and individual behavior over
@@ -173,6 +172,70 @@ experiment~\cite{Ijspeert2001}, foraging of green/red pucks using agent
 memory~\cite{Lerman2003a}, the ``house hunting
 model''~\cite{Hsieh2008,Berman2007}, and ant-inspired models that collaborate
 with or without communication~\cite{Sugawara1998,Sugawara1997}.
+
+\section{Selected Results}\label{RQ3:sec:selected-results}
+%
+For all scenarios, we omit predictions for $\SwarmNSearching$ since it can be
+computed from the conservation of robots via
+$\SwarmNSearching = \TheSwarmSize - \SwarmNAvoiding - \SwarmNHoming$. We present
+our results with a categorical (i.e., non-scaled) X-axis, with one data point
+per experiment, and a logarithmic Y-axis for larger $\TheSwarmSize$, to improve
+readability.
+
+\subsection{Constant $\SwarmDensity$, Large $\TheSwarmSize$}\label{ssec:results-large-const-rho}
+%
+\begin{figure}[t]
+  \begin{minipage}{.49\linewidth}
+    {\includegraphics[width=\linewidth]{{\figroot{RQ3}/large/SS.16x8x2+DS.16x8x2-sc-graphs/sc-N_h-d0.CRW}.png}}
+    {(a) Comparison of predictions of $\SwarmNHoming$ (homing) behavior with
+      experimental data for SS and DS scenarios.}
+    %
+  \end{minipage}
+  \hfill
+  \begin{minipage}{.49\linewidth}
+    {\includegraphics[width=\linewidth]{{\figroot{RQ3}/large/SS.16x8x2+DS.16x8x2-sc-graphs/sc-N_av-d0.CRW}.png}}
+    {(b) Comparison of predictions of
+      $\SwarmNAvoiding=\SwarmNAvoidingWhileHoming+\SwarmNAvoidingWhileSearching$
+      (avoidance) behavior with experimental data for SS and DS scenarios.}
+  \end{minipage}
+  \hfill
+  \begin{minipage}{.49\linewidth}
+    {\includegraphics[width=\linewidth]{{\figroot{RQ3}/large/RN.8x8x2+PL.8x8x2-sc-graphs/sc-N_h-d0.CRW}.png}}
+    {(c) Comparison of predictions of $\SwarmNHoming$ (homing) behavior with
+      experimental data for RN and PL scenarios.}
+    %
+  \end{minipage}
+  \hfill
+  \begin{minipage}{.49\linewidth}
+    {\includegraphics[width=\linewidth]{{\figroot{RQ3}/large/RN.8x8x2+PL.8x8x2-sc-graphs/sc-N_av-d0.CRW}.png}}
+    {(d) Comparison of predictions of
+      $\SwarmNAvoiding=\SwarmNAvoidingWhileHoming+\SwarmNAvoidingWhileSearching$
+      (avoidance) behavior with experimental data for RN and PL scenarios.}
+  \end{minipage}
+  \phdcaption{Predictions of swarm behavior at large scales with constant swarm
+    density}{\footnotesize{Shown for $\SwarmDensity=0.1$ for single source (SS),
+      dual source (DS), random (RN), and power law (PL)
+      scenarios. }\label{RQ3:fig:results-large-const-rho}}
+\end{figure}
+%
+In~\cref{RQ3:fig:results-large-const-rho}, we see strong agreement between the
+predictions of our model and experimental results for SS, DS, and RN scenarios,
+providing compelling evidence that (1) our model is capturing the underlying
+dynamics of inter-robot interference and searching accurately and (2) our
+mean-field and linearity assumptions were accurate. PL scenarios are the least
+favorable of all foraging environments, since they are asymmetrical and do not
+contain easily exploitable block clusters. Our model struggles to predict
+$\SwarmNHoming,\SwarmNAvoiding$ within the 95\% confidence interval, but does
+track the overall trend reasonably well, showing that our underlying diffusion
+model and assumptions about linearity of $\alpha_r$ are generally accurate even
+in this difficult case. The divergence that does exist between predictions and
+experiments for PL scenarios suggests that \cref{eqn:acq-pdf-single} is
+moderately inaccurate; this is further supported by slight differences between
+experimental data and predictions for $\SwarmNHoming$ in the RN and DS scenarios
+environments.  In~\cref{RQ3:fig:results-large-const-rho}b, when our predictions
+of $\SwarmNAvoiding$ are inaccurate for some SS scenarios (in terms of
+confidence intervals), the inaccuracy may not be of practical concern as the
+predictions only differ from experimental results by $< 1$ robot/$6,000$.
 
 %%% Local Variables:
 %%% mode: latex

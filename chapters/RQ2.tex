@@ -3,10 +3,10 @@
 % behavior 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \chapter{RQ2: Origin of Emergent Intelligence in SR Systems}%
-\label{chap:emergence-origin}
+\label{chap:RQ2}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% 
 %
-\subsection{Background}\label{emergence-origin:sec:bg}
+\subsection{Background}\label{RQ2:sec:bg}
 %
 Matroids generalize notions of independence in linear algebra and graphs, and are
 attractive because matroidal problem formulations are optimally solvable with simple
@@ -23,7 +23,6 @@ conditions:
     such that $X\cup\{y\}\in\IndSets$}\label{prop:matroid3}
 \end{enumerate}
 
-% MLG since the condition is written using X and Y, I would use X and Y instead of X_1 and X_2.
 The third condition is the independence augmentation axiom, also sometimes referred
 to as the exchange property. If $X$ is independent and there exists a larger
 independent set $Y$, then $X$ can be grown to a larger independent set, implying that
@@ -37,7 +36,7 @@ sets have the same cardinality.
 % new independent set.
 %
 
-\subsection{Related Work}\label{emergence-origin:sec:rw}
+\subsection{Related Work}\label{RQ2:sec:rw}
 %
 Correll et al.~have shown that SR systems are competitive with deterministic
 approaches when communication is tightly constrained and/or when only partial
@@ -60,21 +59,21 @@ environment as chemical reactions between molecules~\cite{Matthey2009} such that
 % allocation is almost always superior to static allocations in more general and/or
 % reactive environments (such as those in which SR approaches are best suited).
 
-\emph{Task partitioning} involves dividing a \emph{decomposable} task into simpler
-subtasks which are multi-agent allocatable~\cite{Ratnieks1999, Korsah2013}. Many of
-the solutions to foraging tasks found by social insects employ this strategy, and
-task partitioning in both natural and SR systems has many well-known benefits,
-including (1) increased performance at group level, (2) stimulated specialization,
-(3) parallel task execution, (4) reduced interference between individuals due to
-self-organization around spatial locality of subtasks in comparison to the
-unpartitioned task, (5) improved exploitation of the environment, and (6) improved
-transport efficiency~\cite{Hart2002,Pini2011b,Pini2011a}. Prior work on task
-partitioning in SR has focused on allocating individuals to subtasks to maximize
-efficiency given the optimal task distribution \emph{a
-  priori}~\cite{Correll2008,Berman2009,Matthey2009,Hsieh2008} and did not consider
-sequential interdependencies between subtasks
-(with~\cite{Pini2011b,Brutschy2014,Ferrante2015,Frison2010,Harwell2018} being notable
-exceptions).
+\gls{task-partitioning} is~\glsdesc{task-partitioning}. Many of the solutions to
+foraging tasks found by social insects employ this strategy, and task
+partitioning in both natural and SR systems has many well-known benefits,
+including (1) increased performance at group level, (2) stimulated
+specialization, (3) parallel task execution, (4) reduced interference between
+individuals due to self-organization around spatial locality of subtasks in
+comparison to the unpartitioned task, (5) improved exploitation of the
+environment, and (6) improved transport
+efficiency~\cite{Hart2002,Pini2011b,Pini2011a}. Prior work on task partitioning
+in SR has focused on allocating individuals to subtasks to maximize efficiency
+given the optimal task distribution \emph{a
+  priori}~\cite{Correll2008,Berman2009,Matthey2009,Hsieh2008} and did not
+consider sequential interdependencies between subtasks
+(with~\cite{Pini2011b,Brutschy2014,Ferrante2015,Frison2010,Harwell2018} being
+notable exceptions).
 
 In many cases, \emph{a priori} optimal task distributions are not feasible because
 (1) complete information on the environment is not available, (2) the environment
@@ -100,7 +99,7 @@ as cache creation, transfer, and depletion. This generalizes the task partitioni
 approach in~\cite{Harwell2018} by eliminating the requirement for the cache in the
 arena to be maintained by an outside process.
 
-\section{Methods}\label{emergence-origin:sec:methods}
+\IGNORE{\section{Methods}\label{RQ2:sec:methods}
 %
 To answer~\gls{RQ2.1}, we derive the algorithm \gls{stochn1}, which uses the
 neighborhood of a finished task within a task decomposition graph to
@@ -143,7 +142,7 @@ through as robots choose tasks, as separate from the task allocation \emph{ meth
 which defines \emph{how} a robot will move through the allocation space.
 %
 \begin{figure}[!htbp]
-  \centering \includegraphics[width=\textwidth]{figures/chapter2/tdgraph.png}
+  \centering \includegraphics[width=\textwidth]{\figroot{RQ2}/tdgraph.png}
   \phdcaption{Complex decomposition of a foraging task $\TAGraphRoot$ via task
     partitioning for a single robot}{\label{fig:tdgraph} $\TDGraph$ is a
     complete binary tree formed by the black edges connecting the task
@@ -187,6 +186,7 @@ cost). Defining decision variables $x_{ij}\in{\{0, 1\}}$ indicating that task $j
 been allocated to robot $i$, and a utility $u_{ij}$ for the allocation $(i,j)$,
 solving this problem optimally for $\TheSwarm$ is equivalent to solving the following
 linear program for each allocation $a\in{A}$:
+%
 % [JRH] Should see if I can use one of the MRTA paper linear programs here--would be
 % much stronger.
 %
@@ -234,7 +234,7 @@ shown in Fig.~\ref{fig:tdgraph-reachable}.
 %
 \begin{figure}[!htbp]
   \centering
-  \includegraphics[width=\textwidth]{figures/chapter2/tdgraph-accessible.png}
+  \includegraphics[width=\textwidth]{\figroot{RQ2}/tdgraph-accessible.png}
   \phdcaption{Task allocation neighborhoods $\TAGraph{nbhd}$ within an arbitrary
     task allocation graph $\TAGraph{a}$}{\label{fig:tdgraph-reachable}. Induced
     by $\TAGraphE{nbhd}$ for each $v_f\in\TAGraphV{a}$. A task is either the
@@ -334,7 +334,7 @@ is a matroid. We define $\IndSets_{\ArbRobot}$ as:
 %
 \begin{figure}[!htbp]
   \centering
-  \includegraphics[width=\textwidth]{figures/chapter2/temporal-ta-graph.png}
+  \includegraphics[width=\textwidth]{\figroot{RQ2}/temporal-ta-graph.png}
   \phdcaption{Unrolled task allocation graph $\TAGraph{|A|}=TAGraph{a}$ for all
     task allocation times}{\label{fig:temporal-ta-graph} Shown for task
     allocation times $a-1,a,a+1$.}
@@ -434,7 +434,7 @@ function).
 %
 \begin{figure}[!htbp]
   \centering
-  \includegraphics[width=\textwidth]{figures/chapter2/tdgraph-partitioning.png}
+  \includegraphics[width=\textwidth]{\figroot{RQ2}/tdgraph-partitioning.png}
   \phdcaption{Task partitioning ambiguities within a task allocation graph
     $\TAGraph{a}$ of depth 5.}{\label{fig:tdgraph-TABs} $v_f$ with unambiguous
     partition points in red and blue (root and leaf nodes), and ambiguous
@@ -444,7 +444,7 @@ function).
 %
 \begin{figure}[!htbp]
   \centering
-  \includegraphics[width=\textwidth]{figures/chapter2/tdgraph-tabs.png}
+  \includegraphics[width=\textwidth]{\figroot{RQ2}/tdgraph-tabs.png}
   \phdcaption{Task Allocation Contexts (TABs) within a task allocation graph
     $\TAGraph{a}$.}{\label{fig:tdgraph-TABs}. Formed by coalescing taking each
     node with children and coalescing the clique it belongs to into a single
@@ -570,6 +570,10 @@ here:
     problem; has a logarithmic regret bound~\cite{Auer2002,Pini2013a,Pini2012}. }
 \end{itemize}
 %
+}
+
+\section{Selected Results}\label{RQ2:sec:results}
+%
 \subsection{Effect on Performance of Task Decomposition Graph Richness }\label{sec:exp-tdgraph-richness}
 %
 To gain insight into the effect of task decomposition graph richness on
@@ -588,13 +592,13 @@ emergent intelligence.
 Previous work on task partitioning exclusively used single source foraging
 scenarios, in which all objects are distributed in a single cluster within a
 rectangular arena~\cite{Harwell2018,Harwell2019a,Ferrante2015,Pini2011b}. In
-this work we utilize a \emph{dual source} foraging scenario, shown in
-Fig.~\ref{fig:fbd-ds}, in order to provide swarms a richer environment to learn
+this work we utilize a \emph{dual source} foraging scenario, shown
+in~\cref{fig:fbd-ds}, in order to provide swarms a richer environment to learn
 and exploit, as opposed to the simpler single source environment.
 
 \begin{figure}[!htbp]
   \centering
-  \includegraphics[width=8cm]{{figures/chapter2/cc-pm-self-org-fl-DS.36x18}.jpeg}
+  \includegraphics[width=\textwidth]{{\figroot{RQ2}/cc-pm-self-org-fl-DS.36x18}.jpeg}
   \caption[Emergent intelligence via self-organization in DS scenario
   (\cref{fig:fbd-ds})]{\label{fig:DS-self-org} Using a 10\% swarm density
     under imperfect information. }
@@ -602,7 +606,7 @@ and exploit, as opposed to the simpler single source environment.
 
 \begin{figure}[!htbp]
   \centering
-  \includegraphics[width=8cm]{{figures/chapter2/cc-pm-blocks-transported-cum-DS.36x18}.jpeg}
+  \includegraphics[width=\textwidth]{{\figroot{RQ2}/cc-pm-blocks-transported-cum-DS.36x18}.jpeg}
   \caption[Performance in DS scenario (\cref{fig:fbd-ds})]{\label{fig:DS-perf}
     Using a 10\% swarm density under imperfect information.}
 \end{figure}
@@ -616,6 +620,7 @@ performance across all scales. Comparing Fig.~\ref{fig:DS-self-org} and
 Fig.~\ref{fig:DS-perf} we observe that, generally speaking, higher levels of swarm
 intelligence are positively correlated with higher performance.
 %
+\IGNORE{
 \subsection{Emergence of Swarm Intelligence from Task Decomposition Graph Richness}
 %
 To investigate the origin of swarm emergent intelligence (\gls{RQ2.1}), we ran
@@ -633,8 +638,8 @@ of excessive inter-robot interference at high densities).
 
 \begin{figure}[!htbp]
   \centering
-  \includegraphics[height=4cm]{figures/chapter2/{depth1-cc-pm-blocks-collected-cum-DS.36x18_01}.png}
-  \caption[Performance difference comparison on a \emph{compound} task
+  \includegraphics[width=.49\textwidth]{\figroot{RQ2}/{depth1-cc-pm-blocks-collected-cum-DS.36x18_01}.png}
+  \phcaption[Performance difference comparison on a~\gls{compound-task} task
   decomposition graph between swarms operating under matroid optimality
   constraints vs. relaxation.]{\label{fig:DS-relaxation-depth1} Negative values
     indicate that a performance drop was observed when constraints were relaxed,
@@ -658,7 +663,7 @@ does \emph{better} than the one without it.
 
 \begin{figure}[htb!]
   \centering
-  \includegraphics[height=4cm]{figures/chapter2/{depth2-cc-pm-blocks-collected-cum-DS.36x18_01}.png}
+  \includegraphics[width=0.49\textwidth]{\figroot{RQ2}/{depth2-cc-pm-blocks-collected-cum-DS.36x18_01}.png}
   \caption[Performance difference comparison on a \emph{complex} task
   decomposition graph between swarms operating under matroid optimality
   constraints vs. relaxation.]{\label{fig:DS-relaxation-depth2} Negative values
@@ -668,17 +673,18 @@ does \emph{better} than the one without it.
 
 \section{Discussion}
 
-We observe in Fig.~\ref{fig:DS-self-org} that the self-organization measure we employ
-(derived by~\cite{Harwell2019a}) is sensitive to the task allocation method, and that
-considerable self-organization emerges, in comparison to the baseline random
-allocation method. However, in this work we have only established a rough correlation
-between emergent intelligence and performance, as we see that even though swarms
-using random task allocation still outperform more ``intelligent'' methods such as
-UCB1 in many cases. One would expect that the \gls{matopt} and $\epsilon$-greedy methods,
-even without optimality constraints in place (as in this case), would do better than
-randomized allocations.
+We observe in~\cref{fig:DS-self-org} that the self-organization measure we
+employ (derived by~\cite{Harwell2019a}) is sensitive to the task allocation
+method, and that considerable self-organization emerges, in comparison to the
+baseline random allocation method. However, in this work we have only
+established a rough correlation between emergent intelligence and performance,
+as we see that even though swarms using random task allocation still outperform
+more ``intelligent'' methods such as UCB1 in many cases. One would expect that
+the \gls{matopt} and $\epsilon$-greedy methods, even without optimality
+constraints in place (as in this case), would do better than randomized
+allocations.
 
-Comparing the heatmaps in Fig.~\ref{fig:DS-perf} across all methods, it is clear that
+Comparing the heatmaps in~\cref{fig:DS-perf} across all methods, it is clear that
 the richness of the task allocation graph positively affects self organization, which
 we believe is due to the swarm's increased ability to dynamically adapt to changing
 traffic flows as time progresses. From this we can answer~\gls{RQ2.1} and
@@ -687,25 +693,26 @@ effect on the emergent intelligence of a swarm, (2) more complex task decomposit
 graphs result in higher levels of emergent intelligence, (3) swarm emergent
 intelligence is positively correlated with performance.
 
-Within Fig.~\ref{fig:DS-relaxation-depth1} (compound task decomposition graph), we
+Within ~\cref{fig:DS-relaxation-depth1} (compound task decomposition graph), we
 see empirical evidence that our matroid optimality constraints and method of
 enforcement were valid through the consistent performance drops observed across
 scales for \gls{matopt} and $\epsilon$-greedy. Examining
-Fig.~\ref{fig:DS-relaxation-depth2}, we see a general lack of trends between
-performance under relaxation vs.~under constraints, for all tested methods, which we
-attribute to pthe higher levels of swarm intelligence present via the complex task
-decomposition graph. That is, the lack of trends is due to collective learning of the
-graph \emph{structure}, rather than graph \emph{content}, which gives rise to higher
-levels of swarm intelligence, and the richer structure of the complex decomposition
-graph overwhelms the effect of the optimality constraints.
+~\cref{fig:DS-relaxation-depth2}, we see a general lack of trends between
+performance under relaxation vs.~under constraints, for all tested methods,
+which we attribute to pthe higher levels of swarm intelligence present via the
+complex task decomposition graph. That is, the lack of trends is due to
+collective learning of the graph \emph{structure}, rather than graph
+\emph{content}, which gives rise to higher levels of swarm intelligence, and the
+richer structure of the complex decomposition graph overwhelms the effect of the
+optimality constraints.
 
 For both types of decomposition graphs, the \gls{matopt} method was \emph{not}
 the optimal method, even under constraints, though we do observe the largest
 performance boost of all the tested methods under perfect
 information. \gls{matopt} ignores task decomposition graph structure, and
 assumes independent tasks, which is shown to be an invalid assumption. In
-addition, from Fig.~\ref{fig:DS-perf} and the performance drops in
-Fig.~\ref{fig:DS-relaxation-depth1}, Fig.~\ref{fig:DS-relaxation-depth2},
+addition, from~\cref{fig:DS-perf} and the performance drops in
+~\cref{fig:DS-relaxation-depth1},~\cref{fig:DS-relaxation-depth2},
 \gls{stochn1} performs the best under both imperfect and perfect information,
 though it experiences performance drops, rather than increases, under perfect
 information. Random performed the second best in many cases, though it was
@@ -742,7 +749,7 @@ theoretical models. More work is also needed to refine the relationship between
 emergent intelligence and performance. In order to facilitate future research and
 collaboration, the code used for this research is open source, and can be found at
 https://github.com/swarm-robotics.
-
+}
 %%% Local Variables:
 %%% mode: latex
 %%% TeX-master: "../thesis"
