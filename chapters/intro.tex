@@ -97,41 +97,37 @@ construction~\cite{Petersen2011}.
 
 In this thesis, we contribute to the state of the art in~\gls{swarm-engineering}
 by studying two important abstract scenarios which can be mapped to any of the
-real-world use problems above: foraging and embodied graph manipulation.
+real-world use problems above: foraging and~\gls{egm}.
 
-\subsection{Foraging}
-%
 In a foraging task, robots gather objects (blocks) from across a finite
 operating arena and bring them to a central location (often called the
 \emph{nest}) for further processing (the \emph{central place foraging
   problem}). Foraging is one of the most studied applications of SR, due to its
 straightforward mapping to real-world applications~\cite{Hecker2015}; for an
-extensive discussion of the state of the art, see~\cite{Lu2020}.  The
-complexity of the foraging task frequently gives rise to non-linear behavioral
-dynamics due to inter-robot interactions, which in turn make designing SR
-systems with provable bounds of behavior and practical utility difficult.
+extensive discussion of the state of the art, see~\cite{Lu2020}.  The complexity
+of the foraging task frequently gives rise to non-linear behavioral dynamics due
+to inter-robot interactions, which in turn make designing SR systems with
+provable bounds of behavior and practical utility difficult.
 
-\subsection{Embodied Graph Manipulation}
-%
-In an embodied graph manipulation task, robots interact with an environment
-which contains one or more physically embodied structures, abstracted as
-heterogeneous grid graphs (i.e., grid graphs in Euclidean space with potentially
-non-uniform distance between nodes). Each node in the graph is an object (block)
-which a robot can carry, and each undirected edge between two nodes $(u,v)$
-corresponds to the extent of a block anchored at $u$ along the X,Y, or Z axes to
-$v$.
-% [JRH] Continue on with motivation and stuff
+In an~\gls{egm} task, robots interact with an environment which contains one or
+more physically embodied structures, abstracted as heterogeneous grid graphs
+(i.e., grid graphs in Euclidean space with potentially non-uniform distance
+between nodes), and must manipulate the graph in some way to achieve a
+collective goal. Each node in the graph is an object (block) which a robot can
+carry, and each edge between two nodes $(u,v)$ corresponds to the extent of a
+block anchored at $u$ along the X,Y, or Z axes to $v$.
 
 \section{Summary of Contributions}
 %
-In the context of foraging and embodied graph manipulation, we study SR
-systems from two perspectives. First, to understand from a mathematical point of
-view how and why these properties arise in SR systems. Second, to develop
-theoretical tools to assist with designing SR systems that provably
-embody these properties.  In the remainder of this chapter, we outline our
-contributions to each of these perspectives of SR system research,
-framing each contributions as answering an important open research question in
-the field.
+In the context of the foraging and~\gls{egm} problems, we study SR systems from
+two perspectives. First, to understand from a mathematical point of view how and
+why the properties of emergent self-organization, scalability, flexibility, and
+robustness arise in SR systems, and how they can be leveraged to gain insight
+into system behavior beyond raw performance observations. Second, to develop
+theoretical tools to assist with designing SR systems that provably embody these
+properties.  In the remainder of this chapter, we outline our contributions to
+each of these perspectives of SR system research, framing each contribution as
+contributing to an important open research question in the field.
 
 \subsection{Measurement of SR System Properties }
 %
@@ -146,17 +142,16 @@ questions must be considered:
     scenario?}
 \item {Can the solution flexibly handle unknown environments or those with
     fluctuating conditions?}
-
 \item {Is the solution robust to sensor/actuator noise and population size
     fluctuations?
   }
 \end{enumerate}
 %
-In order to answer these questions we need a method for quantifying
-each of the desirable system properties with numerical calculations; to the best
-of our knowledge, such a methodology does not exist. This leads to the first
-contribution of this thesis: the establishment of such a methodology by
-answering the following fundamental research question:
+In order to answer these questions we need a method for quantifying each of the
+desirable system properties with numerical calculations; to the best of our
+knowledge, such a methodology does not exist. This leads to the first
+contribution of this thesis, published in~\cite{Harwell2021a}: the establishment
+of such a methodology by answering the following fundamental research question:
 
 \medskip\noindent
 \gls{RQ1}: \textbf{\Glsdesc{RQ1}}
@@ -210,7 +205,8 @@ which can be decomposed multiple ways.
 
 Using these definitions, we can ask the following specific research questions to
 answer~\gls{RQ2} in the context of task allocating swarms, the answers to which
-form the second contribution of this thesis. First,
+form the second contribution of this thesis, originally published
+in~\cite{Harwell2020a}. First,
 
 \medskip\noindent
 \gls{RQ2.1}: \textbf{\Glsdesc{RQ2.1}}
@@ -233,7 +229,7 @@ Second,
 
 \medskip\noindent
 \gls{RQ2.2}: \textbf{\Glsdesc{RQ2.2}}
-\medskip
+n\medskip
 
 \noindent
 That is, what is it that the swarm collectively learns from each relational
@@ -247,16 +243,15 @@ individual robot policies (intersection of matroids~\cite{Williams2017}). By
 comparing the performance of~\gls{matopt} under constraints with that
 of~\gls{stochn1}, we can determine whether emergent intelligence is more tied
 to graph \emph{content} (tasks within the graph, treated as independent
-by~\gls{matopt}), or to graph \emph{connectivity};~\gls{stochn1} should be the
-highest performing allocation method if it is the former.
+by~\gls{matopt}), or to graph \emph{connectivity}.
 
 We compare the emergent intelligence and performance of~\gls{matopt}
 against~\gls{stochn1} (which is specifically designed to enable collective
 learning of graph connectivity, including task dependencies), and other state of
-the art approaches at real-world scales (swarms of > 1,000 robots). We show that
-swarm emergent intelligence is strongly tied to collective learning of graph
-connectivity and structure (as opposed to graph content) by injecting accurate
-knowledge about graph content (task costs), and comparing resulting
+the art approaches at real-world scales (swarms of $>$ \unit{1,000} robots). We
+show that swarm emergent intelligence is strongly tied to collective learning of
+graph connectivity and structure (as opposed to graph content) by injecting
+accurate knowledge about graph content (task costs), and comparing resulting
 performance.~\gls{stochn1} is the most highly performing method in all tested
 cases, providing strong quantitative evidence supporting the suitability of SR
 systems for dangerous/unstable environments in which only partial or incomplete
@@ -283,7 +278,7 @@ swarm behavior is more difficult, but provides the means to precisely predict it
 \emph{a priori}---\emph{without} the need of repetitive experiments. Tools and
 methods for such characterization are key to engineering better SR
 systems, and motivates our investigation into the following research question,
-and the third contribution of this thesis:
+and the third contribution of this thesis <Do I put ``under review'' here?>:
 
 \medskip\noindent
 \gls{RQ3}: \textbf{\Glsdesc{RQ3}}
@@ -342,22 +337,22 @@ to characterize, as a function of $\SwarmDensity$, the \emph{practical} limits
 of using such models to model non-linear behaviors of a swarm engaged in solving
 real-world foraging problems using~\glspl{ode}.
 
-% [JRH] This goes in the background here I think.
 Many real-world foraging problems across scales can be tackled using swarms in
 low density environments (independent of swarm size) in which each robot is
-responsible for a large area on the order of $100m^2$; these include indoor
-warehouses/object transport ($\approx{64}m^2$), outdoor search and rescue,
-precision agriculture, and field monitoring ($600,000m^2\approx{150}$
-acres). While recent results summarizing the challenges of moving swarms into
-the real world argue that directing research towards low density swarm
-applications is critical~\cite{Tarapore2020}, some researchers hold that swarms
-with low $\SwarmDensity$ are not properly characterized as swarms, and are
-instead systems of independent robots because they lack the high level of
-inter-agent interaction which characterizes natural swarms. However, we argue
-that a high level of inter-agent interaction (and therefore potentially emergent
-self-organization) is only one of the defining properties of swarms. Low density
-swarms exhibiting the properties of scalability, flexibility, and robustness can
-properly still be considered swarms~\cite{Harwell2020a}.
+responsible for a large area on the order of \SI{100}{\metre^2}; these include
+indoor warehouses/object transport ($\approx{\SI{64}{\m^2}}$), outdoor search
+and rescue, precision agriculture, and field monitoring
+($\SI{600,000}{\metre^2}\approx{150}$ acres). While recent results summarizing
+the challenges of moving swarms into the real world argue that directing
+research towards low density swarm applications is critical~\cite{Tarapore2020},
+some researchers hold that swarms with low $\SwarmDensity$ are not properly
+characterized as swarms, and are instead systems of independent robots because
+they lack the high level of inter-agent interaction which characterizes natural
+swarms. However, we argue that a high level of inter-agent interaction (and
+therefore potentially emergent self-organization) is only one of the defining
+properties of swarms. Low density swarms exhibiting the properties of
+scalability, flexibility, and robustness can properly still be considered
+swarms~\cite{Harwell2020a}.
 
 Second,
 
@@ -381,7 +376,7 @@ algorithm characteristics, etc. The resulting model, while still requiring some
 minor post-hoc fitting, is a step towards a true fundamental model of swarm
 behavior and an affirmative answer to~\gls{RQ3.2}. Second, previous work only
 considered a single scenario with small swarms; we consider multiple scenarios
-and both small and large swarms. Our results in~\cref{ode-modeling:sec:results}
+and both small and large swarms. Our results in~\cref{RQ3:sec:results}
 show that our model provides accurate predictions across block distributions,
 scales, and densities, including some in which the swarm itself is exhibiting
 non-linear behaviors, showing its broad utility in future SR system design.
@@ -391,22 +386,101 @@ non-linear behaviors, showing its broad utility in future SR system design.
 While the contributions from answering~\gls{RQ3.1} and~\gls{RQ3.2} advance the
 state of the art in modeling of \emph{average} collective swarm behavior, no
 guarantees are provided by the model that the behavior of individual robots will
-not be far from the collective average at any given point. That is, no strict
-guarantees of behavior are provided. We begin to address this gap with the
-fourth and final contribution of this thesis, by examining the following
-research question:
+not be far from the collective average at any given point. We begin to address
+this gap with the fourth and final contribution of this thesis, by examining the
+following research question:
 
 \medskip\noindent
 \gls{RQ4}: \textbf{\Glsdesc{RQ4}}
 \medskip
 
 \noindent
-Similar to~\gls{RQ2}, answering~\gls{RQ4} in general for SR systems is
-infeasible, if not impossible, so we again restrict our scope and consider the
-more limited, but still broadly applicable context of~\gls{egm}.  We model the
-interaction between a swarm and its environment as a graph manipulation problem,
-and derive a provably correct class of algorithm for incrementally constructing
-or deconstructing graphs which certain properties.
+Similar to~\gls{RQ2}, answering~gls{RQ4} in general for SR systems is
+infeasible, if not impossible, we again restrict our scope and consider it in
+the more limited, but still broadly applicable context of the~\gls{egm}
+problem. In the~\gls{egm} problem, agents must manipulate some aspect of their
+environment, represented by a graph, by adding/removing nodes/edges over time in
+order to achieve a goal. This abstraction maps naturally to two of the most
+important real-world problems within which robotic automation has largely been
+absent: construction and its counterpart, deconstruction~\cite{Werfel2006} (and
+their associated variants: rubble clearing, pothole filling, etc.). Construction
+and deconstruction tasks are inherently dangerous; e.g., constructing a home in
+a stable environment such as a rural area has a fatal injury rate 3.5 times
+higher than other occupations~\cite{Napp2012}. In more dangerous environments,
+it is even higher, without any reduction in importance and/or urgency in
+building important structures, including levee banks to prevent river flooding,
+rail and power distribution networks (terrestrial or space), bases on the lunar
+surface, homes in disaster areas~\cite{Zhang2011,Allwright2014,Grushin2006}, or
+reinforcing infrastructure after natural disasters~\cite{Magnenat2012}.  With
+the increased rise of extreme weather due to climate change, more and more
+structures will need to be built, rebuilt, or have their rubble cleared away
+quickly in potentially unstable or dangerous environments. Clearly, the
+development of scalable autonomous~\gls{egm} systems is urgent, not only to
+reduce risk to human life for construction workers, but also to more quickly
+build simple structures to prevent future damage to infrastructure or loss of
+life in affected areas.
+
+Both construction and deconstruction (and~\gls{egm} tasks in general) are
+challenging and complex problems, because successful systems must have the
+ability to: (1) sense and manipulate assembly components; (2) interact with the
+desired structure at all stages of the assembly/disassembly process; (3) satisfy
+a variety of precedence constraints to ensure assembly/disassembly correctness;
+and (4) ensure static stability and structural integrity throughout the
+assembly/disassembly. The complexity of the~\gls{egm} problem, compounded with
+robot perception, communication, and reliability issues in dangerous or unstable
+environments means that conventional single-robot or multi-robot approaches
+cannot easily be applied~\cite{Magnenat2012}. Nevertheless, some SR systems
+system providing provable guarantees about robot behavior and convergence (e.g.,
+finishing the assigned task) exist for the construction problem under strong
+assumptions and restrictions~\cite{Petersen2011,Meng2008}; similarly for the
+deconstruction problem~\cite{Petersen2011}.  Graph theoretic approaches to
+the~\gls{egm} problem have also been successful, but have employed a centralized
+controller~\cite{Worcester2011}; other works frequently use $\le 10$
+robots~\cite{Worcester2011,Zhang2011,Allright2017,Zhang2008}.
+
+As a result, while demonstrably successful approaches to small laboratory
+variants of the~\gls{egm} problem, the wider applicability of SR systems to
+real-world variants requiring hundreds or thousands of robots is unknown.
+However, coordinating large numbers of embodied agents in such tasks at large
+scales is clearly \emph{possible}: the success of natural systems in
+collectively building structures of scope and size vastly greater than that of a
+single worker is undeniable (e.g., ants, termites). Furthermore, the scope and
+size of natural structures maps well to types of many artificial structures with
+high utility that could be constructed (or deconstructed) by autonomous
+multi-robot systems in real-world scenarios, providing strong natural
+inspiration and motivation for this work.
+
+We present a naturally inspired graph-theoretic model precisely defining a class
+of graphs which can be provably manipulated to construct or deconstruct 3D
+structures in different environments. Our graphical model has the following
+properties:
+
+\emph{Inherently parallel}. The addition or removal of nodes from graphs is
+parallelized with $N/2$ simultaneous manipulations possible, where $N=min(X,Y)$
+is the smallest 2D span of the graph. In previous works, the addition of nodes
+is generally \emph{serial}; that is, regardless of the number of agents working
+on a structure few, if any, simultaneous attachments or placements are
+possible~\cite{Petersen2011,Werfel2011,Worcester2011}. Works allowing
+simultaneous attachments and/or sub-structure assembly are usually simplified 2D
+environments~\cite{Meng2008,Zhang2011,Matthey2009}, and the development and
+evaluation of existing approaches under idealized conditions (typically a 2D or
+3D discrete lattice with few constraints on motion, which is also discrete and
+mostly random~\cite{Grushin2006,Theraulaz1995}) increases the simulation-reality
+gap.
+
+\emph{Embodiment Independence}. By representing the objects to be manipulated as
+nodes within a graph, and obtaining specific properties of individual objects
+from the graph structure, we obtain a general framework for reasoning about
+discrete structures composed of (possibly) heterogeneous objects.
+
+We also present a class of algorithms which guarantee collective completion of
+the construction or deconstruction task as long as at least one robot remains
+active, thereby decisively answering~\gls{RQ1} in the context of~\gls{egm}
+problems. These algorithms do not require explicit inter-robot communication,
+centralized control, or ``smart'' blocks~\cite{Werfel2006} to achieve
+convergence, using joint environment manipulation to communicate and coordinate
+and graphical invariants to guarantee task completion from any partially
+constructed/deconstructed state.
 
 This work is yet to be completed.
 

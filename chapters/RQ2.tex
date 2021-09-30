@@ -1,10 +1,10 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % RQ2.tex: Chapter describing the investigation into the origin of emergent
-% behavior 
+% behavior
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \chapter{RQ2: Origin of Emergent Intelligence in SR Systems}%
 \label{chap:RQ2}
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% 
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %
 \subsection{Background}\label{RQ2:sec:bg}
 %
@@ -38,66 +38,78 @@ sets have the same cardinality.
 
 \subsection{Related Work}\label{RQ2:sec:rw}
 %
-Correll et al.~have shown that SR systems are competitive with deterministic
-approaches when communication is tightly constrained and/or when only partial
-information about the environment is available~\cite{Correll2008}. Auction-based
-approaches modeling the task allocation problem as an intersection of matroids have
-been shown to be effective in achieving provably optimal bounds in decentralized
-auctions~\cite{Williams2017}. Auction approaches, while successful in spatially
-distributed task allocation in some applications, do not scale well with the number
-of robots or tasks~\cite{Hsieh2008}, and further depend on regular communication of
-cost functions which may not be possible in unstable environments or with unreliable
-agents. Matthey et al.~modeled the interactions of agents and their physical
-environment as chemical reactions between molecules~\cite{Matthey2009} such that no
-\emph{a priori} knowledge of the workload for task allocation was required.
+% [JRH] This is a good start at thesis integration, but it still needs some more
+% polishing and more references I think.
 
-% [JRH] Same thing with this.
+Auction-based approaches modeling the task allocation problem as an intersection
+of matroids have been shown to be effective in achieving provably optimal bounds
+in decentralized auctions~\cite{Williams2017}. While successful in spatially
+distributed task allocation in some applications, auction-based approaches do
+not scale well with the number of robots or tasks, and depend on regular
+communication of cost functions~\cite{Hsieh2008}. For many important variants of
+the foraging and~\gls{egm} problem studied in this thesis, the environments have
+some combination of (1) tightly constrained communication, (2) limited
+availability of information about the environment, (3) inherently instability,
+or (4) unreliable agents~\cite{Rouff2007a,Napp2014a}.  In such environments, or
+even in idealized environments where the task decomposition is \emph{complex} or
+the space of possible agent-task allocations is exponential in the number of
+agents and tasks~\cite{Korsah2013}, SR systems are competitive with
+deterministic task allocation approaches~\cite{Correll2008}, because optimal
+\emph{a priori} task allocation methods are generally not feasible.
+
+Within SR approaches to task allocation, investigation into the benefit of
+lifetime specialization among workers (i.e., a single task allocated to a worker
+for its lifetime tied to its position in the social strata) concluded that
+dynamic allocation is almost always superior to static allocations overall, with
+more pronounced benefits in dynamic environments~\cite{Ferrante2015}.
+% [JRH] Need to confirm ferrante ref ^ here...
+Thus, we investigate a \emph{self-organized} task allocation in which robots
+self-allocate tasks and the interactions between robots working on
+inter-dependent subtasks implicitly disseminate the costs of these tasks to the
+swarm as a whole, and give rise to measurable emergent
+intelligence~\cite{Harwell2019a},  as the most appropriate method for our
+problems of interest.
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Motivation/gaps I'm addressing
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %
-% Work by <REFS, Ferrante2015 I think> has investigated the benefit of lifetime
-% specialization among workers (i.e., a single task allocated to a worker for its
-% lifetime tied to its position in the social strata), concluding that dynamic
-% allocation is almost always superior to static allocations in more general and/or
-% reactive environments (such as those in which SR approaches are best suited).
-
-\gls{task-partitioning} is~\glsdesc{task-partitioning}. Many of the solutions to
-foraging tasks found by social insects employ this strategy, and task
-partitioning in both natural and SR systems has many well-known benefits,
+One promising mechanism for self-organized task allocation is
+\gls{task-partitioning}, which is~\glsdesc{task-partitioning}. Many of the
+solutions to foraging tasks found by social insects employ this strategy, and
+task partitioning in both natural and SR systems has many well-known benefits,
 including (1) increased performance at group level, (2) stimulated
 specialization, (3) parallel task execution, (4) reduced interference between
 individuals due to self-organization around spatial locality of subtasks in
 comparison to the unpartitioned task, (5) improved exploitation of the
 environment, and (6) improved transport
-efficiency~\cite{Hart2002,Pini2011b,Pini2011a}. Prior work on task partitioning
-in SR has focused on allocating individuals to subtasks to maximize efficiency
-given the optimal task distribution \emph{a
-  priori}~\cite{Correll2008,Berman2009,Matthey2009,Hsieh2008} and did not
-consider sequential interdependencies between subtasks
-(with~\cite{Pini2011b,Brutschy2014,Ferrante2015,Frison2010,Harwell2018} being
-notable exceptions).
+efficiency~\cite{Hart2002,Pini2011b,Pini2011a}.
 
-In many cases, \emph{a priori} optimal task distributions are not feasible because
-(1) complete information on the environment is not available, (2) the environment
-itself is unstable\cite{Rouff2007a,Napp2014a}, or (3) the task decomposition is
-\emph{complex}, and the space of possible agent-task allocations is exponential in
-the number of agents and tasks~\cite{Korsah2013}. We investigate
-\emph{self-organized} task partitioning as a possible solution in such cases, in
-which robots self-allocate tasks and the interactions between robots working on
-inter-dependent subtasks implicitly disseminate the costs of these tasks to the swarm
-as a whole, and give rise to measurable emergent intelligence~\cite{Harwell2019a}.
-
-Prior work on self-organized task partitioning in foraging has utilized a
-\emph{compound} task decomposition graph representing task dependencies and hierarchy
-with a compound root task and two atomic subtasks which enabled utilization of a
-single existing
+However, most prior work on self-organized task partitioning within a foraging
+context using SR systems has generally focused on allocating individuals to
+subtasks to maximize efficiency given an optimal task distribution \emph{a
+  priori}~\cite{Correll2008,Berman2009,Matthey2009,Hsieh2008}, and did not
+consider the sequential interdependencies between subtasks
+(\cite{Pini2011b,Brutschy2014,Ferrante2015,Frison2010,Harwell2018} are notable
+exceptions). Using a \emph{compound} task decomposition graph containing a
+compound root task and two atomic subtasks (see
+\cref{exp-setup:fig:tdgraph-foraging}, sans task dependencies), previous work
+utilized a single ``static''
 cache~\cite{Pini2011b,Pini2013a,Brutschy2014,Ferrante2015,Frison2010,Harwell2018}.
-\emph{Caches} are temporary storage sites where materials can be dropped and picked
-up asynchronously. Asynchronicity can be beneficial because it can reduce material
-losses due to imbalances between foraging and processing rates~\cite{Hart2000}. We
-extend this to a \emph{complex} task decomposition graph with a multiplely
-decomposable root task which collectively enables more complex swarm behaviors such
-as cache creation, transfer, and depletion. This generalizes the task partitioning
-approach in~\cite{Harwell2018} by eliminating the requirement for the cache in the
-arena to be maintained by an outside process.
+A \gls{cache} is~\glsdesc{cache}. Asynchronicity can be beneficial because it
+can reduce material losses due to imbalances between foraging and processing
+rates~\cite{Hart2000}. However, this type of task decomposition graph for a
+foraging task requires that the single ``static'' cache be maintained by an
+outside process, which may or may not be feasible in a given environment.
+
+In this work, we extend previous work in self-organized task partitioning by (1)
+considering interdependencies between subtasks in our task allocation decisions,
+and (2) extending~\cref{exp-setup:fig:tdgraph-foraging} to a \emph{complex} task
+decomposition graph with a multiplely decomposable root task which collectively
+enables more complex swarm behaviors such as cache creation, transfer, and
+depletion. This generalizes the task partitioning approach in~\cite{Harwell2018}
+by eliminating the requirement for the cache in the arena to be maintained by an
+outside process.
 
 \IGNORE{\section{Methods}\label{RQ2:sec:methods}
 %
@@ -593,22 +605,23 @@ Previous work on task partitioning exclusively used single source foraging
 scenarios, in which all objects are distributed in a single cluster within a
 rectangular arena~\cite{Harwell2018,Harwell2019a,Ferrante2015,Pini2011b}. In
 this work we utilize a \emph{dual source} foraging scenario, shown
-in~\cref{fig:fbd-ds}, in order to provide swarms a richer environment to learn
+in~\cref{exp-setup:fig:fbd-ds}, in order to provide swarms a richer environment to learn
 and exploit, as opposed to the simpler single source environment.
 
 \begin{figure}[!htbp]
   \centering
   \includegraphics[width=\textwidth]{{\figroot{RQ2}/cc-pm-self-org-fl-DS.36x18}.jpeg}
   \caption[Emergent intelligence via self-organization in DS scenario
-  (\cref{fig:fbd-ds})]{\label{fig:DS-self-org} Using a 10\% swarm density
-    under imperfect information. }
+  (\cref{exp-setup:fig:fbd-ds})]{\label{fig:DS-self-org} Using a 10\% swarm
+    density under imperfect information. }
 \end{figure}
 
 \begin{figure}[!htbp]
   \centering
   \includegraphics[width=\textwidth]{{\figroot{RQ2}/cc-pm-blocks-transported-cum-DS.36x18}.jpeg}
-  \caption[Performance in DS scenario (\cref{fig:fbd-ds})]{\label{fig:DS-perf}
-    Using a 10\% swarm density under imperfect information.}
+  \caption[Performance in DS scenario
+  (\cref{exp-setup:fig:fbd-ds})]{\label{fig:DS-perf} Using a 10\% swarm density
+    under imperfect information.}
 \end{figure}
 
 From Fig.~\ref{fig:DS-self-org}, we see that the observed levels of self-organization

@@ -9,7 +9,7 @@
 \section{Background}\label{RQ3:sec:background}
 %
 To model swarm collective behavior using Ordinary Differential Equations (ODEs),
-we consider the individual robot Finite State Machine (FSM) (\cref{fig:fsm});
+we consider the individual robot Finite State Machine (FSM) (\cref{RQ3:fig:crw-fsm});
 our FSM is identical to previous work~\cite{Lerman2001,Lerman2002}. Each state
 maps directly to a single robot behavior or a set/sequence of robot behaviors
 which together make up the robot controller for executing a foraging task. It is
@@ -42,9 +42,10 @@ the transition rates for states become the ODE terms, and all ODEs can therefore
 be directly written down from robot control algorithm characteristics.  We refer
 the reader to~\cite{Lerman2001,VanKampen2007} for the theoretical underpinnings
 of the validity of this translation, which can be applied to any SR system, not
-just those engaged in a foraging task. The quantities modeled in~\cref{fig:fsm}
-are listed in~\cref{tab:ode-terms}, and the ODE model of these quantities from
-previous work~\cite{Lerman2001,Lerman2002} is summarized
+just those engaged in a foraging task. The quantities modeled
+in~\cref{RQ3:fig:crw-fsm} are listed in~\cref{tab:ode-terms}, and the ODE model
+of these quantities from previous work~\cite{Lerman2001,Lerman2002} is
+summarized
 in~\cref{eqn:lerman-ode-searching,eqn:lerman-ode-homing,eqn:lerman-ode-avoiding,eqn:lerman-ode-blocks}.
 In our model, shown later in Section~\ref{ssec:method-ode}, we simplify the
 original equations and replace some parameters with mathematical derivations.
@@ -173,7 +174,7 @@ memory~\cite{Lerman2003a}, the ``house hunting
 model''~\cite{Hsieh2008,Berman2007}, and ant-inspired models that collaborate
 with or without communication~\cite{Sugawara1998,Sugawara1997}.
 
-\section{Selected Results}\label{RQ3:sec:selected-results}
+\section{Selected Results}\label{RQ3:sec:results}
 %
 For all scenarios, we omit predictions for $\SwarmNSearching$ since it can be
 computed from the conservation of robots via
@@ -229,13 +230,13 @@ $\SwarmNHoming,\SwarmNAvoiding$ within the 95\% confidence interval, but does
 track the overall trend reasonably well, showing that our underlying diffusion
 model and assumptions about linearity of $\alpha_r$ are generally accurate even
 in this difficult case. The divergence that does exist between predictions and
-experiments for PL scenarios suggests that \cref{eqn:acq-pdf-single} is
+experiments for PL scenarios suggests that~\cref{eqn:acq-pdf-single} is
 moderately inaccurate; this is further supported by slight differences between
 experimental data and predictions for $\SwarmNHoming$ in the RN and DS scenarios
 environments.  In~\cref{RQ3:fig:results-large-const-rho}b, when our predictions
 of $\SwarmNAvoiding$ are inaccurate for some SS scenarios (in terms of
 confidence intervals), the inaccuracy may not be of practical concern as the
-predictions only differ from experimental results by $< 1$ robot/$6,000$.
+predictions only differ from experimental results by $< 1$ robot/\unit{6,000}.
 
 %%% Local Variables:
 %%% mode: latex

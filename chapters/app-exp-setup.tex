@@ -17,12 +17,14 @@ still restricted to motion in the XY plane).
   \includegraphics[width=\textwidth]{\figroot{appendix}/tdgraph-foraging.png}
   \phdcaption{Task decomposition graph for the foraging task}{The set of red and
     blue tasks correspond to a scheme in which robots do the whole task or 1/2
-    task (single decomposition option).  The set of red and blue and green tasks
-    correspond to a scheme in which robots do the whole task, 1/2 task, or 1/4
-    task (multi-decomposition option).  By decomposing the task into multiple
-    parts, there are now task dependencies between the parts, which the swarm
-    has to collectively learn.  Blue tasks ($\phi_i=1$) were defined
-    in~\cite{Harwell2018}, green tasks ($\phi_i=2$) were
+    task (single decomposition option, compound task decomposition graph).  The
+    set of red and blue and green tasks correspond to a scheme in which robots
+    do the whole task, 1/2 task, or 1/4 task (multi-decomposition option/complex
+    task decomposition graph).  By decomposing the task into multiple parts,
+    there are now task dependencies between the parts, which the swarm has to
+    collectively learn.  Blue tasks ($\phi_i=1$) were defined
+    in~\cite{Harwell2018} as a refinement of previous work, green tasks
+    ($\phi_i=2$) were
     defined~\cite{Harwell2019a}.\label{exp-setup:fig:tdgraph-foraging}}
 \end{figure}
 %
@@ -115,6 +117,51 @@ in~\cref{exp-setup:fig:tdgraph-foraging}):
 By defining $\phi_2$, we have also implicitly defined $\beta_1,\beta_2$.
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section{Foraging Algorithms}\label{exp-setup:sec:foraging-alg}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%
+We use the following foraging algorithms for the experiments investigating
+~\gls{RQ1},~\gls{RQ2},~\gls{RQ3}.
+
+\textbf{\gls{crw}}. Robots do a correlated random walk, which is a random walk
+in which the direction of the motion at each step depends on the direction of
+the previous step~\cite{Renshaw1981}, until they acquire an object, which they
+then transport to the nest using phototaxis, i.e., motion in response to
+light. Robots do not reallocate tasks, i.e., they always do the same task, and
+have no memory (reactive algorithm). Similar controllers can be found
+in~\cite{Lerman2001,Galstyan2005}.
+
+
+\textbf{\gls{dpo}}.  Robots track objects they have seen using exponentially
+decaying pheromones~\cite{Hecker2015,Harwell2020a}, and determine the ``best''
+object to acquire using derived information relevance. Robots do not perform
+dynamic task allocation (i.e., always perform the same task). Similar
+controllers can be found in~\cite{Talamali2020}.
+
+\textbf{\gls{stochm}}. Robots stochastically allocate tasks using
+the~\gls{stochn1} algorithm~\cite{Harwell2020a}, a stochastic choice depending
+on the location of the most recently executed task within the graph of tasks
+available to each robot
+(\cref{exp-setup:fig:tdgraph-foraging}). From~\cref{exp-setup:fig:tdgraph-foraging},~\gls{stochm}
+robots can allocate any of the red or blue tasks, which are: (1) the entire
+task, \emph{Forager}, retrieving an object and bringing it to the nest, (2) the
+first half of the task, \emph{Harvester}, retrieving an object and bringing it
+to a \emph{static} intermediate drop site (cache), or (3) the second half of the
+task, \emph{Collector}, picking up a block from a cache and bringing it to the
+nest.
+
+\textbf{\gls{stochx}}. Robots also use the~\gls{stochn1} algorithm on the graph
+in~\cref{exp-setup:fig:tdgraph-foraging}. However, they can now choose red,
+'blue, or green tasks, i.e., they can exploit existing caches \emph{and} perform
+tasks related to dynamically creating new caches. The new available tasks are:
+placing a block somewhere to start a new cache, \emph{Cache Starter}, placing a
+block next to a started cache to finish creating it, \emph{Cache Finisher},
+transferring a block between two caches, making progress towards the nest,
+\emph{Cache Transferer}, and picking up a block from a cache and bringing it to
+the nest, \emph{Cache Collector}. A similar algorithm for mobile caches was
+developed in~\cite{Lu2020}.
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \section{Foraging Scenarios}\label{exp-setup:sec:foraging-scenarios}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %
@@ -160,7 +207,10 @@ for~\gls{RQ1},~\gls{RQ2},~\gls{RQ3}.
 % [JRH] Show pictures of all the scenarios here, talk a little about each (e.g.,
 % why PL is the most challenging scenario type).
 
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \section{Source Code}\label{sec:exp-source-code}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 Our open-source C++ code is available at the following locations:
 %

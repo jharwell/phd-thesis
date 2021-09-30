@@ -26,25 +26,19 @@ results obtained using our metrics, and that our metrics can be synergistically
 used together to predict collective behaviors based on previous results in some
 cases.
 
-% In the spatially constrained warehouse scenario, efficient use of space
-% is key to success so algorithms that use mechanisms for traffic regulation and
-% congestion reduction are the most appropriate.  In the search and rescue
-% scenario, the same will happen with algorithms which can cope well with object
-% motion through dynamic task allocation and randomized search trajectories.
-
 % AAMAS
 
-Second:~\glsdesc{RQ2} We use task
-allocation within the context of task decomposition graphs of different
-cross-clique centralities, derive a self-organization task allocation algorithm
-designed to be sensitive to clique centrality, and compare the results to other
-state of the art algorithms. We derive a greedy algorithm that optimally solves
-the swarm task allocation problem under some restrictive assumptions by
-representing the swarm's task allocation space as a matroid. We compare the
-greedy allocation method, which disregards task dependencies, with the
-clique-sensitive method, which emphasizes collective learning of graph structure
-(including dependencies). Results from an object gathering task show that swarm
-emergent intelligence (1) is sensitive to cross-clique centrality of task
+Second:~\glsdesc{RQ2} We use task allocation within the context of task
+decomposition graphs of different cross-clique centralities, and derive two
+different allocation methods to answer this question. First, a self-organized
+task allocation algorithm designed to be sensitive to clique centrality.
+Second, a greedy algorithm that optimally solves the swarm task allocation
+problem under some restrictive assumptions by representing the swarm's task
+allocation space as a matroid. We compare the greedy allocation method, which
+disregards task dependencies, with the clique-sensitive method, which emphasizes
+collective learning of graph structure (including dependencies), with other
+state of the art algorithms. Results from an object gathering task show that
+swarm emergent intelligence (1) is sensitive to cross-clique centrality of task
 decomposition graphs (2) is positively correlated with performance, (3) arises
 out of learning and exploitation of graph connectivity and structure, rather
 than graph content.
@@ -56,7 +50,7 @@ characterizing the inflection point beyond which linear models of swarm
 collective behavior break down. We design a linear model which strives to
 capture the underlying dynamics of object gathering in robot swarms from first
 principles, rather than extensively relying on post-hoc model fitting.  We
-evaluate our model with swarms of up to 8,000 robots in simulation,
+evaluate our model with swarms of up to \num{8,000} robots in simulation,
 demonstrating that it accurately captures underlying swarm behavioral dynamics
 when the swarm can be approximated using the mean-field model, and when it
 cannot, and finite-size effects are present.  We further apply our model to
@@ -64,7 +58,14 @@ swarms exhibiting non-linear behaviors, and show that it still provides accurate
 predictions in some scenarios, thereby establishing better practical limits on
 linear modeling of swarm behaviors.
 
-Fourth:~\glsdesc{RQ4} We model the interaction between a swarm and its
-environment as a graph manipulation problem, and derive a provably correct
-class of algorithm for incrementally constructing or deconstructing graphs which
-certain properties.
+Fourth:~\glsdesc{RQ4} We investigate the conditions under which such bounds can
+be obtained in the context of graph manipulation tasks in which robots can
+add/remove nodes/edges from a graph as they manipulate elements of their
+environment. We present a novel graph theoretic description of a class of graphs
+describing discrete 3D structures which can be concurrently manipulated by an
+arbitrary number of robots to achieve a desired system goal. We demonstrate the
+flexibility of our approach with several simple construction and deconstruction
+tasks using heterogeneous blocks, and discuss implications for the design of
+future multi-robot systems using this approach to tackle important real-world
+problems such as construction, farming, and repair of critical infrastructure
+such as roads and levies after a disaster.
