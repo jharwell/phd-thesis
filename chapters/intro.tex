@@ -195,55 +195,7 @@ question:
 Since answering this question in general for SR systems is infeasible, if
 not impossible, we consider it in the more limited, but still broadly applicable
 context of~\gls{task-allocation}, by attempting to understand the origin of
-emergent intelligence in robot swarms which perform task allocation. We use
-definitions from the extended~\gls{mrta} taxonomy terminology proposed
-by~\cite{Korsah2013}.  They separate the concept of an~\gls{atomic-task}, which
-cannot be decomposed into smaller, simpler tasks, from that of
-a~\gls{decomposable-task}, which can. They further define a~\gls{compound-task}
-as a task which can be decomposed exactly one way, and a~\gls{complex-task},
-which can be decomposed multiple ways.
-
-Using these definitions, we can ask the following specific research questions to
-answer~\gls{RQ2} in the context of task allocating swarms, the answers to which
-form the second contribution of this thesis, originally published
-in~\cite{Harwell2020a}. First,
-
-\medskip\noindent
-\gls{RQ2.1}: \textbf{\Glsdesc{RQ2.1}}
-\medskip
-
-\noindent
-That is, do relational graphs with more vertices (tasks) and task dependencies
-(edges) result in better collective task allocation decisions, and higher
-measured levels of emergent intelligence?
-
-To answer~\gls{RQ2.1}, we derive the algorithm~\gls{stochn1}, which uses the
-neighborhood of a finished task within a task decomposition graph to
-stochastically allocate a new task. We evaluate its emergent intelligence and
-performance across \emph{compound} and \emph{complex} task decomposition graphs
-for a foraging task, and show that swarm emergent intelligence is strongly
-correlated with performance, and greater for complex than for compound task
-decomposition graphs.
-
-Second,
-
-\medskip\noindent
-\gls{RQ2.2}: \textbf{\Glsdesc{RQ2.2}}
-n\medskip
-
-\noindent
-That is, what is it that the swarm collectively learns from each relational
-graph?  To answer~\gls{RQ2.2}, we derive~\gls{matopt}, a
-matroid~\cite{Tutte1959,Whitney1935,Oxley2006} theoretic method in which we are
-able to prove that if we disregard task dependencies from our task decomposition
-graph, an extension of our task decomposition graph is optimally solvable with a
-greedy algorithm for a single robot under some restrictions. It then follows
-that an optimal allocation policy for the swarm is the disjoint union of
-individual robot policies (intersection of matroids~\cite{Williams2017}). By
-comparing the performance of~\gls{matopt} under constraints with that
-of~\gls{stochn1}, we can determine whether emergent intelligence is more tied
-to graph \emph{content} (tasks within the graph, treated as independent
-by~\gls{matopt}), or to graph \emph{connectivity}.
+emergent intelligence in robot swarms which perform task allocation.
 
 We compare the emergent intelligence and performance of~\gls{matopt}
 against~\gls{stochn1} (which is specifically designed to enable collective
@@ -307,79 +259,25 @@ equation~\cite{VanKampen2007}, which is typically used to model expected average
 behavior of systems, can be used to calculate the deviation from the average,
 but such calculations are often intractable or algebraically difficult.
 
-Having established the feasibility of the~\gls{ode} modeling paradigm as a
-suitable testbed to answer~\gls{RQ3}, we consider the following specific
-sub-questions. First,
-
-
-\medskip\noindent
-\gls{RQ3.1}: \textbf{\Glsdesc{RQ3.1}}
-\medskip
-
-\noindent
-
-It has been established that beyond a certain \emph{swarm density}
-$\SwarmDensity$ (ratio of swarm size to arena
-size)~\cite{Sugawara1997,Hamann2013}, interactions between components can
-overtake outside interactions.  The exact value of $\SwarmDensity$ at which a
-given linear model of swarm behavior breaks down is influenced by many factors,
-including the control algorithm $\kappa$, the number of robots $\TheSwarmSize$,
-and characteristics of the problem being solved, etc., In general it cannot be
-determined \emph{a priori}, because of emergent non-linear behaviors not
-generally predictable from component study; that is, directly from the swarm
-control algorithm~\cite{Cotsaftis2009,George2005,Hunt2020,DeWolf2005},
-complicating SR system design. Hence, the collective performance of a swarm
-$\TheSwarm$ of $\TheSwarmSize$ cooperating robots each running an identical
-control algorithm $\kappa$ can be a non-linear function of the behavior of a
-system of $\TheSwarmSize$ independent robots~\cite{Harwell2020a}. Below this
-threshold, swarm behavior can be well approximated using linear models. We seek
-to characterize, as a function of $\SwarmDensity$, the \emph{practical} limits
-of using such models to model non-linear behaviors of a swarm engaged in solving
-real-world foraging problems using~\glspl{ode}.
-
-Many real-world foraging problems across scales can be tackled using swarms in
-low density environments (independent of swarm size) in which each robot is
-responsible for a large area on the order of \SI{100}{\metre^2}; these include
-indoor warehouses/object transport ($\approx{\SI{64}{\m^2}}$), outdoor search
-and rescue, precision agriculture, and field monitoring
-($\SI{600,000}{\metre^2}\approx{150}$ acres). While recent results summarizing
-the challenges of moving swarms into the real world argue that directing
-research towards low density swarm applications is critical~\cite{Tarapore2020},
-some researchers hold that swarms with low $\SwarmDensity$ are not properly
-characterized as swarms, and are instead systems of independent robots because
-they lack the high level of inter-agent interaction which characterizes natural
-swarms. However, we argue that a high level of inter-agent interaction (and
-therefore potentially emergent self-organization) is only one of the defining
-properties of swarms. Low density swarms exhibiting the properties of
-scalability, flexibility, and robustness can properly still be considered
-swarms~\cite{Harwell2020a}.
-
-Second,
-
-\medskip\noindent
-\gls{RQ3.2}: \textbf{\Glsdesc{RQ3.2}}
-\medskip
-
-\noindent
-To answer~\gls{RQ3.1} and~\gls{RQ3.2} for general foraging tasks,
-i.e., across scenarios, scales, and swarm densities, we require a model with
-wide applicability, and must evaluate the predictive power of a suitable model
-across scales and with variable $\SwarmDensity$ in which we can reliably expect
-non-linear behaviors to arise.  To the best of our knowledge a suitable model
-does not currently exist, and we must develop one. The developed model improves
-on previous modeling work~\cite{Lerman2002,Lerman2001,Lerman2003a} in two
-ways. First, while previous work captured underlying swarm behaviors well, it
-relied on many free parameters and extensive post-hoc model fitting to provide
-accurate predictions. We eliminate most free parameters by deriving analytical
-expressions for them by considering scenario characteristics, robotic control
-algorithm characteristics, etc. The resulting model, while still requiring some
-minor post-hoc fitting, is a step towards a true fundamental model of swarm
-behavior and an affirmative answer to~\gls{RQ3.2}. Second, previous work only
-considered a single scenario with small swarms; we consider multiple scenarios
-and both small and large swarms. Our results in~\cref{RQ3:sec:results}
-show that our model provides accurate predictions across block distributions,
-scales, and densities, including some in which the swarm itself is exhibiting
-non-linear behaviors, showing its broad utility in future SR system design.
+To answer~\gls{RQ3} for general foraging tasks, i.e., across scenarios, scales,
+and swarm densities, we require a model with wide applicability, and must
+evaluate the predictive power of a suitable model across scales and with
+variable $\SwarmDensity$ in which we can reliably expect non-linear behaviors to
+arise.  To the best of our knowledge a suitable model does not currently exist,
+and we must develop one. The developed model improves on previous modeling
+work~\cite{Lerman2002,Lerman2001,Lerman2003a} in two ways. First, while previous
+work captured underlying swarm behaviors well, it relied on many free parameters
+and extensive post-hoc model fitting to provide accurate predictions. We
+eliminate most free parameters by deriving analytical expressions for them by
+considering scenario characteristics, robotic control algorithm characteristics,
+etc. The resulting model, while still requiring some minor post-hoc fitting, is
+a step towards a true fundamental model of swarm behavior from first
+principles. Second, previous work only considered a single scenario with small
+swarms; we consider multiple scenarios and both small and large swarms. Our
+results in~\cref{RQ3:sec:results} show that our model provides accurate
+predictions across block distributions, scales, and densities, including some in
+which the swarm itself is exhibiting non-linear behaviors, showing its broad
+utility in future SR system design.
 
 \subsection{Provably Correct Graph Manipulation Algorithms for SR Systems}
 

@@ -35,6 +35,55 @@ sets have the same cardinality.
 % maximally independent if there is no element that can be added to the set to create a
 % new independent set.
 %
+We use definitions from the extended~\gls{mrta} taxonomy terminology proposed
+by~\cite{Korsah2013}.  They separate the concept of an~\gls{atomic-task}, which
+cannot be decomposed into smaller, simpler tasks, from that of
+a~\gls{decomposable-task}, which can. They further define a~\gls{compound-task}
+as a task which can be decomposed exactly one way, and a~\gls{complex-task},
+which can be decomposed multiple ways.
+
+Using these definitions, we can ask the following specific research questions to
+answer~\gls{RQ2} in the context of task allocating swarms, the answers to which
+form the second contribution of this thesis, originally published
+in~\cite{Harwell2020a}. First,
+
+\medskip\noindent
+\gls{RQ2.1}: \textbf{\Glsdesc{RQ2.1}}
+\medskip
+
+\noindent
+That is, do relational graphs with more vertices (tasks) and task dependencies
+(edges) result in better collective task allocation decisions, and higher
+measured levels of emergent intelligence?
+
+To answer~\gls{RQ2.1}, we derive the algorithm~\gls{stochn1}, which uses the
+neighborhood of a finished task within a task decomposition graph to
+stochastically allocate a new task. We evaluate its emergent intelligence and
+performance across \emph{compound} and \emph{complex} task decomposition graphs
+for a foraging task, and show that swarm emergent intelligence is strongly
+correlated with performance, and greater for complex than for compound task
+decomposition graphs.
+
+Second,
+
+\medskip\noindent
+\gls{RQ2.2}: \textbf{\Glsdesc{RQ2.2}}
+\medskip
+
+\noindent
+That is, what is it that the swarm collectively learns from each relational
+graph?  To answer~\gls{RQ2.2}, we derive~\gls{matopt}, a
+matroid~\cite{Tutte1959,Whitney1935,Oxley2006} theoretic method in which we are
+able to prove that if we disregard task dependencies from our task decomposition
+graph, an extension of our task decomposition graph is optimally solvable with a
+greedy algorithm for a single robot under some restrictions. It then follows
+that an optimal allocation policy for the swarm is the disjoint union of
+individual robot policies (intersection of matroids~\cite{Williams2017}). By
+comparing the performance of~\gls{matopt} under constraints with that
+of~\gls{stochn1}, we can determine whether emergent intelligence is more tied
+to graph \emph{content} (tasks within the graph, treated as independent
+by~\gls{matopt}), or to graph \emph{connectivity}.
+
 
 \subsection{Related Work}\label{RQ2:sec:rw}
 %
@@ -93,7 +142,7 @@ consider the sequential interdependencies between subtasks
 (\cite{Pini2011b,Brutschy2014,Ferrante2015,Frison2010,Harwell2018} are notable
 exceptions). Using a \emph{compound} task decomposition graph containing a
 compound root task and two atomic subtasks (see
-\cref{exp-setup:fig:tdgraph-foraging}, sans task dependencies), previous work
+\cref{foraging-context:fig:tdgraph-foraging}, sans task dependencies), previous work
 utilized a single ``static''
 cache~\cite{Pini2011b,Pini2013a,Brutschy2014,Ferrante2015,Frison2010,Harwell2018}.
 A \gls{cache} is~\glsdesc{cache}. Asynchronicity can be beneficial because it
@@ -104,7 +153,7 @@ outside process, which may or may not be feasible in a given environment.
 
 In this work, we extend previous work in self-organized task partitioning by (1)
 considering interdependencies between subtasks in our task allocation decisions,
-and (2) extending~\cref{exp-setup:fig:tdgraph-foraging} to a \emph{complex} task
+and (2) extending~\cref{foraging-context:fig:tdgraph-foraging} to a \emph{complex} task
 decomposition graph with a multiplely decomposable root task which collectively
 enables more complex swarm behaviors such as cache creation, transfer, and
 depletion. This generalizes the task partitioning approach in~\cite{Harwell2018}
@@ -605,14 +654,14 @@ Previous work on task partitioning exclusively used single source foraging
 scenarios, in which all objects are distributed in a single cluster within a
 rectangular arena~\cite{Harwell2018,Harwell2019a,Ferrante2015,Pini2011b}. In
 this work we utilize a \emph{dual source} foraging scenario, shown
-in~\cref{exp-setup:fig:fbd-ds}, in order to provide swarms a richer environment to learn
+in~\cref{foraging-context:fig:fbd-ds}, in order to provide swarms a richer environment to learn
 and exploit, as opposed to the simpler single source environment.
 
 \begin{figure}[!htbp]
   \centering
   \includegraphics[width=\textwidth]{{\figroot{RQ2}/cc-pm-self-org-fl-DS.36x18}.jpeg}
   \caption[Emergent intelligence via self-organization in DS scenario
-  (\cref{exp-setup:fig:fbd-ds})]{\label{fig:DS-self-org} Using a 10\% swarm
+  (\cref{foraging-context:fig:fbd-ds})]{\label{fig:DS-self-org} Using a 10\% swarm
     density under imperfect information. }
 \end{figure}
 
@@ -620,7 +669,7 @@ and exploit, as opposed to the simpler single source environment.
   \centering
   \includegraphics[width=\textwidth]{{\figroot{RQ2}/cc-pm-blocks-transported-cum-DS.36x18}.jpeg}
   \caption[Performance in DS scenario
-  (\cref{exp-setup:fig:fbd-ds})]{\label{fig:DS-perf} Using a 10\% swarm density
+  (\cref{foraging-context:fig:fbd-ds})]{\label{fig:DS-perf} Using a 10\% swarm density
     under imperfect information.}
 \end{figure}
 

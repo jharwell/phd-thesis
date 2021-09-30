@@ -6,6 +6,60 @@
 \label{chap:RQ3}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %
+Having established the feasibility of the~\gls{ode} modeling paradigm as a
+suitable testbed to answer~\gls{RQ3}, we consider the following specific
+sub-questions. First,
+
+
+\medskip\noindent
+\gls{RQ3.1}: \textbf{\Glsdesc{RQ3.1}}
+\medskip
+
+\noindent
+
+It has been established that beyond a certain \emph{swarm density}
+$\SwarmDensity$ (ratio of swarm size to arena
+size)~\cite{Sugawara1997,Hamann2013}, interactions between components can
+overtake outside interactions.  The exact value of $\SwarmDensity$ at which a
+given linear model of swarm behavior breaks down is influenced by many factors,
+including the control algorithm $\kappa$, the number of robots $\TheSwarmSize$,
+and characteristics of the problem being solved, etc., In general it cannot be
+determined \emph{a priori}, because of emergent non-linear behaviors not
+generally predictable from component study; that is, directly from the swarm
+control algorithm~\cite{Cotsaftis2009,George2005,Hunt2020,DeWolf2005},
+complicating SR system design. Hence, the collective performance of a swarm
+$\TheSwarm$ of $\TheSwarmSize$ cooperating robots each running an identical
+control algorithm $\kappa$ can be a non-linear function of the behavior of a
+system of $\TheSwarmSize$ independent robots~\cite{Harwell2020a}. Below this
+threshold, swarm behavior can be well approximated using linear models. We seek
+to characterize, as a function of $\SwarmDensity$, the \emph{practical} limits
+of using such models to model non-linear behaviors of a swarm engaged in solving
+real-world foraging problems using~\glspl{ode}.
+
+Many real-world foraging problems across scales can be tackled using swarms in
+low density environments (independent of swarm size) in which each robot is
+responsible for a large area on the order of \SI{100}{\metre^2}; these include
+indoor warehouses/object transport ($\approx{\SI{64}{\m^2}}$), outdoor search
+and rescue, precision agriculture, and field monitoring
+($\SI{600,000}{\metre^2}\approx{150}$ acres). While recent results summarizing
+the challenges of moving swarms into the real world argue that directing
+research towards low density swarm applications is critical~\cite{Tarapore2020},
+some researchers hold that swarms with low $\SwarmDensity$ are not properly
+characterized as swarms, and are instead systems of independent robots because
+they lack the high level of inter-agent interaction which characterizes natural
+swarms. However, we argue that a high level of inter-agent interaction (and
+therefore potentially emergent self-organization) is only one of the defining
+properties of swarms. Low density swarms exhibiting the properties of
+scalability, flexibility, and robustness can properly still be considered
+swarms~\cite{Harwell2020a}.
+
+Second,
+
+\medskip\noindent
+\gls{RQ3.2}: \textbf{\Glsdesc{RQ3.2}}
+\medskip
+
+
 \section{Background}\label{RQ3:sec:background}
 %
 To model swarm collective behavior using Ordinary Differential Equations (ODEs),
@@ -132,6 +186,7 @@ robots avoiding collision with other robots.
 describes the change in the number of free blocks available for robots to find;
 it decreases whenever a searching robot acquires a block (i.e., once deposited
 in the nest, blocks are not re-distributed in the arena).
+
 
 \section{Related Work}\label{RQ3:sec:rw}
 %

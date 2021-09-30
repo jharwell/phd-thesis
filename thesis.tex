@@ -1,8 +1,7 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % thesis.tex: Primary TeX control file for thesis.
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-% \documentclass[11pt, oneside]{mnthesis}
-\documentclass[]{report}
+\documentclass[11pt, oneside]{mnthesis}
  
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % Packages
@@ -55,12 +54,12 @@
 \includeonly{
     preliminaries/title,
     chapters/intro,
+    chapters/foraging-context,
     chapters/RQ1,
     chapters/RQ2,
     chapters/RQ3,
     chapters/RQ4,
     chapters/conclusion,
-    chapters/app-exp-setup,
     chapters/app-glossary
 }
 
@@ -93,6 +92,7 @@
 
 \makeglossaries
 
+\preto\chapter{\glsresetall}
 \setabbreviationstyle[abbreviation]{long-short}
 \setabbreviationstyle[acronym]{long-short}
 
@@ -105,17 +105,15 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \begin{document}
 
-% [JRH] Changes for proposal
+\include{preliminaries/title}
 
-\bibliographystyle{plain} % style of bibliography
-\abstract{\input{preliminaries/abstract}}
-
-% \bibliographystyle{hunsrt} % style of bibliography
-% \include{preliminaries/title}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % THE THESIS BEGINS
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \include{chapters/intro}
+
+% Common stuff
+\include{chapters/foraging-context}
 
 % RQ1: How to measure swarm properties
 \include{chapters/RQ1}
@@ -137,6 +135,7 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % Bibliography
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\bibliographystyle{apalike} % style of bibliography
 \bibliography{2021-phd-thesis}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%

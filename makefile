@@ -1,4 +1,4 @@
-LATEXMK=./latexmk/latexmk
+LATEXMK=latexmk
 
 # Various dependencies
 MAIN=thesis
@@ -30,3 +30,4 @@ tidy: $(MAIN_PDF)
 clean:
 	$(LATEXMK) -C $(MAIN_TEX)
 	@rm -rf *.glo
+	@ rm -rf *.bbl

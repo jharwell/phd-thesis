@@ -1,4 +1,4 @@
-* Thesis TODO [0%]
+* Thesis TODO [5%]
 - [ ] Switch "graph richness" -> some sort of graph theory measure in AAMAS paper. Eigen centrality or closeness
 centrality, cross-clique centrality look like they might be good, as long as the complex task decomposition graph has a higher value of whatever
 measure is chosen.
@@ -7,3 +7,22 @@ some kind. I think you can compute TABs by merging all nodes in the 3-node cliqu
 graph/tree to switch between.
 - [ ] Switch from neighborhood -> clique in AAMAS paper content. Much stronger graph theory basis.
 - [ ] Switch are numbers in text to use the siunitx package (whatever the formatting is...)
+
+* Proposal TODO [15%]
+- [X] Proposal: Switch to named citation format (i.e., not IEEE style)
+- [ ] Proposal: The exp-setup section should not be in an appendix
+- [X] Proposal: glossary shows up twice ?
+- [ ] Proposal: Make sure research questions are properly ordered.
+- [ ] Proposal: Don't talk about the research sub-questions in the introduction. Too much detail otherwise.
+- [ ] Proposal: Get rid of the research sub-questions, replace with sections. Easier to read.
+- [ ] Switch RQ4 chapter -> Remaining work. Should not be its own chapter. Should try to be VERY general, and mainly promise
+  [ ] things that I've already done.
+- [ ] Proposal: Should not include the literature survey stuff in the proposal; should hold onto until I have a
+  [ ] publication.
+- [ ] Proposal: Should not be too many details on new stuff in proposal.
+- [ ] Proposal: get rid of/comment out appendices altogether.
+- [ ] Proposal: Need to have some results from the TRO paper too. Should include formulas for all of the metrics in the
+  [ ] chapter; one graph.
+- [ ] Proposal: Remove the usage of compound/complex decomposition graph; not necessary at this stage. Instead, put the
+  [ ] citation to the AAMAS paper. Will make it easier for the reader.
+- [ ] Proposal: Remove all but one figure from the AAMAS paper to make it easier for the reader.
